@@ -1,0 +1,22 @@
+.SearchPageBackground {
+    /* animation-name: BGChange;
+    animation-iteration-count: infinite;
+    animation-duration: 20s; */
+    width: 1920px;
+    height: 1000px;
+    margin: 0;
+    background-image: url('../assets/embappe.png');
+    background-size: cover;
+}
+
+/* @keyframes BGChange {
+    0% {
+        background-image: url('../assets/embappe.png');
+    }
+    33% {
+        background-image: url('../assets/haaland.jpg');
+    }
+    66% {
+        background-image: url('../assets/bellingham.png');
+    }
+} */
