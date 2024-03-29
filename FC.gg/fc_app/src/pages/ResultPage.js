@@ -1,6 +1,6 @@
 import React, {useState} from "react"
 import "../css/Result.css"
-import gradeIcon from '../assets/ico_rank1.png' 
+import gradeIcon from '../assets/rank/champions.png' 
 import searchIcon from '../assets/searchicon.png'
 
 export default function Screen() {
