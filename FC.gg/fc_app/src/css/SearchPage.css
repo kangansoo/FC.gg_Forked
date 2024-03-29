@@ -39,7 +39,7 @@
 }
 .SearchContainer{
     align-self: center;
-    margin-top: 100px;
+    margin-top: 350px;
     display: flex;
     flex-direction: row;
     justify-content: center;
@@ -71,22 +71,59 @@
 }
 
 .NoticeContainer{
-    margin-top: 80px;
-    width: 700px;
-    height: 200px;
+    margin-top: 50px;
+    width: 660px;
+    padding: 20px;
+    height: 450px;
     border: 3px solid white;
     border-radius: 20px;
     background-color: rgba(0, 0, 0, 0.7);
     color: white;
     font-size: 18px;
     align-self: center;
+    overflow-y: scroll;
+    position: relative;
+}
+
+.UrgentNoticeCategory{
+    color:aquamarine;
+}
+
+.NoticeAnker{
+    color: white;
+    text-decoration: none;
+}
+
+.NoticeContainer::-webkit-scrollbar-track{
+    height: 90%;
+    background-clip: content-box;
+}
+
+.NoticeContainer::-webkit-scrollbar{
+    width: 10px;
+    height: 90%;
+    position: absolute;
+    right: 5px;
+}
+
+.NoticeContainer::-webkit-scrollbar-thumb {
+    background: white;
+    border-radius: 10px;
+    height: 90%;
+}
+
+.NoticeTitle{
+    font-size: 21px;
 }
 
 .LogosContainer{
-    width: 500px;
+    align-self: center;
+    position: absolute;
+    left: 1550px;
+    top: 1010px;
 }
 
 .LeagueLogos{
-    width: 400px;
+    width: 300px;
     height: auto;
 }

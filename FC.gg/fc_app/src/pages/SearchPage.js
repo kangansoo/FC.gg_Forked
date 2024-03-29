@@ -1,23 +1,55 @@
-import React, { useState } from 'react'
+import React, { useEffect, useState } from 'react'
 import '../css/SearchPage.css'
 import searchIcon from '../assets/searchicon.png'
 import leaguelogos from "../assets/leaguelogos.png"
+import axios from 'axios';
 
 export default function SearchPage() {
     const [searchText, setSearchText] = useState("");
+    const [notice, setNotice] = useState("");
+    const [urgentNotice, setUrgentNotice] = useState("");
     const onChange = (e) => {
         e.preventDefault();
         setSearchText(e.target.value);
     }
+
+    useEffect(() => {
+        const getNotice = async () => {
+            try {
+                const response = await axios.get('https://p0l0evybh6.execute-api.ap-northeast-2.amazonaws.com/dev/Getnotice');
+                setNotice(response.data["일반공지"]);
+                setUrgentNotice(response.data["특별공지"]);
+                console.log(response);
+            } catch (error) {
+                console.error('알림을 가져오는 중 오류가 발생했습니다:', error);
+            }
+        };
+        getNotice();
+    }, []);
+
   return (
     <div className="SearchPageBackground">
         <div className="MainContainer">
             <div className="SearchContainer">
-                <input type="text" placeholder='닉네임을 입력해주세요.' value={searchText} onChange={onChange} className="SearchNickname"/>
+                <input type="text" placeholder='닉네임을 입력해주세요.' value={searchText} onChange={onChange} className="SearchNickname" maxLength="15"/>
                 <img src={searchIcon} alt="searchIcon" className='SearchIcon'/>
             </div>
             <div className="NoticeContainer">
-                
+                <strong className="NoticeTitle">[공지사항]</strong>
+                <ul className='NoticeListContainer'>
+                    {
+                        urgentNotice ?
+                        urgentNotice.map((data, index) => (
+                            <li className="urgentNoticeList" key={index}><span className='UrgentNoticeCategory'>{data.category}</span>: <a href={data.href} target="_black" className='NoticeAnker'>{data.title}</a></li>
+                        )):(<p>데이터를 불러오는데 실패하였습니다.</p>)
+                    }
+                    {
+                        notice ?
+                        notice.map((data, index)=>(
+                            <li className='NoticeList' key={index}>{data.category}: <a href={data.href} target="_black"  className='NoticeAnker'>{data.title}</a></li>
+                        )):(<p>데이터를 불러오는데 실패하였습니다.</p>)
+                    }
+                </ul>
             </div>
             <div className='LogosContainer'>
                 <img src={leaguelogos} alt="leaguelogos" className='LeagueLogos' />
