@@ -14,19 +14,19 @@
 
 @keyframes BGChange {
     0%, 100% {
-        background-image: url('../assets/mbappe.png');
+        background-image: url('../assets/backgrounds/mbappe.png');
     }
     20% {
-        background-image: url('../assets/bellingham.png');
+        background-image: url('../assets/backgrounds/bellingham.png');
     }
     40% {
-        background-image: url('../assets/haaland.png');
+        background-image: url('../assets/backgrounds/haaland.png');
     }
     60% {
-        background-image: url('../assets/leao.png');
+        background-image: url('../assets/backgrounds/leao.png');
     }
     80% {
-        background-image: url('../assets/musiala.jpg');
+        background-image: url('../assets/backgrounds/musiala.jpg');
     }
 }
 
@@ -80,4 +80,13 @@
     color: white;
     font-size: 18px;
     align-self: center;
+}
+
+.LogosContainer{
+    width: 500px;
+}
+
+.LeagueLogos{
+    width: 400px;
+    height: auto;
 }
