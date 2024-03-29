@@ -11,7 +11,7 @@ export default function Header() {
           <img src={fconlinelogo} alt="fconlinelogo" className="FcOnlineLogo"/>
         </div>
         <div className="HeaderCategoryContainer">
-          <a href="/">
+          <a href="/" className="ToSearchPage">
             <strong className="HeaderCategory">전적 검색</strong>
           </a>
         </div>
