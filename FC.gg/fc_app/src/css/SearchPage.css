@@ -1,32 +1,38 @@
 .SearchPageBackground {
-    /* animation-name: BGChange;
+    animation-name: BGChange;
     animation-iteration-count: infinite;
-    animation-duration: 20s; */
+    animation-duration: 40s;
+    animation-delay: 5s;
     width: 1920px;
     height: 1000px;
     margin: 0;
-    background-image: url('../assets/embappe.png');
-    background-size: cover;
+    /* background-image: url('../assets/embappe.png'); */
+    background-size: 100% 100%;
     display: flex;
     justify-content: center;
 }
 
-/* @keyframes BGChange {
-    0% {
-        background-image: url('../assets/embappe.png');
+@keyframes BGChange {
+    0%, 100% {
+        background-image: url('../assets/mbappe.png');
     }
-    33% {
-        background-image: url('../assets/haaland.jpg');
-    }
-    66% {
+    20% {
         background-image: url('../assets/bellingham.png');
     }
-} */
+    40% {
+        background-image: url('../assets/haaland.png');
+    }
+    60% {
+        background-image: url('../assets/leao.png');
+    }
+    80% {
+        background-image: url('../assets/musiala.jpg');
+    }
+}
 
 .MainContainer{
     width: 1280px;
     height: 1000px;
-    border: 1px solid white;
     display: flex;
     flex-direction: column;
     justify-content: center;
