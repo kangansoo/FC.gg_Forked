@@ -53,8 +53,8 @@ export default function Screen() {
         </div>
         
 
-            <div className="SearchContainer">
-                <input type="text" placeholder='닉네임을 입력해주세요.' value={searchText} onChange={onChange} className="SearchNickname"/>
+            <div className="SearchContainer1">
+                <input type="text" placeholder='닉네임을 입력해주세요.' value={searchText} onChange={onChange} className="SearchNickname1"/>
                 <img src={searchIcon} alt="searchIcon" className='SearchIcon'/>
             </div>
 

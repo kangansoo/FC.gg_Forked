@@ -1,6 +1,7 @@
 import React, { useState } from 'react'
 import '../css/SearchPage.css'
 import searchIcon from '../assets/searchicon.png'
+import leaguelogos from "../assets/leaguelogos.png"
 
 export default function SearchPage() {
     const [searchText, setSearchText] = useState("");
@@ -17,6 +18,9 @@ export default function SearchPage() {
             </div>
             <div className="NoticeContainer">
                 
+            </div>
+            <div className='LogosContainer'>
+                <img src={leaguelogos} alt="leaguelogos" className='LeagueLogos' />
             </div>
         </div>
     </div>
