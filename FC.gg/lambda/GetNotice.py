@@ -2,7 +2,7 @@ from bs4 import BeautifulSoup
 import requests
 # import json
 
-def GetNotice() :
+def GetNotice(context) :
     url = "http://fconline.nexon.com/news/notice/list/rss"
     response = requests.get(url)
     soup = BeautifulSoup(response.text, "html.parser")
@@ -49,4 +49,6 @@ def GetNotice() :
         "특별공지": result,
         "일반공지": normal_notice
     }
+
     return response_data
+
