@@ -11,7 +11,9 @@ export default function Header() {
           <img src={fconlinelogo} alt="fconlinelogo" className="FcOnlineLogo"/>
         </div>
         <div className="HeaderCategoryContainer">
-          <strong className="HeaderCategory">전적 검색</strong>
+          <a href="/">
+            <strong className="HeaderCategory">전적 검색</strong>
+          </a>
         </div>
         <div className="HeaderCategoryContainer">
           <strong className="HeaderCategory">랭커 분석</strong>
