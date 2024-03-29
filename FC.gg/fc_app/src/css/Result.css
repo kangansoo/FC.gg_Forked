@@ -359,16 +359,16 @@
   
 
   .SearchContainer1{
-      margin-top: 20px;
+      margin-top: 25px;
       position: absolute;
       flex-direction: row;
       left: 310px;
       width: 1300px;
   }
   .SearchNickname1{
-      width: 1300px;
-      height: 50px;
-      border: 3px solid white;
+      width: 1270px;
+      height: 40px;
+      border: 2.5px solid white;
       border-radius: 20px;
       background-color: rgba(0, 0, 0, 0.7);
       padding-left: 20px;
@@ -378,16 +378,17 @@
       
   }
   .SearchNickname1::placeholder{
-      color: white;
+      color: rgb(129, 129, 129, 0.8);
       font-size: 18px;
   }
 
-  .SearchIcon{
-      width: 50px;
-      height: 50px;
+  .SearchIcon1{
+      width: 40px;
+      height: 40px;
       cursor: pointer;
       z-index: 999;
       align-self: center;
       position: absolute;
-      left: 1230px;
+      left: 1240px;
+      top: 2px;
   }
