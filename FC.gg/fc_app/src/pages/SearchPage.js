@@ -3,8 +3,10 @@ import '../css/SearchPage.css'
 import searchIcon from '../assets/searchicon.png'
 import leaguelogos from "../assets/leaguelogos.png"
 import axios from 'axios';
+import { useNavigate } from 'react-router-dom';
 
 export default function SearchPage() {
+    const navigate = useNavigate();
     const [searchText, setSearchText] = useState("");
     const [notice, setNotice] = useState("");
     const [urgentNotice, setUrgentNotice] = useState("");
@@ -12,6 +14,15 @@ export default function SearchPage() {
         e.preventDefault();
         setSearchText(e.target.value);
     }
+
+    const buttonClick = () => {
+        if (!searchText) {
+          alert("검색어를 입력해주세요!");
+        } else {
+          navigate(`./result/?input=${searchText}`);
+          setSearchText("");
+        }
+    };
 
     useEffect(() => {
         const getNotice = async () => {
@@ -27,12 +38,19 @@ export default function SearchPage() {
         getNotice();
     }, []);
 
+    
+  const keyPress = (e) => {
+    if (e.key === "Enter"&&e.nativeEvent.isComposing === false) {
+      buttonClick();
+    }
+  };
+
   return (
     <div className="SearchPageBackground">
         <div className="MainContainer">
             <div className="SearchContainer">
-                <input type="text" placeholder='닉네임을 입력해주세요.' value={searchText} onChange={onChange} className="SearchNickname" maxLength="15"/>
-                <img src={searchIcon} alt="searchIcon" className='SearchIcon'/>
+                <input type="text" placeholder='닉네임을 입력해주세요.' value={searchText} onChange={onChange} className="SearchNickname" maxLength="15"  onKeyDown={keyPress}/>
+                <img src={searchIcon} alt="searchIcon" className='SearchIcon' onClick={buttonClick} onKeyDown={keyPress}/>
             </div>
             <div className="NoticeContainer">
                 <strong className="NoticeTitle">[공지사항]</strong>
