@@ -3,13 +3,14 @@
     animation-iteration-count: infinite;
     animation-duration: 40s;
     animation-delay: 5s;
-    width: 1903px;
+    min-width: 1600px;
     height: 1000px;
     margin: 0;
     /* background-image: url('../assets/embappe.png'); */
     background-size: 100% 100%;
     display: flex;
     justify-content: center;
+    position: relative;
 }
 
 @keyframes BGChange {
@@ -67,7 +68,7 @@
     z-index: 999;
     align-self: center;
     position: absolute;
-    left: 1250px;
+    margin-left: 620px;
 }
 
 .NoticeContainer{
@@ -117,10 +118,10 @@
 }
 
 .LogosContainer{
-    align-self: center;
     position: absolute;
-    left: 1550px;
-    top: 1010px;
+    right: 30px;
+    top: 900px;
+    
 }
 
 .LeagueLogos{
