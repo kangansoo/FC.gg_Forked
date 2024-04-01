@@ -83,6 +83,28 @@
     position: relative;
     width: 1300px;
   }
+
+  .screen .winrate {
+      border-radius: 15px;
+      background: linear-gradient(90deg, #000 16%, #666 85%);
+      box-shadow: 0px 4px 4px 0px rgba(0, 0, 0, 0.25);
+      display: flex;
+      align-items: start;
+      gap: 20px;
+      font-size: 25px;
+      font-weight: 400;
+      text-align: center;
+      justify-content: space-between;
+      padding: 23px 68px;
+    }
+    
+    @media (max-width: 991px) {
+      .winrate {
+        flex-wrap: wrap;
+        padding: 0 20px;
+      }
+    }
+  
   
   .screen .div-wrapper {
     height: 85px;
@@ -158,8 +180,17 @@
     top: 100px;
     width: 1300px;
     background-image: linear-gradient(to right, #5B5B5B, #000000);
+    animation: colorChange 5s infinite alternate cubic-bezier(0.4, 0, 0.2, 1); /* 애니메이션 이름, 시간, 반복 설정 */
   }
-  
+
+  @keyframes colorChange {
+      0% {
+          background-image: linear-gradient(to right, #000000, #5B5B5B); /* 시작 색상 */
+      } 
+      100% {
+        background-image: linear-gradient(to right, #5B5B5B, #000000); /* 시작 색상 */
+      } 
+  }
   .screen .group-2 {
     height: 212px;
   }
@@ -359,16 +390,16 @@
   
 
   .SearchContainer1{
-      margin-top: 20px;
+      margin-top: 8px;
       position: absolute;
       flex-direction: row;
       left: 310px;
       width: 1300px;
   }
   .SearchNickname1{
-      width: 1300px;
-      height: 50px;
-      border: 3px solid white;
+      width: 1270px;
+      height: 40px;
+      border: 2.5px solid white;
       border-radius: 20px;
       background-color: rgba(0, 0, 0, 0.7);
       padding-left: 20px;
@@ -378,16 +409,17 @@
       
   }
   .SearchNickname1::placeholder{
-      color: white;
+      color: rgb(129, 129, 129, 0.8);
       font-size: 18px;
   }
 
-  .SearchIcon{
-      width: 50px;
-      height: 50px;
+  .SearchIcon1{
+      width: 40px;
+      height: 40px;
       cursor: pointer;
       z-index: 999;
       align-self: center;
       position: absolute;
-      left: 1230px;
+      left: 1240px;
+      top: 2px;
   }
