@@ -2,13 +2,17 @@ import React, {useState} from "react"
 import "../css/Result.css"
 import gradeIcon from '../assets/rank/champions.png' 
 import searchIcon from '../assets/searchicon.png'
+import { useLocation } from "react-router-dom";
 
 export default function Screen() {
+  const location = useLocation();
   const [searchText, setSearchText] = useState("");
   const onChange = (e) => {
       e.preventDefault();
       setSearchText(e.target.value);
   }
+  const input = new URLSearchParams(location.search).get("input");
+  
   return (
     <div className="screen">
       <div className="div">
@@ -37,7 +41,7 @@ export default function Screen() {
               <img className="ico" alt="Ico" src={gradeIcon}/>
               <div className="group-4">
                 <div className="text-wrapper-8">레벨 : 2524</div>
-                <div className="text-wrapper-9">호날두</div>
+                <div className="text-wrapper-9">{input}</div>
               </div>
 
         </div>
