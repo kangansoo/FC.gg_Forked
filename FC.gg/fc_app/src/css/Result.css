@@ -158,8 +158,14 @@
     top: 100px;
     width: 1300px;
     background-image: linear-gradient(to right, #5B5B5B, #000000);
+    animation: colorChange 3s infinite alternate; /* 애니메이션 이름, 시간, 반복 설정 */
   }
-  
+
+@keyframes colorChange {
+    0% {
+        background-image: linear-gradient(to right, #000000, #5B5B5B); /* 시작 색상 */
+    }
+}
   .screen .group-2 {
     height: 212px;
   }
