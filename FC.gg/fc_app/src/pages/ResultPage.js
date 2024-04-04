@@ -3,7 +3,6 @@ import "../css/Result.css";
 import gradeIcon from "../assets/rank/champions.png";
 import searchIcon from "../assets/searchicon.png";
 import { useLocation } from "react-router-dom";
-import MyComponent from "../components/winrate";
 import { useNavigate } from 'react-router-dom';
 import axios from "axios";
 
@@ -13,8 +12,10 @@ export default function Screen() {
   const [searchText, setSearchText] = useState("");
   const [nickname, setNickname] = useState("");
   const [ouid, setOuid] = useState("");
-  const [matchtype, setMatch] = useState("");
+  const [matchtype, setMatch] = useState(50);
   const [matchdetail, setMatchdetail] = useState("");
+  
+  
   const onChange = (e) => {
     e.preventDefault();
     setSearchText(e.target.value);
@@ -36,7 +37,7 @@ export default function Screen() {
 
   useEffect(()=>{
     setNickname(input); 
-  },[input])
+  },[input]);
 
   useEffect(()=>{
     const handleGetouid = async () => {
@@ -77,7 +78,8 @@ export default function Screen() {
           const response2 = await axios.get('https://p0l0evybh6.execute-api.ap-northeast-2.amazonaws.com/dev/Getmatchdetail', {
             params: {
               matchid: String(id),
-              nickname: sessionStorage.getItem('nickname')
+              // nickname: sessionStorage.getItem('nickname') 세션 스토리지에 닉네임 넣는 코드가 없어서 그냥 setNickname 있길레 nickname으로 대체했슴다
+              nickname: nickname
             }
           });
           // 응답 데이터를 처리하거나 상태에 저장
@@ -88,7 +90,8 @@ export default function Screen() {
   
         }));
       console.log(matchData);
-      setMatchdetail(matchData)
+      setMatchdetail(matchData);
+      console.log(matchdetail);
       } catch (error) {
         console.error('Error:', error);
       }
