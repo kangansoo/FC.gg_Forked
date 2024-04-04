@@ -4,7 +4,7 @@ import '../css/Winrate.css';
 function MyComponent() {
     return (
       <>
-        <div className="div">
+        <div className="div-1">
           <div className="div-2">
             <div className="div-3">
               10경기{" "}

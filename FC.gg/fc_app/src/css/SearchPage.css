@@ -3,13 +3,14 @@
     animation-iteration-count: infinite;
     animation-duration: 40s;
     animation-delay: 5s;
-    width: 1903px;
+    min-width: 1600px;
     height: 1000px;
     margin: 0;
     /* background-image: url('../assets/embappe.png'); */
     background-size: 100% 100%;
     display: flex;
     justify-content: center;
+    position: relative;
 }
 
 @keyframes BGChange {
@@ -45,7 +46,7 @@
     justify-content: center;
 }
 .SearchNickname{
-    width: 680px;
+    width: 900px;
     height: 70px;
     border: 3px solid white;
     border-radius: 20px;
@@ -67,12 +68,12 @@
     z-index: 999;
     align-self: center;
     position: absolute;
-    left: 1250px;
+    margin-left: 850px;
 }
 
 .NoticeContainer{
     margin-top: 50px;
-    width: 660px;
+    width: 880px;
     padding: 20px;
     height: 450px;
     border: 3px solid white;
@@ -117,10 +118,10 @@
 }
 
 .LogosContainer{
-    align-self: center;
     position: absolute;
-    left: 1550px;
-    top: 1010px;
+    right: 30px;
+    top: 900px;
+    
 }
 
 .LeagueLogos{

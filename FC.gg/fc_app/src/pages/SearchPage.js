@@ -50,7 +50,7 @@ export default function SearchPage() {
         <div className="MainContainer">
             <div className="SearchContainer">
                 <input type="text" placeholder='닉네임을 입력해주세요.' value={searchText} onChange={onChange} className="SearchNickname" maxLength="15"  onKeyDown={keyPress}/>
-                <img src={searchIcon} alt="searchIcon" className='SearchIcon' onClick={buttonClick} onKeyDown={keyPress}/>
+                <img src={searchIcon} alt="searchIcon" className='SearchIcon' onClick={buttonClick}/>
             </div>
             <div className="NoticeContainer">
                 <strong className="NoticeTitle">[공지사항]</strong>
@@ -58,13 +58,14 @@ export default function SearchPage() {
                     {
                         urgentNotice ?
                         urgentNotice.map((data, index) => (
-                            <li className="urgentNoticeList" key={index}><span className='UrgentNoticeCategory'>{data.category}</span>: <a href={data.href} target="_black" className='NoticeAnker'>{data.title}</a></li>
+                            <li className="urgentNoticeList" key={index}><span className='UrgentNoticeCategory'>{data.category}</span>: <a href={data.href} target="_black" className='NoticeAnker'>{data.title}</a><span> ({data.date})</span></li>
+
                         )):(<p>데이터를 불러오는데 실패하였습니다.</p>)
                     }
                     {
                         notice ?
                         notice.map((data, index)=>(
-                            <li className='NoticeList' key={index}>{data.category}: <a href={data.href} target="_black"  className='NoticeAnker'>{data.title}</a></li>
+                            <li className='NoticeList' key={index}>{data.category}: <a href={data.href} target="_black"  className='NoticeAnker'>{data.title}</a><span> ({data.date})</span></li>
                         )):(<p>데이터를 불러오는데 실패하였습니다.</p>)
                     }
                 </ul>
