@@ -90,18 +90,18 @@ def get_match_detail(event, context):
         dynamodb = boto3.resource('dynamodb')
         table = dynamodb.Table(table_name)
         print("db 접속 완료")
-        # my_data = []
-        # other_data = []
+        my_data = []
+        other_data = []
         
         for spId in my_ids:
             response = table.get_item(Key={'id': spId})
             if 'Item' in response:
-                my_player_data.append(response['Item'])
+                my_data.append(response['Item'])
         
         for spId in other_ids:
             response = table.get_item(Key={'id': spId})
             if 'Item' in response:
-                other_player_data.append(response['Item'])        
+                other_data.append(response['Item'])        
 
         print("db 조회 완료")
 
@@ -110,12 +110,12 @@ def get_match_detail(event, context):
             'my_status': my_status,
             'my_score': my_score,
             'my_nick': nickname,
-            # 'my_data': my_data,
+            'my_data': my_data,
 
             'other_player_data': other_player_data,
             'other_status': other_status,
             'other_score': other_score,
-            # 'other_data': other_data,
+            'other_data': other_data,
             'other_nick': other_nick
         }
     
