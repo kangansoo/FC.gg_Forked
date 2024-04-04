@@ -146,7 +146,7 @@ export default function Screen() {
             <div className="text-wrapper-2">경기 날짜</div>
           </div>
         </div>
-
+    
       </div>
     </div>
   );
