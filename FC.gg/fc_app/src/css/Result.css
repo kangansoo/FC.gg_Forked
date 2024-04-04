@@ -12,14 +12,12 @@
   .screen .div {
     width: 1280px;
     display: flex;
-    flex-direction: row;
-    justify-content: center;
+    flex-direction: column;
     margin-top: 50px;
   }
   
   .screen .group {
     height: 85px;
-    position: absolute;
     top: 450px;
     width: 1280px;
   }
@@ -69,7 +67,6 @@
   
   .screen .overlap-group-wrapper {
     height: 85px;
-    position: absolute;
     top: 560px;
     width: 1280px;
   }
@@ -286,7 +283,6 @@
     position: relative;
     width: 500px;
     top: 350px;
-    margin-right: 800px;
   }
   /* 게임 타입에 대한 css */
   
@@ -299,7 +295,6 @@
     left: 0;
     letter-spacing: 0;
     line-height: normal;
-    position: absolute;
     text-align: center;
     top: 0;
     width: 80px;
@@ -353,12 +348,6 @@
     width: 120px;
   }
   
-
-  
-
-  
-
-  
   .screen .text-wrapper-15 {
     color: #ffffff;
     font-family: "Inter-Regular", Helvetica;
@@ -386,7 +375,6 @@
 
   .SearchContainer1{
       margin-top: 8px;
-      position: absolute;
       flex-direction: row;
       width: 1280px;
       margin-bottom: 20px;
@@ -408,7 +396,7 @@
       font-size: 18px;
   }
 
-  .SearchIcon1{
+  .screen .SearchIcon1{
       width: 40px;
       height: 40px;
       cursor: pointer;
@@ -417,4 +405,12 @@
       position: absolute;
       left: 1230px;
       top: 2px;
+  }
+
+
+
+  .div .MatchResultContainer{
+    width: 1280px;
+    height: auto;
+    margin-top: 400px;
   }
