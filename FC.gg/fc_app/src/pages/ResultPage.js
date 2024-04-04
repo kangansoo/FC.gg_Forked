@@ -5,6 +5,7 @@ import searchIcon from "../assets/searchicon.png";
 import { useLocation } from "react-router-dom";
 import { useNavigate } from 'react-router-dom';
 import axios from "axios";
+import MatchResult from "../components/MatchResult";
 
 export default function Screen() {
   const navigate = useNavigate();
@@ -132,8 +133,13 @@ export default function Screen() {
           <div className="text-wrapper-13">감독모드</div>
           <div className="text-wrapper-14">클래식 1vs1</div>
         </div>
+        <div className="MatchResultContainer">
+          <MatchResult matchdetail={matchdetail} input={input}/>
+        </div>
+        
 
-        <div className="group">
+        
+        {/* <div className="group">
           <div className="overlap-group">
             <p className="text-wrapper-3">패배 상대 스코어 : 내 스코어</p>
             <div className="text-wrapper-2">경기 날짜</div>
@@ -145,7 +151,7 @@ export default function Screen() {
             <p className="text-wrapper-3">승리 상대 스코어 : 내 스코어</p>
             <div className="text-wrapper-2">경기 날짜</div>
           </div>
-        </div>
+        </div> */}
     
       </div>
     </div>
