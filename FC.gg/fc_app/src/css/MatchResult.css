@@ -3,6 +3,7 @@
     flex-direction: column;
     justify-content: center;
     width:1300px;
+    margin-top: 40px;
 }
 
 .MatchResultContainer{

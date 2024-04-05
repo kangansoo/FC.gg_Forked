@@ -1,0 +1,77 @@
+.UserInfoConatiner{
+    box-shadow: 0px 4px 4px #00000040;
+    border: 0px;
+    border-radius: 15px;
+    height: 220px;
+    margin-top: 40px;
+    width: 1280px;
+    background-image: linear-gradient(to right, #5B5B5B, #000000);
+    animation: colorChange 5s infinite alternate cubic-bezier(0.4, 0, 0.2, 1);
+    display: flex;
+    align-items: center;
+    flex-direction: row;
+}
+
+.GradeIcon{
+    margin-left: 20px;
+    height: 111px;
+    object-fit: cover;
+    width: 100px;
+}
+
+.UserInfoContainer{
+    height: 140px;
+    width: 164px;
+    display: flex;
+    flex-direction: column;
+    flex-wrap: wrap;
+    align-items: center;
+    justify-content: center;
+    justify-content: space-between;
+}
+
+.UserNickname{
+    color: white;
+    font-family: "Koulen-Regular", Helvetica;
+    font-size: 45px;
+    font-weight: 400;
+    height: auto;
+    letter-spacing: 0;
+    line-height: normal;
+    white-space: nowrap;
+    width: auto;
+}
+
+.UserLevel{
+    color: #ffffff;
+    font-family: "Koulen-Regular", Helvetica;
+    font-size: 20px;
+    font-weight: 400;
+    height: 43px;
+    letter-spacing: 0;
+    line-height: normal;
+    width: 87px;
+    white-space: nowrap;
+    margin-left: 5px;
+
+}
+
+.UserGradeContainer{
+    height: 80px;
+    width: 200px;
+    display: flex;
+    flex-direction: column;
+    flex-wrap: wrap;
+    justify-content: center;
+    margin-left:750px;
+}
+
+.UserHighestGrade {
+    color: #ffffff;
+    font-family: "Koulen-Regular", Helvetica;
+    font-size: 20px;
+    font-weight: 400;
+    height: 20px;
+    text-align: right;
+    white-space: nowrap;
+}
