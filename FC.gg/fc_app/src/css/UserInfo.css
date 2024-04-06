@@ -17,6 +17,7 @@
     height: 111px;
     object-fit: cover;
     width: 100px;
+    margin-right: 40px;
 }
 
 .UserInfoContainer{
@@ -50,10 +51,8 @@
     height: 43px;
     letter-spacing: 0;
     line-height: normal;
-    width: 87px;
+    width: auto;
     white-space: nowrap;
-    margin-left: 5px;
-
 }
 
 .UserGradeContainer{
@@ -63,7 +62,7 @@
     flex-direction: column;
     flex-wrap: wrap;
     justify-content: center;
-    margin-left:750px;
+    margin-left:710px;
 }
 
 .UserHighestGrade {
