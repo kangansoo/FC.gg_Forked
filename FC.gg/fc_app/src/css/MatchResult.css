@@ -22,17 +22,30 @@
 .MatchResuiltDetailContainer{
     width: 1280px;
     height: 500px;
-    border: 1px solid rgba(94, 139, 226, 0.8);
+    border: 1px solid #d4d4d4;
     border-radius: 15px;
     margin-top: 5px;
     display: flex;
     flex-direction: row;
+    background-color: #d4d4d4;
+    overflow-wrap: normal;
 }
 
 .MyInformation{
-    flex: 1;  
+    flex: 1;
+    color: white;
 }
 .OtherInformation {
     flex: 1;
+    color: white;
 }
 
+.CombinedDataContainer{
+    display: inline-block;
+    width: 300px;
+}
+
+.Ball{
+    margin-bottom: -5px;
+    margin-left: 5px;
+}
