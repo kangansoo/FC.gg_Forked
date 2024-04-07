@@ -1,6 +1,7 @@
 import React, { useState } from "react";
 import "../css/MatchResult.css";
-import loading from '../assets/loading.gif'
+import loading from "../assets/loading.gif";
+import ball from "../assets/ball.png";
 
 export default function MatchResult(props) {
   const { matchdetail, input } = props;
@@ -11,7 +12,8 @@ export default function MatchResult(props) {
   };
 
   // console.log("디리리디리리 : ", Object.entries(matchdetail)[0][1]['my_data'][0]['name']);
-  console.log('matchdetail:', matchdetail);
+  console.log("matchdetail:", matchdetail);
+
   return (
     <div className="MatchResultBackground">
       {matchdetail ? (
@@ -37,13 +39,41 @@ export default function MatchResult(props) {
               <div className="MatchResuiltDetailContainer">
                 <div className="MyInformation">
                   <ul>
-                    {data && data.my_data ? (
-                      data.my_data.map((value, index) => (
-                        <div key={index}>
-                          <li>{value.name}</li>
-                          <img src={value.p_action_image} alt="img" style={{width:'50px'}}/>
-                        </div>
-                      ))
+                    {data && data.my_data && data.my_player_data ? (
+                      (() => {
+                        let combinedData = [];
+                        for (let i = 0; i < data.my_data.length; i++) {
+                          combinedData.push({
+                            ...data.my_data[i],
+                            ...data.my_player_data[i],
+                          });
+                        }
+                        console.log("combinedData:", combinedData);
+
+                        return combinedData.map((value, index) => (
+                          <div key={index} className="CombinedDataContainer">
+                            <li>
+                              <img src={value.seasonImg} alt="season" height="18px" />
+                              {value.name}
+                              <span>({value.status})</span>
+                              {[...Array(value.goal)].map((_, index) => (
+                                <img
+                                  key={index}
+                                  src={ball}
+                                  alt="ball"
+                                  width="20px"
+                                  className="Ball"
+                                />
+                              ))}
+                            </li>
+                            <img
+                              src={value.p_action_image}
+                              alt="img"
+                              width="50px"
+                            />
+                          </div>
+                        ));
+                      })() // 여기서 즉시 실행하지 않음
                     ) : (
                       <span>로딩중</span>
                     )}
@@ -51,13 +81,41 @@ export default function MatchResult(props) {
                 </div>
                 <div className="OtherInformation">
                   <ul>
-                    {data && data.other_data ? (
-                      data.other_data.map((value, index) => (
-                        <div key={index}>
-                          <li>{value.name}</li>
-                          <img src={value.p_action_image} alt="img" style={{width:'50px'}}/>
-                        </div>
-                      ))
+                    {data && data.other_data && data.other_player_data ? (
+                      (() => {
+                        let combinedData = [];
+                        for (let i = 0; i < data.other_data.length; i++) {
+                          combinedData.push({
+                            ...data.other_data[i],
+                            ...data.other_player_data[i],
+                          });
+                        }
+                        console.log("combinedData:", combinedData);
+
+                        return combinedData.map((value, index) => (
+                          <div key={index} className="CombinedDataContainer">
+                            <li>
+                              <img src={value.seasonImg} alt="season" height="18px" />
+                              {value.name}
+                              <span>({value.status})</span>
+                              {[...Array(value.goal)].map((_, index) => (
+                                <img
+                                  key={index}
+                                  src={ball}
+                                  alt="ball"
+                                  width="20px"
+                                  className="Ball"
+                                />
+                              ))}
+                            </li>
+                            <img
+                              src={value.p_action_image}
+                              alt="img"
+                              width="50px"
+                            />
+                          </div>
+                        ));
+                      })() // 여기서 즉시 실행하지 않음
                     ) : (
                       <span>로딩중</span>
                     )}
@@ -68,7 +126,7 @@ export default function MatchResult(props) {
           </div>
         ))
       ) : (
-        <img src={loading} alt="로딩" width="50px"/>
+        <img src={loading} alt="로딩" width="50px" />
       )}
     </div>
   );
