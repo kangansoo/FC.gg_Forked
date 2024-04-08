@@ -1,6 +1,5 @@
 {
   "dependencies": {
-    "axios": "^1.6.8",
-    "react-router-dom": "^6.22.2"
+    "eslint-config-react-app": "^7.0.1"
   }
 }

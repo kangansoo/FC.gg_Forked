@@ -13,11 +13,11 @@
 }
 
 .GradeIcon{
-    margin-left: 20px;
+    margin-left: 40px;
     height: 111px;
     object-fit: cover;
     width: 100px;
-    margin-right: 40px;
+    margin-right: 20px;
 }
 
 .UserInfoContainer{
@@ -40,7 +40,8 @@
     letter-spacing: 0;
     line-height: normal;
     white-space: nowrap;
-    width: auto;
+    width: 80px;
+    align-items: left;
 }
 
 .UserLevel{
@@ -51,8 +52,9 @@
     height: 43px;
     letter-spacing: 0;
     line-height: normal;
-    width: auto;
+    width: 80px;
     white-space: nowrap;
+    align-items: left;
 }
 
 .UserGradeContainer{

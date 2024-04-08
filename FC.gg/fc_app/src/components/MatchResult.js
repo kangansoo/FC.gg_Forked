@@ -74,7 +74,7 @@ export default function MatchResult(props) {
                               ))}
                             </li>
                             <img
-                              src={value.p_action_image}
+                              src={value.p_image}
                               alt="img"
                               width="50px"
                             />
@@ -121,7 +121,7 @@ export default function MatchResult(props) {
                               ))}
                             </li>
                             <img
-                              src={value.p_action_image}
+                              src={value.p_image}
                               alt="img"
                               width="50px"
                             />

@@ -3,26 +3,27 @@ import urllib.request
 import urllib.parse
 
 
-def info_handler(event, context):
+def GetUserInfo(event, context):
 
-    rank_image = ['https://drive.google.com/file/d/1DP7WYw6S03K1jKaKwrLUgOdIAKm64xkg/view?usp=drive_link', 
-     'https://drive.google.com/file/d/1rXDUHQOoztD2RNnaVN5ypQszT-vrW2a-/view?usp=drive_link', 
-     'https://drive.google.com/file/d/1P6dkggXNPMnuEIuJaLNFXMTQjZtuOeMP/view?usp=drive_link', 
-     'https://drive.google.com/file/d/18PDcfFnd1ZLUZlHj9xTKLSZYybAHVpGW/view?usp=drive_link', 
-     'https://drive.google.com/file/d/1xkCQyFUWP6b-eJYnrkazCzHJYW36PgEZ/view?usp=drive_link', 
-     'https://drive.google.com/file/d/1N1dvXOQOvtCanQLhVnsguHTp6ct22kgw/view?usp=drive_link', 
-     'https://drive.google.com/file/d/1gWKR163TKNB-RgFm9qVUHIvLd18tkCVc/view?usp=drive_link', 
-     'https://drive.google.com/file/d/1t2n9g0p6jx_HMWmI47RvU3wChMMfOnG0/view?usp=drive_link', 
-     'https://drive.google.com/file/d/1gGAFroM0DEkCpt7m39qGjdkuXxuoyogy/view?usp=drive_link', 
-     'https://drive.google.com/file/d/1QGyPNYtJffxRk61IuEgYd8qc11XCXqTu/view?usp=drive_link',
-     'https://drive.google.com/file/d/1gn0YszTtwzAuSYNwUr362XxcAAGYnSrv/view?usp=drive_link', 
-     'https://drive.google.com/file/d/1d0PvwwJyYwAZ71I6msxKNsYXFSJkCsA-/view?usp=drive_link', 
-     'https://drive.google.com/file/d/11a-hGOQPVqPIElrdDIy42RfUfrCbdcbm/view?usp=drive_link', 
-     'https://drive.google.com/file/d/1DjsXAbVmzuAuH-xe5lUH9I6ZDdW6NBBq/view?usp=drive_link', 
-     'https://drive.google.com/file/d/1oNNEVF8XmZQ4EQEqJycPUm6AYhoH9CNQ/view?usp=drive_link', 
-     'https://drive.google.com/file/d/1rqHGYFsP2mTQZNaW-m8QjpxU3aAt3Ahx/view?usp=drive_link', 
-     'https://drive.google.com/file/d/1j4nayLSuVApwulTSUPyv4Kw2Vrau3q18/view?usp=drive_link', 
-     'https://drive.google.com/file/d/1KjTUWJRLyBOQHIRb6Bzpm7Gq__YxxLwr/view?usp=drive_link']
+    rank_image = ['https://img1.daumcdn.net/thumb/R1280x0/?scode=mtistory2&fname=https%3A%2F%2Fblog.kakaocdn.net%2Fdn%2FcA7fvV%2FbtsGqJjAVq9%2FZuivsLnpn8EyXNKhpCZwk1%2Fimg.png', 
+     'https://img1.daumcdn.net/thumb/R1280x0/?scode=mtistory2&fname=https%3A%2F%2Fblog.kakaocdn.net%2Fdn%2FkIKwL%2FbtsGqMUL1if%2FE4pVAbBGcBWzmhR17nJhQK%2Fimg.png', 
+     'https://img1.daumcdn.net/thumb/R1280x0/?scode=mtistory2&fname=https%3A%2F%2Fblog.kakaocdn.net%2Fdn%2Fd0WZdZ%2FbtsGqyP3VgI%2FVt7EiXkKtU7k027uKKL2xk%2Fimg.png', 
+     'https://img1.daumcdn.net/thumb/R1280x0/?scode=mtistory2&fname=https%3A%2F%2Fblog.kakaocdn.net%2Fdn%2FDWxRQ%2FbtsGqVYmh1Y%2Fk6KBmKWY6ov71GOJtjRduk%2Fimg.png', 
+     'https://img1.daumcdn.net/thumb/R1280x0/?scode=mtistory2&fname=https%3A%2F%2Fblog.kakaocdn.net%2Fdn%2FdqrnM2%2FbtsGqs3s4Wo%2FefKedvukbjwWv49DkfQDU0%2Fimg.png', 
+     'https://img1.daumcdn.net/thumb/R1280x0/?scode=mtistory2&fname=https%3A%2F%2Fblog.kakaocdn.net%2Fdn%2FLOonG%2FbtsGsW9QeWR%2F66B4eykGA55KZ2ChgXwKG1%2Fimg.png', 
+     'https://img1.daumcdn.net/thumb/R1280x0/?scode=mtistory2&fname=https%3A%2F%2Fblog.kakaocdn.net%2Fdn%2F3VpVc%2FbtsGrb7IlAy%2FtkQwG3eKgpXK1brKLw38Y0%2Fimg.png', 
+     'https://img1.daumcdn.net/thumb/R1280x0/?scode=mtistory2&fname=https%3A%2F%2Fblog.kakaocdn.net%2Fdn%2FbsfdZV%2FbtsGrTlslIX%2F7HFaJ7kvRNQCU96rryxik0%2Fimg.png', 
+     'https://img1.daumcdn.net/thumb/R1280x0/?scode=mtistory2&fname=https%3A%2F%2Fblog.kakaocdn.net%2Fdn%2FdJenyh%2FbtsGq3aVsOU%2FhmWAEdt0E3HmAwLKJV6faK%2Fimg.png', 
+     'https://img1.daumcdn.net/thumb/R1280x0/?scode=mtistory2&fname=https%3A%2F%2Fblog.kakaocdn.net%2Fdn%2FcauGK7%2FbtsGqQJH152%2F7cI3c9T5zggLISSgurdprk%2Fimg.png',
+     'https://img1.daumcdn.net/thumb/R1280x0/?scode=mtistory2&fname=https%3A%2F%2Fblog.kakaocdn.net%2Fdn%2FEaIlU%2FbtsGq99RWuK%2F1kF3tvriIlJdua8Lv15SKK%2Fimg.png', 
+     'https://img1.daumcdn.net/thumb/R1280x0/?scode=mtistory2&fname=https%3A%2F%2Fblog.kakaocdn.net%2Fdn%2FZGouT%2FbtsGssVnXkB%2FFvY2qCLtKGe60aXHvwEiNK%2Fimg.png', 
+     'https://img1.daumcdn.net/thumb/R1280x0/?scode=mtistory2&fname=https%3A%2F%2Fblog.kakaocdn.net%2Fdn%2Fc6eqWL%2FbtsGqiGGKlM%2F2ZPzaeWM25b9Ii1gPE73Bk%2Fimg.png', 
+     'https://img1.daumcdn.net/thumb/R1280x0/?scode=mtistory2&fname=https%3A%2F%2Fblog.kakaocdn.net%2Fdn%2FbgrX8i%2FbtsGqMN2chq%2Fc58gZrFYNjHLcVq6VfFG10%2Fimg.png', 
+     'https://img1.daumcdn.net/thumb/R1280x0/?scode=mtistory2&fname=https%3A%2F%2Fblog.kakaocdn.net%2Fdn%2FPgCxB%2FbtsGqV5akiL%2FuxHIu35TZ1SJLeld8NNW3k%2Fimg.png', 
+     'https://img1.daumcdn.net/thumb/R1280x0/?scode=mtistory2&fname=https%3A%2F%2Fblog.kakaocdn.net%2Fdn%2FCilq5%2FbtsGsgAJQCB%2FNDu9wDth1rYRWDRCihZFNK%2Fimg.png', 
+     'https://img1.daumcdn.net/thumb/R1280x0/?scode=mtistory2&fname=https%3A%2F%2Fblog.kakaocdn.net%2Fdn%2FGzEDa%2FbtsGsV38B0U%2Fvi0knL9g7wKSEkWx2i1Az1%2Fimg.png', 
+     "https://img1.daumcdn.net/thumb/R1280x0/?scode=mtistory2&fname=https%3A%2F%2Fblog.kakaocdn.net%2Fdn%2Fc4m7it%2FbtsGrUdBG11%2FUKigItyzZz0F123UT1NwCk%2Fimg.png"]
+    
     
     rank_text = {'슈퍼챔피언스' : rank_image[17], '챔피언스' : rank_image[16],
                  '슈퍼챌린지' : rank_image[15], '챌린지1' : rank_image[14],
@@ -113,7 +114,7 @@ def info_handler(event, context):
             key = rank_key[16]
         if division[0] == 3100 :
             key = rank_key[17]
-        else :
+        if division[0] == None :
             return level, '공식 경기 미진행'
         
         image = rank_text[key]
