@@ -5,94 +5,17 @@
     flex-direction: row;
     justify-content: center;
     min-width: 1600px;
+    min-height: 1024px;
     position: relative;
-    height: 100vh;
+    padding-bottom: 50px;
   }
   
-  .screen .div {
+  .div {
     width: 1280px;
     display: flex;
     flex-direction: column;
     margin-top: 50px;
   }
-  
-  .screen .group {
-    height: 85px;
-    top: 450px;
-    width: 1280px;
-  }
-  
-  .screen .overlap-group {
-    background-color: #ff8383cc;
-    border-radius: 15px;
-    box-shadow: 0px 4px 4px #00000040;
-    height: 85px;
-    position: absolute;
-    width: 1280px;
-    
-  }
-
-  .screen .text-wrapper {
-    color: #ffffff;
-    font-family: "Inter-Regular", Helvetica;
-    font-size: 25px;
-    font-weight: 400;
-    height: 23px;
-    left: 525px;
-    letter-spacing: 0;
-    line-height: normal;
-    position: absolute;
-    text-align: center;
-    top: 31px;
-    white-space: nowrap;
-    width: 296px;
-  }
-  
-  .screen .text-wrapper-2 {
-    color: #ffffff;
-    font-family: "Inter-Regular", Helvetica;
-    font-size: 25px;
-    font-weight: 400;
-    height: 23px;
-    left: 70px;
-    letter-spacing: 0;
-    line-height: normal;
-    position: absolute;
-    text-align: center;
-    top: 25px;
-    white-space: nowrap;
-    width: 100px;
-  }
-
-  
-  .screen .overlap-group-wrapper {
-    height: 85px;
-    top: 560px;
-    width: 1280px;
-  }
-  
-  .screen .overlap {
-    background-color: #5e8be2b2;
-    border-radius: 15px;
-    box-shadow: 0px 4px 4px #00000040;
-    height: 85px;
-    position: relative;
-    width: 1280px;
-  }
-
-  .screen .winrate {
-      border-radius: 15px;
-      background: linear-gradient(90deg, #000 16%, #666 85%);
-      box-shadow: 0px 4px 4px 0px rgba(0, 0, 0, 0.25);
-      display: flex;
-      align-items: start;
-      gap: 20px;
-      font-size: 25px;
-      font-weight: 400;
-      text-align: center;
-      justify-content: space-between;
-      padding: 23px 68px;
-    }
     
     @media (max-width: 991px) {
       .winrate {
@@ -186,42 +109,7 @@
         background-image: linear-gradient(to right, #5B5B5B, #000000); /* 시작 색상 */
       } 
   }
-  .screen .group-2 {
-    height: 212px;
-  }
-  
-  
-  .screen .group-3 {
-    height: 111px;
-    right: 100px;
-    position: absolute;
-    top: 60px;
-    width: 185px;
-  }
-  
-  .screen .text-wrapper-6 {
-    color: #ffffff;
-    font-family: "Koulen-Regular", Helvetica;
-    font-size: 20px;
-    font-weight: 400;
-    height: 20px;
-    text-align: right;
-    top: 0;
-    white-space: nowrap;
-  }
-  
-  .screen .text-wrapper-7 {
-    color: #ffffff;
-    font-family: "Koulen-Regular", Helvetica;
-    font-size: 20px;
-    font-weight: 400;
-    height: 40px;
-    position: absolute;
-    text-align: right;
-    top: 71px;
-    white-space: nowrap;
-  }
-  
+
   .screen .ico {
     height: 111px;
     left: 40px;
@@ -229,45 +117,6 @@
     position: absolute;
     top: 50px;
     width: 100px;
-  }
-  
-  .screen .group-4 {
-    height: 110px;
-    left: 202px;
-    position: absolute;
-    top: 58px;
-    width: 164px;
-  }
-  
-  .screen .text-wrapper-8 {
-    color: #ffffff;
-    font-family: "Koulen-Regular", Helvetica;
-    font-size: 20px;
-    font-weight: 400;
-    height: 43px;
-    left: 0;
-    letter-spacing: 0;
-    line-height: normal;
-    position: absolute;
-    top: 67px;
-    width: 87px;
-    white-space: nowrap;
-    margin-left: 5px;
-  }
-  
-  .screen .text-wrapper-9 {
-    color: #ffffff;
-    font-family: "Koulen-Regular", Helvetica;
-    font-size: 45px;
-    font-weight: 400;
-    height: auto;
-    left: 0;
-    letter-spacing: 0;
-    line-height: normal;
-    position: absolute;
-    top: 0;
-    white-space: nowrap;
-    width: auto;
   }
   
   .screen .fconlinelogo {
@@ -280,104 +129,43 @@
   
   .screen .group-8 {
     height: 32px;
-    position: relative;
     width: 500px;
-    top: 350px;
   }
   /* 게임 타입에 대한 css */
-  
-  .screen .text-wrapper-11 {
-    color: #ffffff;
-    font-family: "Mina-Bold", Helvetica;
-    font-size: 20px;
-    font-weight: 700;
-    height: 30px;
-    left: 0;
-    letter-spacing: 0;
-    line-height: normal;
-    text-align: center;
-    top: 0;
-    width: 80px;
-  }
-  
-  .screen .text-wrapper-12 {
-    color: #ffffff;
-    font-family: "Mina-Bold", Helvetica;
-    font-size: 20px;
-    font-weight: 700;
-    height: 30px;
-    left: 120px;
-    letter-spacing: 0;
-    line-height: normal;
-    position: absolute;
-    text-align: center;
-    text-shadow: 0px 4px 4px #00000040;
-    top: 1px;
-    width: 80px;
-  }
-  
-  .screen .text-wrapper-13 {
-    color: #ffffff;
-    font-family: "Mina-Bold", Helvetica;
-    font-size: 20px;
-    font-weight: 700;
-    height: 30px;
-    left: 240px;
-    letter-spacing: 0;
-    line-height: normal;
-    position: absolute;
-    text-align: center;
-    text-shadow: 0px 4px 4px #00000040;
-    top: 1px;
-    width: 80px;
-  }
-  
-  .screen .text-wrapper-14 {
-    color: #ffffff;
-    font-family: "Mina-Bold", Helvetica;
-    font-size: 20px;
-    font-weight: 700;
+
+  .MatchTypeConatiner{
     height: 32px;
-    left: 360px;
-    letter-spacing: 0;
-    line-height: normal;
-    position: absolute;
-    text-align: center;
-    text-shadow: 0px 4px 4px #00000040;
-    top: 0;
-    width: 120px;
+    width: 500px;
+    display: flex;
+    flex-direction: row;
+    gap: 30px;
+    margin-top: 40px;
   }
   
-  .screen .text-wrapper-15 {
+  .MatchTypeText{
     color: #ffffff;
-    font-family: "Inter-Regular", Helvetica;
+    font-family: "Mina-Bold", Helvetica;
     font-size: 20px;
-    font-weight: 400;
-    height: 24px;
-    left: 22px;
+    font-weight: 700;
+    height: 30px;
     letter-spacing: 0;
-    line-height: normal;
-    position: absolute;
-    top: 8px;
     white-space: nowrap;
-    
+    line-height: normal;
+    text-align: center;
+    width: 80px;
+    cursor: pointer;
   }
-  
-  .screen .searchicon {
-    height: 20px;
-    left: 1000px;
-    object-fit: cover;
-    position: absolute;
-    top: 10px;
-    width: 34px;
+
+  .MatchTypeText:hover{
+    transform: scale(1.2,1.2);
   }
-  
 
   .SearchContainer1{
       margin-top: 8px;
       flex-direction: row;
       width: 1280px;
       margin-bottom: 20px;
+      align-items: center;
   }
   .SearchNickname1{
       width: 1250px;
@@ -396,21 +184,12 @@
       font-size: 18px;
   }
 
-  .screen .SearchIcon1{
+  .SearchIcon1{
       width: 40px;
       height: 40px;
       cursor: pointer;
       z-index: 999;
-      align-self: center;
+      margin-top: 2px;
       position: absolute;
-      left: 1230px;
-      top: 2px;
-  }
-
-
-
-  .div .MatchResultContainer{
-    width: 1280px;
-    height: auto;
-    margin-top: 400px;
+      margin-left: -50px; 
   }

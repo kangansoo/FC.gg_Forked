@@ -1,21 +1,20 @@
 import React, { useState, useEffect } from "react";
 import "../css/Result.css";
-import gradeIcon from "../assets/rank/champions.png";
+import gradeIcon from "../assets/rank/900.png";
 import searchIcon from "../assets/searchicon.png";
 import { useLocation } from "react-router-dom";
 import { useNavigate } from 'react-router-dom';
 import axios from "axios";
 import MatchResult from "../components/MatchResult";
+import UserInfo from '../components/UserInfo';
 
 export default function Screen() {
   const navigate = useNavigate();
   const location = useLocation();
   const [searchText, setSearchText] = useState("");
+  const [matchtype, setMatch] = useState(50);
   const [nickname, setNickname] = useState("");
   const [ouid, setOuid] = useState("");
-  const [matchtype, setMatch] = useState(50);
-  const [matchdetail, setMatchdetail] = useState("");
-  
   
   const onChange = (e) => {
     e.preventDefault();
@@ -58,48 +57,11 @@ export default function Screen() {
       } catch (error) {
         console.error('Error:', error);
       }
-      try {
-        const response1 = await axios.get('https://p0l0evybh6.execute-api.ap-northeast-2.amazonaws.com/dev/Getmatchid', {
-          params: {
-            ouid: ouid,
-            matchtype: matchtype,
-            offset: 0,
-            limit: 10
-          }
-        });
-        setMatch(matchtype);
-  
-        console.log(response1);
-  
-        const matchData = {};
-        console.log('matchid', response1.data);
-  
-        await Promise.all(response1.data.map(async (id) => {
-          console.log('id', id);
-          const response2 = await axios.get('https://p0l0evybh6.execute-api.ap-northeast-2.amazonaws.com/dev/Getmatchdetail', {
-            params: {
-              matchid: String(id),
-              // nickname: sessionStorage.getItem('nickname') 세션 스토리지에 닉네임 넣는 코드가 없어서 그냥 setNickname 있길레 nickname으로 대체했슴다
-              nickname: nickname
-            }
-          });
-          // 응답 데이터를 처리하거나 상태에 저장
-  
-          console.log(response2.data);
-          matchData[id] = response2.data;
-          
-  
-        }));
-      console.log(matchData);
-      setMatchdetail(matchData);
-      console.log(matchdetail);
-      } catch (error) {
-        console.error('Error:', error);
-      }
+      
     }  
     handleGetouid();
   }, [input, matchtype, ouid])
-
+  console.log("ouidtest:", ouid)
   return (
     <div className="screen">
       <div className="div">
@@ -114,45 +76,14 @@ export default function Screen() {
           />
           <img src={searchIcon} alt="searchIcon" className="SearchIcon1" onClick={buttonClick}/>
         </div>
-        
-        <div className="group-wrapper">
-          <div className="group-3">
-            <div className="text-wrapper-6">현재등급 : 월드클래스</div>
-            <div className="text-wrapper-7">최고등급 : 챌린저</div>
-          </div>
-          <img className="ico" alt="Ico" src={gradeIcon} />
-          <div className="group-4">
-            <div className="text-wrapper-9">{nickname}</div>
-            <div className="text-wrapper-8">레벨 : 2524</div>
-          </div>
+        <UserInfo input={input} ouid={ouid}/>
+        <div className="MatchTypeConatiner">
+          <div className="MatchTypeText">공식경기</div>
+          <div className="MatchTypeText">리그친선</div>
+          <div className="MatchTypeText">감독모드</div>
+          <div className="MatchTypeText">클래식 1vs1</div>
         </div>
-
-        <div className="group-8">
-          <div className="text-wrapper-11">공식경기</div>
-          <div className="text-wrapper-12">리그친선</div>
-          <div className="text-wrapper-13">감독모드</div>
-          <div className="text-wrapper-14">클래식 1vs1</div>
-        </div>
-        <div className="MatchResultContainer">
-          <MatchResult matchdetail={matchdetail} input={input}/>
-        </div>
-        
-
-        
-        {/* <div className="group">
-          <div className="overlap-group">
-            <p className="text-wrapper-3">패배 상대 스코어 : 내 스코어</p>
-            <div className="text-wrapper-2">경기 날짜</div>
-          </div>
-        </div>
-
-        <div className="overlap-group-wrapper">
-          <div className="overlap">
-            <p className="text-wrapper-3">승리 상대 스코어 : 내 스코어</p>
-            <div className="text-wrapper-2">경기 날짜</div>
-          </div>
-        </div> */}
-    
+        <MatchResult ouid={ouid} input={input} />
       </div>
     </div>
   );
