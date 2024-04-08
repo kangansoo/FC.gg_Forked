@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from "react";
 import "../css/UserInfo.css";
 import axios from "axios";
-import getRankImg from './getRankImg';
+// import getRankImg from './getRankImg';
 
 export default function UserInfo(props) {
   const { input, ouid } = props;
@@ -25,10 +25,10 @@ export default function UserInfo(props) {
         setUserRank(userresponse.data[1]);
         console.log("userinfo:", userresponse.data);
         console.log("userInfo[1]:", userInfo[1]);
-        const imgPath = getRankImg(userresponse.data[1]);
-        if (imgPath){
-          setRankImg(imgPath);
-        }
+        const imgPath = userresponse.data[2];
+        
+        setRankImg(imgPath);
+        
       } catch (error) {
         console.log("UserInfoError:", error);
       }
@@ -37,18 +37,19 @@ export default function UserInfo(props) {
   }, [ouid]);
 
   console.log('userRank: ', userRank);
-  console.log('rankImg: ',rankImg);
+  console.log('rankImg: ', userInfo[2]);
 
   return (
     <div className="UserInfoConatiner">
 
-      {rankImg ? (<img className="GradeIcon" alt="icon" src={rankImg} />) : (<span>이미지 불러오는 중</span>)}
+      {/* {rankImg ? (<img className="GradeIcon" alt="icon" src={userInfo[2]} />) : (<span>이미지 불러오는 중</span>)} */}
+      <img className="GradeIcon" alt="icon" src={userInfo[2]} />
       <div className="UserInfoContainer">
         <div className="UserNickname">{input}</div>
         <div className="UserLevel">레벨 : {userInfo[0]}</div>
       </div>
       <div className="UserGradeContainer">
-        <div className="UserHighestGrade">최고등급 : 챌린저</div>
+        <div className="UserHighestGrade">최고등급 : {userInfo[1]}</div>
       </div>
     </div>
   );
