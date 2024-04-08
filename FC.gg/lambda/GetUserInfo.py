@@ -114,7 +114,7 @@ def GetUserInfo(event, context):
             key = rank_key[16]
         if division[0] == 3100 :
             key = rank_key[17]
-        else :
+        if division[0] == None :
             return level, '공식 경기 미진행'
         
         image = rank_text[key]
