@@ -25,6 +25,8 @@ export default function MatchResult(props) {
                 backgroundColor:
                   data.my_status === "승"
                     ? "rgba(94, 139, 226, 0.8)"
+                    : data.my_status === "무"
+                    ? "rgba(212, 212, 212, 0.8)" // 무승부인 경우에 해당하는 색상
                     : "rgba(255, 132, 132, 0.8)",
               }}
               onClick={() => toggleExpand(id)}
@@ -53,7 +55,12 @@ export default function MatchResult(props) {
                         return combinedData.map((value, index) => (
                           <div key={index} className="CombinedDataContainer">
                             <li>
-                              <img src={value.seasonImg} alt="season" height="18px" />
+                              <img
+                                src={value.seasonImg}
+                                alt="season"
+                                height="18px"
+                                className="SeasonImg"
+                              />
                               {value.name}
                               <span>({value.status})</span>
                               {[...Array(value.goal)].map((_, index) => (
@@ -95,7 +102,12 @@ export default function MatchResult(props) {
                         return combinedData.map((value, index) => (
                           <div key={index} className="CombinedDataContainer">
                             <li>
-                              <img src={value.seasonImg} alt="season" height="18px" />
+                              <img
+                                src={value.seasonImg}
+                                alt="season"
+                                height="18px"
+                                className="SeasonImg"
+                              />
                               {value.name}
                               <span>({value.status})</span>
                               {[...Array(value.goal)].map((_, index) => (
