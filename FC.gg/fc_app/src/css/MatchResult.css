@@ -17,6 +17,7 @@
     display: flex;
     align-items: center;
     margin-top: 5px;
+    justify-content: center;
 }
 
 .MatchResuiltDetailContainer{
@@ -49,3 +50,10 @@
     margin-bottom: -5px;
     margin-left: 5px;
 }
+
+.SeasonImg{
+    margin-bottom: -3px;
+    margin-right: 5px;
+}
+
+
