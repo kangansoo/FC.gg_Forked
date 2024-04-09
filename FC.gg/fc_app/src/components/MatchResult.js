@@ -58,7 +58,7 @@ export default function MatchResult(props) {
         }));
       console.log(matchData);
       setMatchdetail(matchData);
-      console.log(matchdetail);
+      console.log("matchdetail",matchdetail);
       } catch (error) {
         console.error('Error:', error);
       }
@@ -66,6 +66,18 @@ export default function MatchResult(props) {
     getMatchdetail();
   }, [ouid, matchtype, nickname])
   console.log('MatchResultOuid:', ouid);
+
+  const gradeValue = (x) =>{
+    if(x==1){
+      return "normal";
+    }else if(x>=2 && x<=4){
+      return "bronze";
+    }else if (x >= 5 && x <= 7) {
+      return "silver";
+    } else if (x >= 8 && x <= 10) {
+      return "gold";
+    }
+  }
 
   return (
     <div className="MatchResultBackground">
@@ -107,30 +119,44 @@ export default function MatchResult(props) {
 
                         return combinedData.map((value, index) => (
                           <div key={index} className="CombinedDataContainer">
-                            <li>
-                              <img
-                                src={value.seasonImg}
-                                alt="season"
-                                height="18px"
-                                className="SeasonImg"
-                              />
-                              {value.name}
-                              <span>({value.status})</span>
-                              {[...Array(value.goal)].map((_, index) => (
-                                <img
-                                  key={index}
-                                  src={ball}
-                                  alt="ball"
-                                  width="20px"
-                                  className="Ball"
-                                />
-                              ))}
+                            <li style={{listStyleType: "none"}}>
+                              <div className="PlayerDetailContainer">
+                                <div className="PlayerImgContainer">
+                                  <div className="img-wrapper">
+                                    <img
+                                      src={value.p_image}
+                                      alt="img"
+                                      width="50px"
+                                    />
+                                  </div>
+                                  <div className="SeasonGradeContainer">
+                                    <img
+                                      src={value.seasonImg}
+                                      alt="season"
+                                      height="18px"
+                                      className="SeasonImg"
+                                    />
+                                    <div className={`${gradeValue(value.spGrade)}`} key={index}>
+                                      <strong className={`${gradeValue(value.spGrade)}Text`}>{value.spGrade}</strong>
+                                    </div>
+                                  </div>
+                                </div>
+                                <span className="PlayerStatus">★ {value.status}</span>
+                              </div>
+                              <div className="PlayerInfoContainer">
+                                <span className="PlayerPosition">[{value.spPosition}]</span>
+                                {value.name}
+                                {[...Array(value.goal)].map((_, index) => (
+                                  <img
+                                    key={index}
+                                    src={ball}
+                                    alt="ball"
+                                    width="20px"
+                                    className="Ball"
+                                  />
+                                ))}
+                              </div>
                             </li>
-                            <img
-                              src={value.p_image}
-                              alt="img"
-                              width="50px"
-                            />
                           </div>
                         ));
                       })() // 여기서 즉시 실행하지 않음
@@ -176,6 +202,9 @@ export default function MatchResult(props) {
                               alt="img"
                               width="50px"
                             />
+                            <div className={`${gradeValue(value.spGrade)}`} key={index}>
+                              <strong className={`${gradeValue(value.spGrade)}Text`}>{value.spGrade}</strong>
+                            </div>
                           </div>
                         ));
                       })() // 여기서 즉시 실행하지 않음

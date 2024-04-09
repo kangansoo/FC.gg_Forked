@@ -40,7 +40,7 @@ export default function UserInfo(props) {
   console.log('rankImg: ', userInfo[2]);
 
   return (
-    <div className="UserInfoConatiner">
+    <div className="UserInfoBackground">
 
       {/* {rankImg ? (<img className="GradeIcon" alt="icon" src={userInfo[2]} />) : (<span>이미지 불러오는 중</span>)} */}
       <img className="GradeIcon" alt="icon" src={userInfo[2]} />
