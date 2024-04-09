@@ -73,6 +73,9 @@ export default function SearchPage() {
             <div className='LogosContainer'>
                 <img src={leaguelogos} alt="leaguelogos" className='LeagueLogos' />
             </div>
+            <div className="EnhancementGradeContainer">
+                <strong className="EnhancementGrade">1</strong>
+            </div>
         </div>
     </div>
   )
