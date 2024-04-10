@@ -1,6 +1,5 @@
 import React, { useState, useEffect } from "react";
 import "../css/Result.css";
-import gradeIcon from "../assets/rank/900.png";
 import searchIcon from "../assets/searchicon.png";
 import { useLocation } from "react-router-dom";
 import { useNavigate } from 'react-router-dom';
