@@ -2,6 +2,7 @@ import React, { useState, useEffect } from "react";
 import "../css/MatchResult.css";
 import loading from "../assets/loading.gif";
 import ball from "../assets/ball.png";
+import stadium from "../assets/Stadium.png";
 import axios from "axios";
 
 export default function MatchResult(props) {
@@ -96,16 +97,18 @@ export default function MatchResult(props) {
               }}
               onClick={() => toggleExpand(id)}
             >
-              <span>
-                {nickname} {data.my_score} : {data.other_score} {data.other_nick}
-              </span>
-              &nbsp; &nbsp; &nbsp;
-              <span>{data.my_status}</span>
+              <div className="MatchDate">{data.match_date}</div>
+              <div className="ScoreContainer">
+                <div className="Nickname">{nickname}</div>
+                <div>{data.my_score} : {data.other_score}</div>
+                <div className="Nickname">{data.other_nick}</div>
+              </div>
+              {/* &nbsp; &nbsp; &nbsp; <span>{data.my_status}</span> */}
             </div>
             {expandedId === id && (
               <div className="MatchResuiltDetailContainer">
                 <div className="MyInformation">
-                  <ul>
+                  <ul className="ListContainer">
                     {data && data.my_data && data.my_player_data && (
                       (() => {
                         let combinedData = [];
@@ -122,11 +125,12 @@ export default function MatchResult(props) {
                             <li style={{listStyleType: "none"}}>
                               <div className="PlayerDetailContainer">
                                 <div className="PlayerImgContainer">
+                                  <span className="PlayerStatus">★ {value.status}</span>
                                   <div className="img-wrapper">
                                     <img
-                                      src={value.p_image}
+                                      src={value.sp_image}
                                       alt="img"
-                                      width="50px"
+                                      width="40px"
                                     />
                                   </div>
                                   <div className="SeasonGradeContainer">
@@ -141,20 +145,24 @@ export default function MatchResult(props) {
                                     </div>
                                   </div>
                                 </div>
-                                <span className="PlayerStatus">★ {value.status}</span>
+                                <div className="PlayerStatusGoal">
+                                  <div className="BallContainer">
+                                    {[...Array(value.goal)].map((_, index) => (
+                                      <img
+                                        key={index}
+                                        src={ball}
+                                        alt="ball"
+                                        width="15px"
+                                        height="15px"
+                                        className="Ball"
+                                      />
+                                    ))}
+                                  </div>
+                                </div>
                               </div>
                               <div className="PlayerInfoContainer">
                                 <span className="PlayerPosition">[{value.spPosition}]</span>
                                 {value.name}
-                                {[...Array(value.goal)].map((_, index) => (
-                                  <img
-                                    key={index}
-                                    src={ball}
-                                    alt="ball"
-                                    width="20px"
-                                    className="Ball"
-                                  />
-                                ))}
                               </div>
                             </li>
                           </div>
@@ -163,8 +171,30 @@ export default function MatchResult(props) {
                     )}
                   </ul>
                 </div>
+                <div className="MatchDetailInfoContainer">
+                  <div className="MatchDetailInfoInnerContainer">
+                    <div className="MatchDetailText">{data.my_total_shoot}</div>
+                    <div className="MatchDetailTitle">슛팅</div>
+                    <div className="MatchDetailText">{data.other_total_shoot}</div>
+                  </div>
+                  <div className="MatchDetailInfoInnerContainer">
+                    <div className="MatchDetailText">{data.my_effective_shoot}</div>&nbsp;
+                    <div className="MatchDetailTitle">유효 슛팅</div>&nbsp;
+                    <div className="MatchDetailText">{data.other_effective_shoot}</div>
+                  </div>
+                  <div className="MatchDetailInfoInnerContainer">
+                    <div className="MatchDetailText">{data.my_yellow}</div>&nbsp;
+                    <div className="MatchDetailTitle">경고</div>&nbsp;
+                    <div className="MatchDetailText">{data.other_yellow}</div>
+                  </div>
+                  <div className="MatchDetailInfoInnerContainer">
+                    <div className="MatchDetailText">{data.my_red}</div>&nbsp;
+                    <div className="MatchDetailTitle">퇴장</div>&nbsp;
+                    <div className="MatchDetailText">{data.other_red}</div>
+                  </div>
+                </div>
                 <div className="OtherInformation">
-                  <ul>
+                <ul className="ListContainer">
                     {data && data.other_data && data.other_player_data && (
                       (() => {
                         let combinedData = [];
@@ -178,33 +208,49 @@ export default function MatchResult(props) {
 
                         return combinedData.map((value, index) => (
                           <div key={index} className="CombinedDataContainer">
-                            <li>
-                              <img
-                                src={value.seasonImg}
-                                alt="season"
-                                height="18px"
-                                className="SeasonImg"
-                              />
-                              {value.name}
-                              <span>({value.status})</span>
-                              {[...Array(value.goal)].map((_, index) => (
-                                <img
-                                  key={index}
-                                  src={ball}
-                                  alt="ball"
-                                  width="20px"
-                                  className="Ball"
-                                />
-                              ))}
+                            <li style={{listStyleType: "none"}}>
+                              <div className="PlayerDetailContainer">
+                                <div className="PlayerImgContainer">
+                                  <span className="PlayerStatus">★ {value.status}</span>
+                                  <div className="Otherimg-wrapper">
+                                    <img
+                                      src={value.sp_image}
+                                      alt="img"
+                                      width="40px"
+                                    />
+                                  </div>
+                                  <div className="SeasonGradeContainer">
+                                    <img
+                                      src={value.seasonImg}
+                                      alt="season"
+                                      height="18px"
+                                      className="SeasonImg"
+                                    />
+                                    <div className={`${gradeValue(value.spGrade)}`} key={index}>
+                                      <strong className={`${gradeValue(value.spGrade)}Text`}>{value.spGrade}</strong>
+                                    </div>
+                                  </div>
+                                </div>
+                                <div className="PlayerStatusGoal">
+                                  <div className="BallContainer">
+                                    {[...Array(value.goal)].map((_, index) => (
+                                      <img
+                                        key={index}
+                                        src={ball}
+                                        alt="ball"
+                                        width="15px"
+                                        height="15px"
+                                        className="Ball"
+                                      />
+                                    ))}
+                                  </div>
+                                </div>
+                              </div>
+                              <div className="PlayerInfoContainer">
+                                <span className="PlayerPosition">[{value.spPosition}]</span>
+                                {value.name}
+                              </div>
                             </li>
-                            <img
-                              src={value.p_image}
-                              alt="img"
-                              width="50px"
-                            />
-                            <div className={`${gradeValue(value.spGrade)}`} key={index}>
-                              <strong className={`${gradeValue(value.spGrade)}Text`}>{value.spGrade}</strong>
-                            </div>
                           </div>
                         ));
                       })() // 여기서 즉시 실행하지 않음
