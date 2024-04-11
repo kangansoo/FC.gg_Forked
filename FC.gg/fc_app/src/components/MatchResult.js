@@ -128,7 +128,7 @@ export default function MatchResult(props) {
                                   <span className="PlayerStatus">★ {value.status}</span>
                                   <div className="img-wrapper">
                                     <img
-                                      src={value.sp_image}
+                                      src={value.p_action_image}
                                       alt="img"
                                       width="40px"
                                     />

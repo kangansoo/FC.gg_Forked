@@ -4,7 +4,7 @@ import axios from "axios";
 // import getRankImg from './getRankImg';
 
 export default function UserInfo(props) {
-  const { input, ouid } = props;
+  const { nickname, ouid } = props;
   const [userInfo, setUserInfo] = useState([]);
   const [userRank, setUserRank] = useState("");
   const [rankImg, setRankImg] = useState('');
@@ -45,7 +45,7 @@ export default function UserInfo(props) {
       {/* {rankImg ? (<img className="GradeIcon" alt="icon" src={userInfo[2]} />) : (<span>이미지 불러오는 중</span>)} */}
       <img className="GradeIcon" alt="icon" src={userInfo[2]} />
       <div className="UserInfoContainer">
-        <div className="UserNickname">{input}</div>
+        <div className="UserNickname">{nickname}</div>
         <div className="UserLevel">레벨 : {userInfo[0]}</div>
       </div>
       <div className="UserGradeContainer">

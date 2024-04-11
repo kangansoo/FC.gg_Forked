@@ -111,7 +111,7 @@
 
 .CombinedDataContainer {
   display: inline-block;
-  width: 200px;
+  width: 150px;
 }
 
 .PlayerImgContainer {
@@ -169,11 +169,12 @@
   margin-bottom: 10px;
   font-size: 13px;
   margin-left: -15px;
+  width: 150px;
 }
 
 .PlayerPosition {
   margin-top: -3px;
-  margin-right: 3px;
+  margin-left: -3px;
 }
 
 .PlayerStatusGoal {
