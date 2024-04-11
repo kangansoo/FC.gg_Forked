@@ -24,6 +24,7 @@ export default function Screen() {
       alert("검색어를 입력해주세요!");
     } else {
       navigate(`./?input=${searchText}`);
+      setNickname(searchText)
       setSearchText("");
     }
   };
@@ -43,7 +44,7 @@ export default function Screen() {
       try {
         const response = await axios.get('https://p0l0evybh6.execute-api.ap-northeast-2.amazonaws.com/dev/Getouid', {
           params: {  
-            nickname: input,
+            nickname: nickname,
           }
         });
         console.log(response);
@@ -59,7 +60,7 @@ export default function Screen() {
       
     }  
     handleGetouid();
-  }, [input, matchtype, ouid])
+  }, [input, nickname, matchtype, ouid])
   console.log("ouidtest:", ouid)
   return (
     <div className="screen">
@@ -75,7 +76,7 @@ export default function Screen() {
           />
           <img src={searchIcon} alt="searchIcon" className="SearchIcon1" onClick={buttonClick}/>
         </div>
-        <UserInfo input={input} ouid={ouid}/>
+        <UserInfo nickname={nickname} ouid={ouid}/>
         <div className="MatchTypeConatiner">
           <div className="MatchTypeText">공식경기</div>
           <div className="MatchTypeText">리그친선</div>
