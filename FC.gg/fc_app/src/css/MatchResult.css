@@ -123,10 +123,10 @@
 .SeasonGradeContainer {
   display: flex;
   flex-direction: row;
-  gap: 18px;
+  gap: 15px;
   position: absolute;
-  margin-top: 40px;
-  margin-left: -6px;
+  margin-top: 35px;
+  margin-left: -10px;
 }
 
 .img-wrapper {
@@ -162,6 +162,7 @@
 .PlayerDetailContainer {
   display: flex;
   flex-direction: row;
+  margin-top: 5px;
 }
 .PlayerInfoContainer {
   display: flex;
@@ -184,7 +185,7 @@
 
 .PlayerStatus {
   position: absolute;
-  margin-top: -15px;
+  margin-top: -18px;
   margin-left: -18px;
   color: white;
 }
@@ -193,6 +194,8 @@
   display: flex;
   flex-direction: row;
   gap: 3px;
+  margin-top:-9px;
+  margin-left: -7px;
 }
 
 .SeasonImg {
