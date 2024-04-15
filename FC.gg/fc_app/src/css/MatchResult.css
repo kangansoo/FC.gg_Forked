@@ -1,3 +1,7 @@
+.MatchResultLoading{
+  align-self: center;
+}
+
 .MatchResultBackground {
   display: flex;
   flex-direction: column;
