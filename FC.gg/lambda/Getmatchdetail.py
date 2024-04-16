@@ -2,6 +2,7 @@ import json
 import urllib.request
 import urllib.parse
 import boto3
+
 def Getmatchdetail(event, context):
     try:
         api_key = "live_f15f9ee815ab4be133e13c2028780bfcd5bc103307d3c99fde3f5fad2dad4971c39c09e62f505a27384865aadbc8ebb7"
@@ -33,13 +34,11 @@ def Getmatchdetail(event, context):
             my_yellow = data_dict['matchInfo'][0]['matchDetail']['yellowCards']
             my_red = data_dict['matchInfo'][0]['matchDetail']['redCards']
             my_controller = data_dict['matchInfo'][0]['matchDetail']['controller']
-            my_possession = data_dict['matchInfo'][0]['matchDetail']['possession'] + "%"
+            my_possession = data_dict['matchInfo'][0]['matchDetail']['possession']
             my_dribble = data_dict['matchInfo'][0]['matchDetail']['dribble']
             my_offside = data_dict['matchInfo'][0]['matchDetail']['offsideCount']
-            my_passrate = int(data[0]['pass']['passSuccess']) // int(data[0]['pass']['passTry'])
             my_passtry = data[0]['pass']['passTry']
             my_passsuc = data[0]['pass']['passSuccess']
-
 
             other_player = data_dict['matchInfo'][1]['player']
             other_status = data_dict['matchInfo'][1]['matchDetail']['matchResult']
@@ -51,13 +50,11 @@ def Getmatchdetail(event, context):
             other_yellow = data_dict['matchInfo'][1]['matchDetail']['yellowCards']
             other_red = data_dict['matchInfo'][1]['matchDetail']['redCards']
             other_controller = data_dict['matchInfo'][1]['matchDetail']['controller']
-            other_possession = data_dict['matchInfo'][1]['matchDetail']['possession'] + "%"
+            other_possession = data_dict['matchInfo'][1]['matchDetail']['possession']
             other_dribble = data_dict['matchInfo'][1]['matchDetail']['dribble']
             other_offside = data_dict['matchInfo'][1]['matchDetail']['offsideCount']
-            other_passrate = int(data[1]['pass']['passSuccess']) // int(data[1]['pass']['passTry'])
             other_passtry = data[1]['pass']['passTry']
             other_passsuc = data[1]['pass']['passSuccess']
-
 
         else :
             my_player = data_dict['matchInfo'][1]['player']
@@ -69,12 +66,12 @@ def Getmatchdetail(event, context):
             my_yellow = data_dict['matchInfo'][1]['matchDetail']['yellowCards']
             my_red = data_dict['matchInfo'][1]['matchDetail']['redCards']
             my_controller = data_dict['matchInfo'][1]['matchDetail']['controller']
-            my_possession = data_dict['matchInfo'][1]['matchDetail']['possession'] + "%"
+            my_possession = data_dict['matchInfo'][1]['matchDetail']['possession']
             my_dribble = data_dict['matchInfo'][1]['matchDetail']['dribble']
             my_offside = data_dict['matchInfo'][1]['matchDetail']['offsideCount']
-            my_passrate = int(data[1]['pass']['passSuccess']) // int(data[1]['pass']['passTry'])
             my_passtry = data[1]['pass']['passTry']
             my_passsuc = data[1]['pass']['passSuccess']
+
 
 
             other_player = data_dict['matchInfo'][0]['player']
@@ -87,12 +84,12 @@ def Getmatchdetail(event, context):
             other_yellow = data_dict['matchInfo'][0]['matchDetail']['yellowCards']
             other_red = data_dict['matchInfo'][0]['matchDetail']['redCards']
             other_controller = data_dict['matchInfo'][0]['matchDetail']['controller']
-            other_possession = data_dict['matchInfo'][0]['matchDetail']['possession'] + "%"
+            other_possession = data_dict['matchInfo'][0]['matchDetail']['possession']
             other_dribble = data_dict['matchInfo'][0]['matchDetail']['dribble']
             other_offside = data_dict['matchInfo'][0]['matchDetail']['offsideCount']
-            other_passrate = int(data[0]['pass']['passSuccess']) // int(data[0]['pass']['passTry'])
             other_passtry = data[0]['pass']['passTry']
             other_passsuc = data[0]['pass']['passSuccess']
+
 
         position_mapping = {
         0: "GK", 1: "SW", 2: "RWB", 3: "RB", 4: "RCB", 5: "CB",
@@ -106,7 +103,7 @@ def Getmatchdetail(event, context):
                     extracted_item = {
                         'spId': item['spId'],
                         'spPosition': position_mapping.get(item['spPosition'], 'Unknown'),
-                        'postion' : item['spPosition'],
+                        'position' : item['spPosition'],
                         'spGrade': item['spGrade'],
                         'status' : item['status']['spRating'],
                         'goal' : item['status']['goal']
@@ -120,13 +117,14 @@ def Getmatchdetail(event, context):
                     extracted_item = {
                         'spId': item['spId'],
                         'spPosition': position_mapping.get(item['spPosition'], 'Unknown'),
-                        'postion' : item['spPosition'],
+                        'position' : item['spPosition'],
                         'spGrade': item['spGrade'],
                         'status' : item['status']['spRating'],
                         'goal' : item['status']['goal']
                     }
                     other_player_data.append(extracted_item)
-        
+        my_player_data = sorted(my_player_data, key=lambda x: x['position'])
+        other_player_data = sorted(other_player_data, key=lambda x: x['position'])
         print("data 설정 완료")            
         my_ids = [item['spId'] for item in my_player_data]
         other_ids = [item['spId'] for item in other_player_data]
@@ -149,7 +147,23 @@ def Getmatchdetail(event, context):
             response = table.get_item(Key={'id': spId})
             if 'Item' in response:
                 other_data.append(response['Item'])        
-
+        
+        if my_status == '오류' :
+            my_player = 0
+            my_status = 0
+            my_score = 0
+            my_total_shoot = 0
+            my_effective_shoot = 0
+            my_rating = 0
+            my_yellow = 0
+            my_red = 0
+            my_controller = 0
+            my_possession = 0
+            my_dribble = 0
+            my_offside = 0
+            my_passtry = 0
+            my_passsuc = 0
+            
         print("db 조회 완료")
         return_data = {
             'match_date' : data_dict['matchDate'].replace('T', ' '),
@@ -167,7 +181,6 @@ def Getmatchdetail(event, context):
             'my_possession' : my_possession,
             'my_dribble' : my_dribble,
             'my_offside' : my_offside,
-            'my_passrate': my_passrate,
             'my_passtry' : my_passtry,
             'my_passsuc' : my_passsuc,
 
@@ -185,10 +198,10 @@ def Getmatchdetail(event, context):
             'other_possession' : other_possession,
             'other_dribble' : other_dribble,
             'other_offside' : other_offside,
-            'other_passrate': other_passrate,
             'other_passtry' : other_passtry,
             'other_passsuc' : other_passsuc 
         }
+
         return return_data
     except Exception as e:
         print(e)
