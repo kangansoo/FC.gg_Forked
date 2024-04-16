@@ -54,7 +54,7 @@ export default function MatchResult(props) {
               {expandedId === id && (
                 <div className="MatchResuiltDetailContainer">
                   <div className="MyInformation">
-                    <ul className="ListContainer">
+                    <div className="ListContainer">
                       {data && data.my_data && data.my_player_data && (
                         (() => {
                           let combinedData = [];
@@ -67,7 +67,7 @@ export default function MatchResult(props) {
 
                           return combinedData.map((value, index) => (
                             <div key={index} className="CombinedDataContainer">
-                              <li style={{listStyleType: "none"}}>
+                              
                                 <div className="PlayerDetailContainer">
                                   <div className="PlayerImgContainer">
                                     <span className="PlayerStatus">★ {value.status}</span>
@@ -109,12 +109,12 @@ export default function MatchResult(props) {
                                   <span className="PlayerPosition">[{value.spPosition}]</span>
                                   {value.name}
                                 </div>
-                              </li>
+                              
                             </div>
                           ));
                         })() // 여기서 즉시 실행하지 않음
                       )}
-                    </ul>
+                    </div>
                   </div>
                   <div className="MatchDetailInfoContainer">
                     <div className="MatchDetailInfoInnerContainer">
@@ -139,7 +139,7 @@ export default function MatchResult(props) {
                     </div>
                   </div>
                   <div className="OtherInformation">
-                  <ul className="ListContainer">
+                    <ul className="ListContainer">
                       {data && data.other_data && data.other_player_data && (
                         (() => {
                           let combinedData = [];
