@@ -39,6 +39,23 @@ export default function Screen() {
   };
   const input = new URLSearchParams(location.search).get("input");
 
+  const publicGame = () =>{
+    setLoading(true)
+    setMatch(50);
+  }
+  const leagueGame = () =>{
+    setLoading(true)
+    setMatch(30);
+  }
+  const directorMode = () =>{
+    setLoading(true)
+    setMatch(52);
+  }
+  const classicMode = () => {
+    setLoading(true)
+    setMatch(40);
+  }
+
   useEffect(()=>{
     setNickname(input); 
   },[input]);
@@ -80,8 +97,6 @@ export default function Screen() {
         });
         setMatch(matchtype);
   
-        console.log(response1);
-  
         const matchData = {};
         console.log('matchid', response1.data);
   
@@ -96,7 +111,7 @@ export default function Screen() {
           });
           // 응답 데이터를 처리하거나 상태에 저장
 
-          console.log(response2.data);
+          console.log("response2.data: ", response2.data);
           matchData[id] = response2.data;
         }));
       console.log(matchData);
@@ -126,10 +141,10 @@ export default function Screen() {
         </div>
         <UserInfo nickname={nickname} ouid={ouid}/>
         <div className="MatchTypeConatiner">
-          <div className="MatchTypeText">공식경기</div>
-          <div className="MatchTypeText">리그친선</div>
-          <div className="MatchTypeText">감독모드</div>
-          <div className="MatchTypeText">클래식 1vs1</div>
+          <div className="MatchTypeText" onClick={publicGame}>공식경기</div>
+          <div className="MatchTypeText" onClick={leagueGame}>리그친선</div>
+          <div className="MatchTypeText" onClick={directorMode}>감독모드</div>
+          <div className="MatchTypeText" onClick={classicMode}>클래식 1vs1</div>
         </div>
         <MatchResult nickname={nickname} matchdetail={matchdetail} loading={loading} />
       </div>
