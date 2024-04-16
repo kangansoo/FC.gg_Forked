@@ -43,6 +43,15 @@
     text-align: center;
 }
 
+.Controller{
+  height: 20px;
+}
+
+.Score{
+  display: flex;
+  flex-direction: row;
+}
+
 .Nickname{
     width: 180px;
 }
@@ -73,9 +82,9 @@
     display: flex;
     justify-content: space-between;
     color: white;
-    width: 150px;
+    width: 200px;
     text-align: center;
-    margin-top: 10px;
+    margin-top: 20px;
 }
 
 .MyInformation {

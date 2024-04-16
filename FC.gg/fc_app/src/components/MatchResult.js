@@ -2,6 +2,8 @@ import React, { useState } from "react";
 import "../css/MatchResult.css";
 import loadinggif from "../assets/loading.gif";
 import ball from "../assets/ball.png";
+import keyboard from '../assets/keyboard.png';
+import console from '../assets/console.png';
 
 export default function MatchResult(props) {
   const { nickname, matchdetail, loading } = props;
@@ -45,9 +47,15 @@ export default function MatchResult(props) {
               >
                 <div className="MatchDate">{data.match_date}</div>
                 <div className="ScoreContainer">
+                  {data&&data.my_controller==="gamepad"?(<img src={console} className="Controller"/>):<img src={keyboard} className="Controller"/>}
                   <div className="Nickname">{nickname}</div>
-                  <div>{data.my_score} : {data.other_score}</div>
+                  <div className="Score">
+                    <div>{data.my_score}</div>
+                    <div> : </div>
+                    <div>{data.other_score}</div>
+                  </div>
                   <div className="Nickname">{data.other_nick}</div>
+                  {data&&data.other_controller==="gamepad"?(<img src={console} className="Controller"/>):<img src={keyboard} className="Controller"/>}
                 </div>
                 {/* &nbsp; &nbsp; &nbsp; <span>{data.my_status}</span> */}
               </div>
@@ -123,19 +131,39 @@ export default function MatchResult(props) {
                       <div className="MatchDetailText">{data.other_total_shoot}</div>
                     </div>
                     <div className="MatchDetailInfoInnerContainer">
-                      <div className="MatchDetailText">{data.my_effective_shoot}</div>&nbsp;
-                      <div className="MatchDetailTitle">유효 슛팅</div>&nbsp;
+                      <div className="MatchDetailText">{data.my_effective_shoot}</div>
+                      <div className="MatchDetailTitle">유효 슛팅</div>
                       <div className="MatchDetailText">{data.other_effective_shoot}</div>
                     </div>
                     <div className="MatchDetailInfoInnerContainer">
-                      <div className="MatchDetailText">{data.my_yellow}</div>&nbsp;
-                      <div className="MatchDetailTitle">경고</div>&nbsp;
+                      <div className="MatchDetailText">{data.my_possession}%</div>
+                      <div className="MatchDetailTitle">점유율</div>
+                      <div className="MatchDetailText">{data.other_possession}%</div>
+                    </div>
+                    <div className="MatchDetailInfoInnerContainer">
+                      <div className="MatchDetailText">{data.my_passtry}</div>
+                      <div className="MatchDetailTitle">패스 횟수</div>
+                      <div className="MatchDetailText">{data.other_passtry}</div>
+                    </div>
+                    <div className="MatchDetailInfoInnerContainer">
+                      <div className="MatchDetailText">{(data.my_passsuc / data.my_passtry* 100).toFixed()}%</div>
+                      <div className="MatchDetailTitle">패스 성공률</div>
+                      <div className="MatchDetailText">{(data.other_passsuc / data.other_passtry * 100).toFixed()}%</div>
+                    </div>
+                    <div className="MatchDetailInfoInnerContainer">
+                      <div className="MatchDetailText">{data.my_yellow}</div>
+                      <div className="MatchDetailTitle">경고</div>
                       <div className="MatchDetailText">{data.other_yellow}</div>
                     </div>
                     <div className="MatchDetailInfoInnerContainer">
-                      <div className="MatchDetailText">{data.my_red}</div>&nbsp;
-                      <div className="MatchDetailTitle">퇴장</div>&nbsp;
+                      <div className="MatchDetailText">{data.my_red}</div>
+                      <div className="MatchDetailTitle">퇴장</div>
                       <div className="MatchDetailText">{data.other_red}</div>
+                    </div>
+                    <div className="MatchDetailInfoInnerContainer">
+                      <div className="MatchDetailText">{data.my_offside}</div>
+                      <div className="MatchDetailTitle">오프사이드</div>
+                      <div className="MatchDetailText">{data.other_offside}</div>
                     </div>
                   </div>
                   <div className="OtherInformation">
