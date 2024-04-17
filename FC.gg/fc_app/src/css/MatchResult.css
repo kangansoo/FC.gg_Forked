@@ -94,7 +94,7 @@
   flex-wrap: wrap;
   margin-right: auto;
   overflow: hidden;
-  background-image: url("https://www.notion.so/image/https%3A%2F%2Fprod-files-secure.s3.us-west-2.amazonaws.com%2F3c4f954d-6328-44f1-b777-748fe3387d97%2F857f139c-8808-494b-bc8d-900d690aa4f1%2FStadium.png?table=block&id=eaa4ef36-ce88-4afa-92ae-f9ea0dcac030&spaceId=3c4f954d-6328-44f1-b777-748fe3387d97&width=1010&userId=ce4b5975-c8e1-4e51-a9a3-5bcf4e95d98f&cache=v2");
+  background-image: url("https://www.notion.so/image/https%3A%2F%2Fprod-files-secure.s3.us-west-2.amazonaws.com%2F3c4f954d-6328-44f1-b777-748fe3387d97%2Faef69626-418b-4766-81bc-9f436e4e684e%2FStadium.png?table=block&id=433659d6-4598-470a-87af-743cdcbd9c3e&spaceId=3c4f954d-6328-44f1-b777-748fe3387d97&width=1010&userId=ce4b5975-c8e1-4e51-a9a3-5bcf4e95d98f&cache=v2");
   background-size: cover; /* 이미지를 확대 또는 축소하여 요소에 맞게 조절 */
   background-position: center; /* 이미지를 가운데 정렬 */
   background-repeat: no-repeat; /* 이미지 반복 없음 */
@@ -106,7 +106,8 @@
     width: 505px;
     flex-wrap: wrap;
     margin-left: auto;
-    background-image: url("https://www.notion.so/image/https%3A%2F%2Fprod-files-secure.s3.us-west-2.amazonaws.com%2F3c4f954d-6328-44f1-b777-748fe3387d97%2F857f139c-8808-494b-bc8d-900d690aa4f1%2FStadium.png?table=block&id=eaa4ef36-ce88-4afa-92ae-f9ea0dcac030&spaceId=3c4f954d-6328-44f1-b777-748fe3387d97&width=1010&userId=ce4b5975-c8e1-4e51-a9a3-5bcf4e95d98f&cache=v2");
+    overflow: hidden;
+    background-image: url("https://www.notion.so/image/https%3A%2F%2Fprod-files-secure.s3.us-west-2.amazonaws.com%2F3c4f954d-6328-44f1-b777-748fe3387d97%2Faef69626-418b-4766-81bc-9f436e4e684e%2FStadium.png?table=block&id=433659d6-4598-470a-87af-743cdcbd9c3e&spaceId=3c4f954d-6328-44f1-b777-748fe3387d97&width=1010&userId=ce4b5975-c8e1-4e51-a9a3-5bcf4e95d98f&cache=v2");
     background-size: cover; /* 이미지를 확대 또는 축소하여 요소에 맞게 조절 */
     background-position: center; /* 이미지를 가운데 정렬 */
     background-repeat: no-repeat; /* 이미지 반복 없음 */
@@ -120,11 +121,13 @@
     padding-left: 20px;
     flex-wrap:wrap;
     line-height: 30px;
+    align-items: center;
 }
 
 .CombinedDataContainer {
   display: inline-block;
   width: 150px;
+  position: absolute;
 }
 
 .PlayerImgContainer {
@@ -147,8 +150,8 @@
   height: 40px; 
   border-radius: 50%; 
   overflow: hidden;
-  border: 3px solid rgba(94, 139, 226, 0.8);
-  background-color: rgba(94, 139, 226, 0.8);
+  /* border: 3px solid rgba(94, 139, 226, 0.8);
+  background-color: rgba(94, 139, 226, 0.8); */
 }
 
 .img-wrapper img {
@@ -162,11 +165,11 @@
   height: 40px; 
   border-radius: 50%; 
   overflow: hidden;
-  border: 3px solid rgba(255, 132, 132, 0.8);
-  background-color: rgba(255, 132, 132, 0.8);
+  /* border: 3px solid rgba(255, 132, 132, 0.8);
+  background-color: rgba(255, 132, 132, 0.8); */
 }
 
-.img-wrapper img {
+.Otherimg-wrapper img {
   width: 100%; /* 이미지를 부모 요소에 꽉 채우도록 설정 */
   height: auto; /* 이미지 높이 자동 조정 */
   display: block; /* 이미지를 블록 요소로 표시하여 테두리 안에 정렬 */
@@ -176,19 +179,22 @@
   display: flex;
   flex-direction: row;
   margin-top: 5px;
+  justify-content: center;
 }
 .PlayerInfoContainer {
   display: flex;
+  flex-direction: column;
   align-items: center;
-  margin-bottom: 10px;
+  justify-content: center;
   font-size: 13px;
-  margin-left: -15px;
   width: 150px;
 }
 
 .PlayerPosition {
   margin-top: -3px;
-  margin-left: -3px;
+}
+.PlayerName{
+  margin-top: -15px;
 }
 
 .PlayerStatusGoal {
@@ -204,6 +210,7 @@
 }
 
 .BallContainer {
+  position: absolute;
   display: flex;
   flex-direction: row;
   gap: 3px;

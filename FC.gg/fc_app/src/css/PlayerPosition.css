@@ -1,0 +1,252 @@
+.CombinedDataContainerGK {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  width: 100px;
+  position: absolute;
+  margin-top: 530px;
+  margin-left: 40px;
+}
+.CombinedDataContainerSW {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  width: 100px;
+  position: absolute;
+  margin-top: 440px;
+  margin-left: 40px;
+}
+.CombinedDataContainerRWB {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  width: 100px;
+  position: absolute;
+  margin-top: 340px;
+  margin-left: 430px;
+}
+.CombinedDataContainerRB {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  width: 100px;
+  position: absolute;
+  margin-top: 440px;
+  margin-left: 430px;
+}
+.CombinedDataContainerRCB {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  width: 100px;
+  position: absolute;
+  margin-top: 460px;
+  margin-left: 220px;
+}
+.CombinedDataContainerCB {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  width: 100px;
+  position: absolute;
+  margin-top: 460px;
+  margin-left: 40px;
+}
+.CombinedDataContainerLCB {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  width: 100px;
+  position: absolute;
+  margin-top: 460px;
+  margin-left: -140px;
+}
+.CombinedDataContainerLB {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  width: 100px;
+  position: absolute;
+  margin-top: 440px;
+  margin-left: -360px;
+}
+.CombinedDataContainerLWB {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  width: 100px;
+  position: absolute;
+  margin-top: 340px;
+  margin-left: -360px;
+}
+.CombinedDataContainerRDM {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  width: 100px;
+  position: absolute;
+  margin-top: 360px;
+  margin-left: 220px;
+}
+.CombinedDataContainerCDM {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  width: 100px;
+  position: absolute;
+  margin-top: 390px;
+  margin-left: 40px;
+}
+.CombinedDataContainerLDM {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  width: 100px;
+  position: absolute;
+  margin-top: 360px;
+  margin-left: -140px;
+}
+.CombinedDataContainerRM {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  width: 100px;
+  position: absolute;
+  margin-top: 240px;
+  margin-left: 430px;
+}
+.CombinedDataContainerRCM {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  width: 100px;
+  position: absolute;
+  margin-top: 260px;
+  margin-left: 220px;
+}
+.CombinedDataContainerCM {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  width: 100px;
+  position: absolute;
+  margin-top: 320px;
+  margin-left: 40px;
+}
+.CombinedDataContainerLCM {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  width: 100px;
+  position: absolute;
+  margin-top: 260px;
+  margin-left: -140px;
+}
+.CombinedDataContainerLM {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  width: 100px;
+  position: absolute;
+  margin-top: 240px;
+  margin-left: -360px;
+}
+.CombinedDataContainerRAM {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  width: 100px;
+  position: absolute;
+  margin-top: 190px;
+  margin-left: 230px;
+}
+.CombinedDataContainerCAM {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  width: 100px;
+  position: absolute;
+  margin-top: 210px;
+  margin-left: 40px;
+}
+.CombinedDataContainerLAM {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  width: 100px;
+  position: absolute;
+  margin-top: 190px;
+  margin-left: -140px;
+}
+.CombinedDataContainerRF {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  width: 100px;
+  position: absolute;
+  margin-top: 90px;
+  margin-left: 250px;
+}
+.CombinedDataContainerCF {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  width: 100px;
+  position: absolute;
+  margin-top: 110px;
+  margin-left: 40px;
+}
+.CombinedDataContainerLF {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  width: 100px;
+  position: absolute;
+  margin-top: 90px;
+  margin-left: -160px;
+}
+.CombinedDataContainerRW {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  width: 100px;
+  position: absolute;
+  margin-top: 50px;
+  margin-left: 430px;
+}
+.CombinedDataContainerRS {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  width: 100px;
+  position: absolute;
+  margin-top: 10px;
+  margin-left: 230px;
+}
+.CombinedDataContainerST {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  width: 100px;
+  position: absolute;
+  margin-top: 10px;
+  margin-left: 40px;
+}
+.CombinedDataContainerLS {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  width: 100px;
+  position: absolute;
+  margin-top: 10px;
+  margin-left: -140px;
+}
+.CombinedDataContainerLW {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  width: 100px;
+  position: absolute;
+  margin-top: 50px;
+  margin-left: -360px;
+}
