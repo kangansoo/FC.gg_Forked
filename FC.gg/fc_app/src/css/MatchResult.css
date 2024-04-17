@@ -12,7 +12,7 @@
 
 .MatchResultContainer {
   width: 1240px;
-  height: 85px;
+  height: 100px;
   padding: 0 20px;
   background-color: #d4d4d4;
   color: white;
@@ -25,6 +25,7 @@
   justify-content: center;
   cursor: pointer;
   overflow: hidden;
+  margin-bottom: 10px;
 }
 
 .MatchDate{

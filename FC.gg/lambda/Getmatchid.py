@@ -32,4 +32,7 @@ def lambda_handler(event, context):
         
     except Exception as e:
         print("Error occurred:", str(e))
-        return "Error occurred: " + str(e)
+        return {
+            'statusCode': 400,
+            'body': str(e)
+        }

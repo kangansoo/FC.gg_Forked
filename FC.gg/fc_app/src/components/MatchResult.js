@@ -82,6 +82,7 @@ export default function MatchResult(props) {
                       : data.my_status === "무"
                       ? "rgba(212, 212, 212, 0.8)" // 무승부인 경우에 해당하는 색상
                       : "rgba(255, 132, 132, 0.8)",
+                      // marginBottom: '20px'
                 }}
                 onClick={() => toggleExpand(id)}
               >

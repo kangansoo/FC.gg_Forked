@@ -2,6 +2,7 @@ import json
 import urllib.request
 import urllib.parse
 import boto3
+from datetime import datetime
 
 def Getmatchdetail(event, context):
     try:
@@ -165,8 +166,9 @@ def Getmatchdetail(event, context):
             my_passsuc = 0
             
         print("db 조회 완료")
+
         return_data = {
-            'match_date' : data_dict['matchDate'].replace('T', ' '),
+            'match_date' : datetime.strptime((data_dict['matchDate'].replace('T', ' ')),'%Y-%m-%d %H:%M:%S').strftime('%Y-%m-%d %H:%M'),
             'my_player_data': my_player_data,
             'my_status': my_status,
             'my_score': my_score,
