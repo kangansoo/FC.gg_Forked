@@ -16,16 +16,18 @@ export default function Screen() {
   const [ouid, setOuid] = useState("");
   const [matchdetail, setMatchdetail] = useState("");
   const [loading, setLoading] = useState(true);
+  const [selected, setSelected] = useState("publicGame");
+  const [error, setError] = useState(false);
   
   const onChange = (e) => {
     e.preventDefault();
     setSearchText(e.target.value);
   };
   const buttonClick = () => {
-    setNickname("");
     if (!searchText) {
       alert("검색어를 입력해주세요!");
     } else {
+      setNickname("");
       navigate(`./?input=${searchText}`);
       setNickname(searchText)
       setSearchText("");
@@ -74,15 +76,13 @@ export default function Screen() {
         setOuid(response.data);
         console.log("데이터", response.data);
         // Fetching match data using ouid
-        
       } catch (error) {
         console.error('Error:', error);
       }
-      
     }  
     handleGetouid();
   }, [input, nickname, ouid])
-  console.log("ouidtest:", ouid)
+  console.log("ErrorCheck:", error)
 
   useEffect(()=>{
     const getMatchdetail = async() => {
@@ -139,14 +139,23 @@ export default function Screen() {
           />
           <img src={searchIcon} alt="searchIcon" className="SearchIcon1" onClick={buttonClick}/>
         </div>
-        <UserInfo nickname={nickname} ouid={ouid}/>
-        <div className="MatchTypeConatiner">
-          <div className="MatchTypeText" onClick={publicGame}>공식경기</div>
-          <div className="MatchTypeText" onClick={leagueGame}>리그친선</div>
-          <div className="MatchTypeText" onClick={directorMode}>감독모드</div>
-          <div className="MatchTypeText" onClick={classicMode}>클래식 1vs1</div>
-        </div>
-        <MatchResult nickname={nickname} matchdetail={matchdetail} loading={loading} />
+        {
+          error?
+          (
+            <div>해당 유저를 찾을 수 없다.</div>
+          ):(
+            <>
+              <UserInfo nickname={nickname} ouid={ouid}/>
+              <div className="MatchTypeConatiner">
+              <div className={selected === "publicGame" ? "MatchTypeTextselected" : "MatchTypeText"} onClick={() => { publicGame(); setSelected("publicGame"); }}>공식경기</div>
+                <div className={selected === "leagueGame" ? "MatchTypeTextselected" : "MatchTypeText"} onClick={() => { leagueGame(); setSelected("leagueGame"); }}>리그친선</div>
+                <div className={selected === "directorMode" ? "MatchTypeTextselected" : "MatchTypeText"} onClick={() => { directorMode(); setSelected("directorMode"); }}>감독모드</div>
+                <div className={selected === "classicMode" ? "MatchTypeTextselected" : "MatchTypeText"} onClick={() => { classicMode(); setSelected("classicMode"); }}>클래식 1vs1</div>
+              </div>
+              <MatchResult nickname={nickname} matchdetail={matchdetail} loading={loading} />
+            </>
+          )
+        }
       </div>
     </div>
   );

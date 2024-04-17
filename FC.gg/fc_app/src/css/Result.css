@@ -24,82 +24,7 @@
       }
     }
   
-  
-  .screen .div-wrapper {
-    height: 85px;
-    left: 287px;
-    position: absolute;
-    top: 821px;
-    width: 1280px;
-  }
-  
-  .screen .text-wrapper-3 {
-    color: #ffffff;
-    font-family: "Inter-Regular", Helvetica;
-    font-size: 25px;
-    font-weight: 400;
-    height: 23px;
-    left: 527px;
-    letter-spacing: 0;
-    line-height: normal;
-    position: absolute;
-    text-align: center;
-    top: 0px;
-    white-space: nowrap;
-    width: 296px;
-  }
 
-  
-  .screen .text-wrapper-4 {
-    color: #ffffff;
-    font-family: "Inter-Regular", Helvetica;
-    font-size: 25px;
-    font-weight: 400;
-    height: 23px;
-    left: 70px;
-    letter-spacing: 0;
-    line-height: normal;
-    position: absolute;
-    text-align: center;
-    top: 30px;
-    white-space: nowrap;
-    width: 100px;
-  }
-  
-  .screen .text-wrapper-5 {
-    color: #ffffff;
-    font-family: "Inter-Regular", Helvetica;
-    font-size: 25px;
-    font-weight: 400;
-    height: 23px;
-    left: 527px;
-    letter-spacing: 0;
-    line-height: normal;
-    position: absolute;
-    text-align: center;
-    top: 30px;
-    white-space: nowrap;
-  }
-  
-  .screen .img {
-    height: 121px;
-    left: 283px;
-    position: absolute;
-    top: 482px;
-    width: 1280px;
-  }
-  
-  .screen .group-wrapper {
-    box-shadow: 0px 4px 4px #00000040;
-    border: 0px;
-    border-radius: 15px;
-    height: 220px;
-    position: absolute;
-    margin-top: 80px;
-    width: 1280px;
-    background-image: linear-gradient(to right, #5B5B5B, #000000);
-    animation: colorChange 5s infinite alternate cubic-bezier(0.4, 0, 0.2, 1); /* 애니메이션 이름, 시간, 반복 설정 */
-  }
 
   @keyframes colorChange {
       0% {
@@ -152,12 +77,27 @@
     white-space: nowrap;
     line-height: normal;
     text-align: center;
-    width: 80px;
+    width: auto;
     cursor: pointer;
   }
 
   .MatchTypeText:hover{
     transform: scale(1.2,1.2);
+  }
+
+  .MatchTypeTextselected{
+    color: #ffffff;
+    font-family: "Mina-Bold", Helvetica;
+    font-size: 20px;
+    font-weight: 700;
+    height: 30px;
+    letter-spacing: 0;
+    white-space: nowrap;
+    line-height: normal;
+    text-align: center;
+    width: auto;
+    cursor: pointer;
+    border-bottom: 2px solid white;
   }
 
   .SearchContainer1{
@@ -192,4 +132,8 @@
       margin-top: 2px;
       position: absolute;
       margin-left: -50px; 
+  }
+
+  .SearchIcon1:hover{
+      transform: scale(1.2,1.2);
   }

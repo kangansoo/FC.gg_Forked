@@ -40,7 +40,7 @@
 }
 .SearchContainer{
     align-self: center;
-    margin-top: 350px;
+    margin-top: 250px;
     display: flex;
     flex-direction: row;
     justify-content: center;
@@ -75,7 +75,7 @@
     margin-top: 50px;
     width: 880px;
     padding: 20px;
-    height: 450px;
+    height: 350px;
     border: 3px solid white;
     border-radius: 20px;
     background-color: rgba(0, 0, 0, 0.7);
@@ -86,6 +86,12 @@
     position: relative;
 }
 
+.urgentNoticeList{
+    margin-bottom: 15px;
+    list-style: none;
+    font-size:18px;
+}
+
 .UrgentNoticeCategory{
     color:aquamarine;
 }
@@ -93,6 +99,11 @@
 .NoticeAnker{
     color: white;
     text-decoration: none;
+}
+
+.NoticeList{
+    margin-bottom: 15px;
+    list-style: none;
 }
 
 .NoticeContainer::-webkit-scrollbar-track{

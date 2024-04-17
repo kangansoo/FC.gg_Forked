@@ -58,7 +58,7 @@ export default function SearchPage() {
                     {
                         urgentNotice ?
                         urgentNotice.map((data, index) => (
-                            <li className="urgentNoticeList" key={index}><span className='UrgentNoticeCategory'>{data.category}</span>: <a href={data.href} target="_black" className='NoticeAnker'>{data.title}</a><span> ({data.date})</span></li>
+                            <li className="urgentNoticeList" key={index}><span className='UrgentNoticeCategory'>{data.category}</span>: <a href={data.href} target="_black" className='NoticeAnker'><strong>{data.title}</strong></a><span> ({data.date})</span></li>
 
                         )):(<p>데이터를 불러오는데 실패하였습니다.</p>)
                     }
