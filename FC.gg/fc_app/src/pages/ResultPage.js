@@ -137,11 +137,12 @@ export default function Screen() {
           // "더 보기" 버튼인 경우: 새로운 데이터만 추가
           setMatchdetail(prevMatchDetail => [...prevMatchDetail, ...newMatchData]);
         }
-        setLoading(false);
         setMoreLoading(false);
         console.log("matchdetail :", matchdetail)
       } catch (error) {
         console.error('Error:', error);
+      } finally {
+        setLoading(false);
       }
     }
     getMatchdetail();
