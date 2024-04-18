@@ -109,6 +109,11 @@ export default function MatchResult(props) {
                               ...data.my_player_data[i],
                             });
                           }
+                          combinedData.sort((a, b) => b.status - a.status);
+
+                          // 첫 번째 선수만 강조
+                          const myTopPlayer = combinedData[0];
+                          console.log("myTopPlayer", myTopPlayer.status);
                           return combinedData.map((value, index) => (
                             <div
                               key={index}
@@ -273,6 +278,10 @@ export default function MatchResult(props) {
                               ...data.other_data[i],
                               ...data.other_player_data[i],
                             });
+                            combinedData.sort((a, b) => b.status - a.status);
+
+                            // 첫 번째 선수만 강조
+                            const otherTopPlayer = combinedData[0];
                           }
 
                           return combinedData.map((value, index) => (
