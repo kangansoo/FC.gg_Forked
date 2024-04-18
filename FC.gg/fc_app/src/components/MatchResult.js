@@ -5,13 +5,17 @@ import loadinggif from "../assets/loading.gif";
 import ball from "../assets/ball.png";
 import keyboard from "../assets/keyboard.png";
 import consoleImg from "../assets/console.png";
+import {position} from '../components/Position.js';
 
 export default function MatchResult(props) {
-  const { nickname, matchdetail, loading } = props;
-  const [expandedId, setExpandedId] = useState(null);
+  const { nickname, matchdetail, loading, increaseOffset, moreLoading } = props;
+  const [expandedTabs, setExpandedTabs] = useState({});
 
   const toggleExpand = (tab) => {
-    setExpandedId((prevId) => (prevId === tab ? null : tab));
+    setExpandedTabs((prevTabs) => ({
+      ...prevTabs,
+      [tab]: !prevTabs[tab]
+    }));
   };
 
   const gradeValue = (x) => {
@@ -26,39 +30,9 @@ export default function MatchResult(props) {
     }
   };
 
-  const positionClassNames = [
-    "GK",
-    "SW",
-    "RWB",
-    "RB",
-    "RCB",
-    "CB",
-    "LCB",
-    "LB",
-    "LWB",
-    "RDM",
-    "CDM",
-    "LDM",
-    "RM",
-    "RCM",
-    "CM",
-    "LCM",
-    "LM",
-    "RAM",
-    "CAM",
-    "LAM",
-    "RF",
-    "CF",
-    "LF",
-    "RW",
-    "RS",
-    "ST",
-    "LS",
-    "LW",
-  ];
-
   return (
     <div className="MatchResultBackground">
+      <div className="RealOuterContainer">
       {loading ? (
         <img
           src={loadinggif}
@@ -120,7 +94,7 @@ export default function MatchResult(props) {
                 </div>
                 {/* &nbsp; &nbsp; &nbsp; <span>{data.my_status}</span> */}
               </div>
-              {expandedId === id && (
+              {expandedTabs[id] && (
                 <div className="MatchResuiltDetailContainer">
                   <div className="MyInformation">
                     <div className="ListContainer">
@@ -139,7 +113,7 @@ export default function MatchResult(props) {
                             <div
                               key={index}
                               className={`CombinedDataContainer${
-                                positionClassNames[value.position]
+                                position[value.position]
                               }`}
                             >
                               <div className="PlayerDetailContainer">
@@ -305,7 +279,7 @@ export default function MatchResult(props) {
                             <div
                               key={index}
                               className={`CombinedDataContainer${
-                                positionClassNames[value.position]
+                                position[value.position]
                               }`}
                             >
                               <div className="PlayerDetailContainer">
@@ -324,10 +298,10 @@ export default function MatchResult(props) {
                                           : "rgba(94, 139, 226, 0.8)",
                                       border:
                                         data.my_status === "승"
-                                          ? "rgba(255, 132, 132, 0.8)"
+                                          ? "3px solid rgba(255, 132, 132, 0.8)"
                                           : data.my_status === "무"
-                                          ? "rgba(212, 212, 212, 0.8)"
-                                          : "rgba(94, 139, 226, 0.8)",
+                                          ? "3px solid rgba(212, 212, 212, 0.8)"
+                                          : "3px solid rgba(94, 139, 226, 0.8)",
                                     }}
                                   >
                                     <img
@@ -391,7 +365,15 @@ export default function MatchResult(props) {
               )}
             </div>
           ))
-      ) : null}
+      ) : (<div>경기 데이터가 존재하지 않습니다.</div>)}
+      </div>
+      {!loading && matchdetail !== null && (
+        !moreLoading ? (
+          <div className="SeeMore" onClick={increaseOffset}><strong>더 보기</strong></div>
+        ) : (
+          <div className="SeeMore"><img src={loadinggif} alt="moreloading" width="50px" /></div>
+        )
+      )}
     </div>
   );
 }
