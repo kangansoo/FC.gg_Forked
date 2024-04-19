@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import "../css/MatchResult.css";
 import "../css/PlayerPosition.css";
 import loadinggif from "../assets/loading.gif";
@@ -17,6 +17,10 @@ export default function MatchResult(props) {
       [tab]: !prevTabs[tab]
     }));
   };
+
+  useEffect(()=>{
+    setExpandedTabs({});
+  }, [loading])
 
   const gradeValue = (x) => {
     if (x == 1) {
@@ -109,11 +113,10 @@ export default function MatchResult(props) {
                               ...data.my_player_data[i],
                             });
                           }
-                          combinedData.sort((a, b) => b.status - a.status);
-
-                          // 첫 번째 선수만 강조
-                          const myTopPlayer = combinedData[0];
-                          console.log("myTopPlayer", myTopPlayer.status);
+                          // combinedData.sort((a, b) => b.status - a.status);
+                          // // 첫 번째 선수만 강조
+                          // const myTopPlayer = combinedData[0];
+                          // console.log("myTopPlayer", myTopPlayer.status);
                           return combinedData.map((value, index) => (
                             <div
                               key={index}
@@ -126,39 +129,20 @@ export default function MatchResult(props) {
                                   <span className="PlayerStatus">
                                     ★ {value.status}
                                   </span>
-                                  <div
-                                    className="img-wrapper"
-                                    style={{
-                                      backgroundColor:
-                                        data.my_status === "승"
-                                          ? "rgba(94, 139, 226, 0.8)"
-                                          : data.my_status === "무"
-                                          ? "rgba(212, 212, 212, 0.8)"
-                                          : "rgba(255, 132, 132, 0.8)",
-                                      border:
-                                        data.my_status === "승"
-                                          ? "3px solid rgba(94, 139, 226, 0.8)"
-                                          : data.my_status === "무"
-                                          ? "3px solid rgba(212, 212, 212, 0.8)"
-                                          : "3px solid rgba(255, 132, 132, 0.8)",
-                                    }}
-                                  >
+                                  <div className="img-wrapper">
                                     <img
                                       src={`https://fco.dn.nexoncdn.co.kr/live/externalAssets/common/playersAction/p${value.spId}.png`}
                                       alt="img"
-                                      width="40px"
+                                      height="40px"
                                       onError={(e) => {
                                         e.target.src = `https://fco.dn.nexoncdn.co.kr/live/externalAssets/common/players/p${value.spid}.png`;
                                       }}
                                     />
                                   </div>
                                   <div className="SeasonGradeContainer">
-                                    <img
-                                      src={value.seasonImg}
-                                      alt="season"
-                                      height="18px"
-                                      className="SeasonImg"
-                                    />
+                                    <span className="PlayerPosition">
+                                      {value.spPosition}
+                                    </span>
                                     <div
                                       className={`${gradeValue(value.spGrade)}`}
                                       key={index}
@@ -189,9 +173,12 @@ export default function MatchResult(props) {
                                 </div>
                               </div>
                               <div className="PlayerInfoContainer">
-                                <span className="PlayerPosition">
-                                  [{value.spPosition}]
-                                </span>
+                                <img
+                                  src={value.seasonImg}
+                                  alt="season"
+                                  height="15px"
+                                  className="SeasonImg"
+                                />
                                 <span className="PlayerName">{value.name}</span>
                               </div>
                             </div>
@@ -278,12 +265,9 @@ export default function MatchResult(props) {
                               ...data.other_data[i],
                               ...data.other_player_data[i],
                             });
-                            combinedData.sort((a, b) => b.status - a.status);
-
-                            // 첫 번째 선수만 강조
-                            const otherTopPlayer = combinedData[0];
                           }
-
+                          // combinedData.sort((a, b) => b.status - a.status);
+                          // const otherTopPlayer = combinedData[0];
                           return combinedData.map((value, index) => (
                             <div
                               key={index}
@@ -293,42 +277,26 @@ export default function MatchResult(props) {
                             >
                               <div className="PlayerDetailContainer">
                                 <div className="PlayerImgContainer">
-                                  <span className="PlayerStatus">
-                                    ★ {value.status}
-                                  </span>
-                                  <div
-                                    className="Otherimg-wrapper"
-                                    style={{
-                                      backgroundColor:
-                                        data.my_status === "승"
-                                          ? "rgba(255, 132, 132, 0.8)"
-                                          : data.my_status === "무"
-                                          ? "rgba(212, 212, 212, 0.8)"
-                                          : "rgba(94, 139, 226, 0.8)",
-                                      border:
-                                        data.my_status === "승"
-                                          ? "3px solid rgba(255, 132, 132, 0.8)"
-                                          : data.my_status === "무"
-                                          ? "3px solid rgba(212, 212, 212, 0.8)"
-                                          : "3px solid rgba(94, 139, 226, 0.8)",
-                                    }}
-                                  >
+                                    {value.mvp?(
+                                      <span className="PlayerStatus">👑 {value.status}</span>
+                                    ):(
+                                      <span className="PlayerStatus">★ {value.status}</span>
+                                    )
+                                  }
+                                  <div className="img-wrapper">
                                     <img
                                       src={`https://fco.dn.nexoncdn.co.kr/live/externalAssets/common/playersAction/p${value.spId}.png`}
                                       alt="img"
-                                      width="40px"
+                                      height="40px"
                                       onError={(e) => {
                                         e.target.src = `https://fco.dn.nexoncdn.co.kr/live/externalAssets/common/players/p${value.spid}.png`;
                                       }}
                                     />
                                   </div>
                                   <div className="SeasonGradeContainer">
-                                    <img
-                                      src={value.seasonImg}
-                                      alt="season"
-                                      height="18px"
-                                      className="SeasonImg"
-                                    />
+                                    <span className="PlayerPosition">
+                                      {value.spPosition}
+                                    </span>
                                     <div
                                       className={`${gradeValue(value.spGrade)}`}
                                       key={index}
@@ -359,9 +327,12 @@ export default function MatchResult(props) {
                                 </div>
                               </div>
                               <div className="PlayerInfoContainer">
-                                <span className="PlayerPosition">
-                                  [{value.spPosition}]
-                                </span>
+                                <img
+                                  src={value.seasonImg}
+                                  alt="season"
+                                  height="15px"
+                                  className="SeasonImg"
+                                />
                                 <span className="PlayerName">{value.name}</span>
                               </div>
                             </div>
