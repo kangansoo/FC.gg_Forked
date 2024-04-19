@@ -4,7 +4,7 @@
   align-items: center;
   width: 100px;
   position: absolute;
-  margin-top: 530px;
+  margin-top: 600px;
   margin-left: 40px;
 }
 .CombinedDataContainerSW {
@@ -13,7 +13,7 @@
   align-items: center;
   width: 100px;
   position: absolute;
-  margin-top: 440px;
+  margin-top: 470px;
   margin-left: 40px;
 }
 .CombinedDataContainerRWB {
@@ -22,7 +22,7 @@
   align-items: center;
   width: 100px;
   position: absolute;
-  margin-top: 340px;
+  margin-top: 420px;
   margin-left: 430px;
 }
 .CombinedDataContainerRB {
@@ -31,7 +31,7 @@
   align-items: center;
   width: 100px;
   position: absolute;
-  margin-top: 440px;
+  margin-top: 510px;
   margin-left: 430px;
 }
 .CombinedDataContainerRCB {
@@ -40,7 +40,7 @@
   align-items: center;
   width: 100px;
   position: absolute;
-  margin-top: 460px;
+  margin-top: 510px;
   margin-left: 220px;
 }
 .CombinedDataContainerCB {
@@ -49,7 +49,7 @@
   align-items: center;
   width: 100px;
   position: absolute;
-  margin-top: 460px;
+  margin-top: 510px;
   margin-left: 40px;
 }
 .CombinedDataContainerLCB {
@@ -58,7 +58,7 @@
   align-items: center;
   width: 100px;
   position: absolute;
-  margin-top: 460px;
+  margin-top: 510px;
   margin-left: -140px;
 }
 .CombinedDataContainerLB {
@@ -67,7 +67,7 @@
   align-items: center;
   width: 100px;
   position: absolute;
-  margin-top: 440px;
+  margin-top: 510px;
   margin-left: -360px;
 }
 .CombinedDataContainerLWB {
@@ -76,7 +76,7 @@
   align-items: center;
   width: 100px;
   position: absolute;
-  margin-top: 340px;
+  margin-top: 420px;
   margin-left: -360px;
 }
 .CombinedDataContainerRDM {
@@ -86,7 +86,7 @@
   width: 100px;
   position: absolute;
   margin-top: 360px;
-  margin-left: 220px;
+  margin-left: 240px;
 }
 .CombinedDataContainerCDM {
   display: flex;
@@ -94,7 +94,7 @@
   align-items: center;
   width: 100px;
   position: absolute;
-  margin-top: 390px;
+  margin-top: 360px;
   margin-left: 40px;
 }
 .CombinedDataContainerLDM {
@@ -104,7 +104,7 @@
   width: 100px;
   position: absolute;
   margin-top: 360px;
-  margin-left: -140px;
+  margin-left: -160px;
 }
 .CombinedDataContainerRM {
   display: flex;
@@ -112,7 +112,7 @@
   align-items: center;
   width: 100px;
   position: absolute;
-  margin-top: 240px;
+  margin-top: 220px;
   margin-left: 430px;
 }
 .CombinedDataContainerRCM {
@@ -121,8 +121,8 @@
   align-items: center;
   width: 100px;
   position: absolute;
-  margin-top: 260px;
-  margin-left: 220px;
+  margin-top: 280px;
+  margin-left: 240px;
 }
 .CombinedDataContainerCM {
   display: flex;
@@ -130,7 +130,7 @@
   align-items: center;
   width: 100px;
   position: absolute;
-  margin-top: 320px;
+  margin-top: 280px;
   margin-left: 40px;
 }
 .CombinedDataContainerLCM {
@@ -139,8 +139,8 @@
   align-items: center;
   width: 100px;
   position: absolute;
-  margin-top: 260px;
-  margin-left: -140px;
+  margin-top: 280px;
+  margin-left: -160px;
 }
 .CombinedDataContainerLM {
   display: flex;
@@ -148,7 +148,7 @@
   align-items: center;
   width: 100px;
   position: absolute;
-  margin-top: 240px;
+  margin-top: 220px;
   margin-left: -360px;
 }
 .CombinedDataContainerRAM {
@@ -157,8 +157,8 @@
   align-items: center;
   width: 100px;
   position: absolute;
-  margin-top: 190px;
-  margin-left: 230px;
+  margin-top: 180px;
+  margin-left: 240px;
 }
 .CombinedDataContainerCAM {
   display: flex;
@@ -166,7 +166,7 @@
   align-items: center;
   width: 100px;
   position: absolute;
-  margin-top: 210px;
+  margin-top: 180px;
   margin-left: 40px;
 }
 .CombinedDataContainerLAM {
@@ -175,8 +175,8 @@
   align-items: center;
   width: 100px;
   position: absolute;
-  margin-top: 190px;
-  margin-left: -140px;
+  margin-top: 180px;
+  margin-left: -160px;
 }
 .CombinedDataContainerRF {
   display: flex;
@@ -193,7 +193,7 @@
   align-items: center;
   width: 100px;
   position: absolute;
-  margin-top: 110px;
+  margin-top: 90px;
   margin-left: 40px;
 }
 .CombinedDataContainerLF {
@@ -203,7 +203,7 @@
   width: 100px;
   position: absolute;
   margin-top: 90px;
-  margin-left: -160px;
+  margin-left: -170px;
 }
 .CombinedDataContainerRW {
   display: flex;
@@ -250,3 +250,32 @@
   margin-top: 50px;
   margin-left: -360px;
 }
+
+.CombinedDataContainerGK:hover{z-index:999;}
+.CombinedDataContainerSW:hover{z-index:999;}
+.CombinedDataContainerRWB:hover{z-index:999;}
+.CombinedDataContainerRB:hover{z-index:999;}
+.CombinedDataContainerRCB:hover{z-index:999;}
+.CombinedDataContainerCB:hover{z-index:999;}
+.CombinedDataContainerLCB:hover{z-index:999;}
+.CombinedDataContainerLB:hover{z-index:999;}
+.CombinedDataContainerLWB:hover{z-index:999;}
+.CombinedDataContainerRDM:hover{z-index:999;}
+.CombinedDataContainerCDM:hover{z-index:999;}
+.CombinedDataContainerLDM:hover{z-index:999;}
+.CombinedDataContainerRM:hover{z-index:999;}
+.CombinedDataContainerRCM:hover{z-index:999;}
+.CombinedDataContainerCM:hover{z-index:999;}
+.CombinedDataContainerLCM:hover{z-index:999;}
+.CombinedDataContainerLM:hover{z-index:999;}
+.CombinedDataContainerRAM:hover{z-index:999;}
+.CombinedDataContainerCAM:hover{z-index:999;}
+.CombinedDataContainerLAM:hover{z-index:999;}
+.CombinedDataContainerRF:hover{z-index:999;}
+.CombinedDataContainerCF:hover{z-index:999;}
+.CombinedDataContainerLF:hover{z-index:999;}
+.CombinedDataContainerRW:hover{z-index:999;}
+.CombinedDataContainerRS:hover{z-index:999;}
+.CombinedDataContainerST:hover{z-index:999;}
+.CombinedDataContainerLS:hover{z-index:999;}
+.CombinedDataContainerLW:hover{z-index:999;}
