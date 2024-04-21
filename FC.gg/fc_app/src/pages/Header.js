@@ -2,6 +2,7 @@ import React from 'react'
 import '../css/Header.css'
 import fconlinelogo from '../assets/fconlinelogo.png'
 import logo from '../assets/logo.png'
+import ReadyModal from '../components/ReadyModal.js'
 
 export default function Header() {
   return (
@@ -16,7 +17,8 @@ export default function Header() {
           </a>
         </div>
         <div className="HeaderCategoryContainer">
-          <strong className="HeaderCategory">랭커 분석</strong>
+          {/* <strong className="HeaderCategory">랭커 분석</strong> */}
+          <ReadyModal />
         </div>
         <div className='LogoContainer'>
           <img src={logo} alt="logo" className='Logo'/>
