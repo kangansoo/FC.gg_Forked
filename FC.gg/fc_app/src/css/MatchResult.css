@@ -174,7 +174,7 @@
   flex-direction: row;
   align-items: center;
   justify-content: center;
-  font-size: 13px;
+  font-size: 12px;
   width: 150px;
   margin-top: 5px;
 }
@@ -182,8 +182,18 @@
 .PlayerPosition {
   margin-top: -8px;
 }
+
 .PlayerName{
   margin-top: -15px;
+  text-shadow: -1px 0px #616161, 0px 1px #616161, 1px 0px #616161, 0px -1px #616161;
+}
+
+.PlayerStatusBallContainer{
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  margin-top: -10px;
+  margin-bottom: 5px;
 }
 
 .PlayerStatusGoal {
@@ -192,19 +202,21 @@
 }
 
 .PlayerStatus {
-  position: absolute;
-  margin-top: -18px;
-  margin-left: -50px;
   color: white;
+  background-color: rgba(98, 103, 109, 0.7);
+  border-radius: 5px;
+  height: 20px;
+  text-align: center;
+  line-height: 18px;
+  padding: 0 3px;
 }
 
 .BallContainer {
-  position: absolute;
   display: flex;
   flex-direction: row;
   gap: 3px;
-  margin-top:-9px;
-  margin-left: -30px;
+  margin-top: 2.5px;
+  margin-left: 3px;
 }
 
 .SeasonImg {
@@ -225,6 +237,7 @@
     display: flex;
     justify-content: center;
     align-items: center;
+    margin-top:-2px;
 }
 
 .goldText{
@@ -244,6 +257,7 @@
     display: flex;
     justify-content: center;
     align-items: center;
+    margin-top:-2px;
 }
 
 .silverText{
@@ -263,6 +277,7 @@
     display: flex;
     justify-content: center;
     align-items: center;
+    margin-top:-2px;
 }
 
 .bronzeText{
@@ -282,6 +297,7 @@
     display: flex;
     justify-content: center;
     align-items: center;
+    margin-top:-2px;
 }
 
 .normalText{

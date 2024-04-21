@@ -126,14 +126,28 @@ export default function MatchResult(props) {
                             >
                               <div className="PlayerDetailContainer">
                                 <div className="PlayerImgContainer">
-                                  <span className="PlayerStatus">
-                                    ★ {value.status}
-                                  </span>
+                                  <div className="PlayerStatusBallContainer">
+                                    <span className="PlayerStatus">
+                                      ★{value.status}
+                                    </span>
+                                    <div className="BallContainer">
+                                      {[...Array(value.goal)].map((_, index) => (
+                                        <img
+                                          key={index}
+                                          src={ball}
+                                          alt="ball"
+                                          width="15px"
+                                          height="15px"
+                                          className="Ball"
+                                        />
+                                      ))}
+                                    </div>
+                                  </div>
                                   <div className="img-wrapper">
                                     <img
                                       src={`https://fco.dn.nexoncdn.co.kr/live/externalAssets/common/playersAction/p${value.spId}.png`}
                                       alt="img"
-                                      height="40px"
+                                      height="50px"
                                       onError={(e) => {
                                         e.target.src = `https://fco.dn.nexoncdn.co.kr/live/externalAssets/common/players/p${value.spid}.png`;
                                       }}
@@ -155,20 +169,6 @@ export default function MatchResult(props) {
                                         {value.spGrade}
                                       </strong>
                                     </div>
-                                  </div>
-                                </div>
-                                <div className="PlayerStatusGoal">
-                                  <div className="BallContainer">
-                                    {[...Array(value.goal)].map((_, index) => (
-                                      <img
-                                        key={index}
-                                        src={ball}
-                                        alt="ball"
-                                        width="15px"
-                                        height="15px"
-                                        className="Ball"
-                                      />
-                                    ))}
                                   </div>
                                 </div>
                               </div>
@@ -277,17 +277,28 @@ export default function MatchResult(props) {
                             >
                               <div className="PlayerDetailContainer">
                                 <div className="PlayerImgContainer">
-                                    {value.mvp?(
-                                      <span className="PlayerStatus">👑 {value.status}</span>
-                                    ):(
-                                      <span className="PlayerStatus">★ {value.status}</span>
-                                    )
-                                  }
+                                  <div className="PlayerStatusBallContainer">
+                                    <span className="PlayerStatus">
+                                      ★{value.status}
+                                    </span>
+                                    <div className="BallContainer">
+                                      {[...Array(value.goal)].map((_, index) => (
+                                        <img
+                                          key={index}
+                                          src={ball}
+                                          alt="ball"
+                                          width="15px"
+                                          height="15px"
+                                          className="Ball"
+                                        />
+                                      ))}
+                                    </div>
+                                  </div>
                                   <div className="img-wrapper">
                                     <img
                                       src={`https://fco.dn.nexoncdn.co.kr/live/externalAssets/common/playersAction/p${value.spId}.png`}
                                       alt="img"
-                                      height="40px"
+                                      height="60px"
                                       onError={(e) => {
                                         e.target.src = `https://fco.dn.nexoncdn.co.kr/live/externalAssets/common/players/p${value.spid}.png`;
                                       }}
@@ -309,20 +320,6 @@ export default function MatchResult(props) {
                                         {value.spGrade}
                                       </strong>
                                     </div>
-                                  </div>
-                                </div>
-                                <div className="PlayerStatusGoal">
-                                  <div className="BallContainer">
-                                    {[...Array(value.goal)].map((_, index) => (
-                                      <img
-                                        key={index}
-                                        src={ball}
-                                        alt="ball"
-                                        width="15px"
-                                        height="15px"
-                                        className="Ball"
-                                      />
-                                    ))}
                                   </div>
                                 </div>
                               </div>
