@@ -4,10 +4,13 @@ import axios from "axios";
 // import getRankImg from './getRankImg';
 
 export default function UserInfo(props) {
-  const { nickname, ouid } = props;
+  const { nickname, ouid, matchdetail } = props;
   const [userInfo, setUserInfo] = useState([]);
   const [userRank, setUserRank] = useState("");
   const [rankImg, setRankImg] = useState('');
+  const [matches, setMatches] = useState([]);
+  const [cntVictory, setCntVictory] = useState(0);
+  const [isInitialDataLoaded, setIsInitialDataLoaded] = useState(false);
 
   console.log("ouid :", ouid);
   useEffect(() => {
@@ -39,6 +42,18 @@ export default function UserInfo(props) {
   console.log('userRank: ', userRank);
   console.log('rankImg: ', userInfo[2]);
 
+  useEffect(() => {
+    if (matchdetail) {
+      // 최초 10개의 데이터만 받아오는 경우 승리 횟수 계산
+      const initialMatches = Object.entries(matchdetail)
+        .slice(0, 10) // 최초 10개의 데이터만 사용
+        .map(([id, data]) => data);
+      const initialVictories = initialMatches.filter(match => match.my_status === "승").length;
+      setCntVictory(initialVictories);
+      setMatches(initialMatches);
+    }
+  }, [matchdetail]);
+
   return (
     <div className="UserInfoBackground">
 
@@ -47,6 +62,10 @@ export default function UserInfo(props) {
       <div className="UserInfoContainer">
         <div className="UserNickname">{nickname}</div>
         <div className="UserLevel">레벨 : {userInfo[0]}</div>
+      </div>
+      <div className="UserRateContainer">
+        <p>최근 10경기 승률</p>
+        <p>{cntVictory/10}%</p>
       </div>
       <div className="UserGradeContainer">
         <div className="UserHighestGrade">최고등급 : {userInfo[1]}</div>

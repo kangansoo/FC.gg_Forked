@@ -1,4 +1,4 @@
-@keyframes waveAnimation {
+/* @keyframes waveAnimation {
     0% {
       background-color: #5B5B5B;
     }
@@ -8,7 +8,7 @@
     100% {
       background-color: #5B5B5B;
     }
-  }
+  } */
   
   .UserInfoBackground {
     box-shadow: 0px 4px 4px #00000040;
@@ -16,7 +16,8 @@
     border-radius: 15px;
     height: 220px;
     margin-top: 40px;
-    width: 1280px;
+    width: 1240px;
+    padding-right: 40px;
     background-image: linear-gradient(to right, #5B5B5B, #000000);
     animation: waveAnimation 3s linear infinite;
     display: flex;
@@ -77,8 +78,7 @@
     flex-direction: column;
     flex-wrap: wrap;
     justify-content: center;
-    margin-left:1000px;
-    position: absolute;
+    margin-left: auto;
 }
 
 .UserHighestGrade {
