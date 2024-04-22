@@ -211,6 +211,16 @@
   padding: 0 3px;
 }
 
+.PlayerStatusMVP {
+  color: white;
+  background-color: rgba(255, 215, 0, 0.8);
+  border-radius: 5px;
+  height: 20px;
+  text-align: center;
+  line-height: 18px;
+  padding: 0 3px;
+}
+
 .BallContainer {
   display: flex;
   flex-direction: row;
