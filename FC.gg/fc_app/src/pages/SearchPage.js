@@ -10,6 +10,7 @@ export default function SearchPage() {
     const [searchText, setSearchText] = useState("");
     const [notice, setNotice] = useState("");
     const [urgentNotice, setUrgentNotice] = useState("");
+    const [noticeError, setNoticeError] = useState("");
     const onChange = (e) => {
         e.preventDefault();
         setSearchText(e.target.value);
@@ -33,6 +34,7 @@ export default function SearchPage() {
                 console.log(response);
             } catch (error) {
                 console.error('알림을 가져오는 중 오류가 발생했습니다:', error);
+                setNoticeError("공지사항을 불러올 수 없습니다.")
             }
         };
         getNotice();
@@ -60,21 +62,18 @@ export default function SearchPage() {
                         urgentNotice.map((data, index) => (
                             <li className="urgentNoticeList" key={index}><span className='UrgentNoticeCategory'>{data.category}</span>: <a href={data.href} target="_black" className='NoticeAnker'><strong>{data.title}</strong></a><span> ({data.date})</span></li>
 
-                        )):(<p>데이터를 불러오는데 실패하였습니다.</p>)
+                        )):(<p>{noticeError}</p>)
                     }
                     {
                         notice ?
                         notice.map((data, index)=>(
                             <li className='NoticeList' key={index}>{data.category}: <a href={data.href} target="_black"  className='NoticeAnker'>{data.title}</a><span> ({data.date})</span></li>
-                        )):(<p>데이터를 불러오는데 실패하였습니다.</p>)
+                        )):(<p>{noticeError}</p>)
                     }
                 </ul>
             </div>
             <div className='LogosContainer'>
                 <img src={leaguelogos} alt="leaguelogos" className='LeagueLogos' />
-            </div>
-            <div className="EnhancementGradeContainer">
-                <strong className="EnhancementGrade">1</strong>
             </div>
         </div>
     </div>

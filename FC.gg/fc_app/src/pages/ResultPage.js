@@ -198,7 +198,7 @@ export default function Screen() {
             <div className="NoUser"><strong>존재하지 않는 유저입니다.</strong></div>
           ):(
             <>
-              <UserInfo nickname={nickname} ouid={ouid}/>
+              <UserInfo nickname={nickname} ouid={ouid} matchdetail={matchdetail}/>
               <div className="MatchTypeConatiner">
               <div className={selected === "publicGame" ? "MatchTypeTextselected" : "MatchTypeText"} onClick={() => { publicGame(); setSelected("publicGame"); }}>공식경기</div>
                 <div className={selected === "leagueGame" ? "MatchTypeTextselected" : "MatchTypeText"} onClick={() => { leagueGame(); setSelected("leagueGame"); }}>리그친선</div>
