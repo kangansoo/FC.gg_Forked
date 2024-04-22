@@ -133,14 +133,16 @@ export default function MatchResult(props) {
                                     </span>
                                     <div className="BallContainer">
                                       {[...Array(value.goal)].map((_, index) => (
-                                        <img
-                                          key={index}
-                                          src={ball}
-                                          alt="ball"
-                                          width="15px"
-                                          height="15px"
-                                          className="Ball"
-                                        />
+                                        <div className="BallWrapper">
+                                          <img
+                                            key={index}
+                                            src={ball}
+                                            alt="ball"
+                                            width="15px"
+                                            height="15px"
+                                            className="Ball"
+                                          />
+                                        </div>
                                       ))}
                                     </div>
                                   </div>
