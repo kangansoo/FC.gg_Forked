@@ -214,9 +214,23 @@
 .BallContainer {
   display: flex;
   flex-direction: row;
-  gap: 3px;
-  margin-top: 2.5px;
   margin-left: 3px;
+}
+
+.BallWrapper{
+  width:17px;
+  height:17px;
+  border-radius: 50%;
+  background-color: white;
+  margin-right: -10px;
+}
+
+.Ball{
+  object-fit: cover;
+  display:inline;
+  margin-top: 1px;
+  margin-left: 1px;
+  position: absolute;
 }
 
 .SeasonImg {
