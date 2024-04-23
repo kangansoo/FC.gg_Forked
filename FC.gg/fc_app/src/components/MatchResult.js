@@ -62,7 +62,7 @@ export default function MatchResult(props) {
                       : data.my_status === "무"
                       ? "rgba(212, 212, 212, 0.8)" // 무승부인 경우에 해당하는 색상
                       : "rgba(255, 132, 132, 0.8)",
-                      height: expandedTabs[id] ? "200px" : "100px"
+                      height: expandedTabs[id] ? "180px" : "100px"
                 }}
                 onClick={() => toggleExpand(id)}
               >
@@ -102,12 +102,16 @@ export default function MatchResult(props) {
                   expandedTabs[id] ? (
                     <div className="GoalPlayersContainer">
                       <div className='MyGoalPlayers'>
-                        {data.my_goaltime&&data.my_goaltime.map((value, index) => (
+                        {data.my_goaltime&&data.my_goaltime
+                          .sort((a, b) => a.goalTime - b.goalTime)
+                          .map((value, index) => (
                           <span key={index}>{value.goalTime}' {value.name}</span>
                         ))}
                       </div>
                       <div className='OtherGoalPlayers'>
-                        {data.other_goaltime&&data.other_goaltime.map((value, index) => (
+                        {data.other_goaltime&&data.other_goaltime
+                          .sort((a, b) => a.goalTime - b.goalTime)
+                          .map((value, index) => (
                           <span key={index}>{value.name} {value.goalTime}'</span>
                         ))}
                       </div>
@@ -176,7 +180,6 @@ export default function MatchResult(props) {
                                     <img
                                       src={`https://fco.dn.nexoncdn.co.kr/live/externalAssets/common/playersAction/p${value.spId}.png`}
                                       alt="img"
-                                      height="50px"
                                       onError={(e) => {
                                         e.target.src = `https://fco.dn.nexoncdn.co.kr/live/externalAssets/common/players/p${value.spid}.png`;
                                       }}
