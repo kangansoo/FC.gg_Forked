@@ -5,7 +5,7 @@ import loadinggif from "../assets/loading.gif";
 import ball from "../assets/ball.png";
 import keyboard from "../assets/keyboard.png";
 import consoleImg from "../assets/console.png";
-import {position} from '../components/Position.js';
+import { position } from "../components/Position.js";
 
 export default function MatchResult(props) {
   const { nickname, matchdetail, loading, increaseOffset, moreLoading } = props;
@@ -14,13 +14,13 @@ export default function MatchResult(props) {
   const toggleExpand = (tab) => {
     setExpandedTabs((prevTabs) => ({
       ...prevTabs,
-      [tab]: !prevTabs[tab]
+      [tab]: !prevTabs[tab],
     }));
   };
 
-  useEffect(()=>{
+  useEffect(() => {
     setExpandedTabs({});
-  }, [loading])
+  }, [loading]);
 
   const gradeValue = (x) => {
     if (x == 1) {
@@ -34,7 +34,7 @@ export default function MatchResult(props) {
     }
   };
 
-  console.log("매치 디테일:", matchdetail)
+  console.log("매치 디테일:", matchdetail);
   return (
     <div className="MatchResultBackground">
       <div className="RealOuterContainer">
@@ -389,13 +389,17 @@ export default function MatchResult(props) {
           ))
       ) : (<div>경기 데이터가 존재하지 않습니다.</div>)}
       </div>
-      {!loading && matchdetail !== null && (
-        !moreLoading ? (
-          <div className="SeeMore" onClick={increaseOffset}><strong>더 보기</strong></div>
+      {!loading &&
+        matchdetail !== null &&
+        (!moreLoading ? (
+          <div className="SeeMore" onClick={increaseOffset}>
+            <strong>더 보기</strong>
+          </div>
         ) : (
-          <div className="SeeMore"><img src={loadinggif} alt="moreloading" width="50px" /></div>
-        )
-      )}
+          <div className="SeeMore">
+            <img src={loadinggif} alt="moreloading" width="50px" />
+          </div>
+        ))}
     </div>
   );
 }

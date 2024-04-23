@@ -1,4 +1,4 @@
-node_modules
+node_modules/
 # 가상 환경
 venv/
 

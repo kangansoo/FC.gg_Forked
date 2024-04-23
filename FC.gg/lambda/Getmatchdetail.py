@@ -4,7 +4,41 @@ import urllib.parse
 import boto3
 from datetime import datetime
 
+def Goaltime(goal_time) :
+        if goal_time >= 0 and goal_time < 2**24:
+            return goal_time//60
+        elif goal_time >= 2**24 and goal_time < (2**25)-1:
+            return (goal_time - 2**24 + 45*60)//60
+        elif goal_time >= 2**25 and goal_time < (2**27)-1:
+            return (goal_time - 2**25 + 90*60)//60
+        elif goal_time >= 2**27 and goal_time < 2**28-1:
+            return (goal_time - 2**27 + 105*60)//60
+        elif goal_time >= 2**28 and goal_time < 2**29-1:
+            return '승부차기', (goal_time - 2**28 + 120*60)//60
+        else:
+            
+            return None  # 예외 처리: 범위를 벗어나는 경우
+        
+def change_shot_type(integer):
+    shot_types = {
+        1: "일반 슛",
+        2: "감아차기",
+        3: "헤더",
+        4: "로빙슛",
+        5: "플레어 슛",
+        6: "낮은 슛",
+        7: "발리슛",
+        8: "프리킥",
+        9: "패널티킥",
+        10: "무회전슛",
+        11: "바이시클킥",
+        12: "파워슛"
+    }
+    return shot_types.get(integer, "Unknown")
+
 def Getmatchdetail(event, context):
+
+        
     try:
         api_key = "live_f15f9ee815ab4be133e13c2028780bfcd5bc103307d3c99fde3f5fad2dad4971c39c09e62f505a27384865aadbc8ebb7"
         match_id = event["queryStringParameters"]["matchid"]
@@ -40,6 +74,19 @@ def Getmatchdetail(event, context):
             my_offside = data_dict['matchInfo'][0]['matchDetail']['offsideCount']
             my_passtry = data[0]['pass']['passTry']
             my_passsuc = data[0]['pass']['passSuccess']
+            my_goalTime = []
+            my_foul = data[0]['matchDetail']['foul']
+            
+            for item in data[0]['shootDetail']:
+                if item["result"] == 3:
+                    transformed_item = {
+                        "goalTime": Goaltime(item["goalTime"]),
+                        "x": item["x"],
+                        "y": item["y"],
+                        "type": item["type"],
+                        "spId": item["spId"]
+                    }
+                    my_goalTime.append(transformed_item)
 
             other_player = data_dict['matchInfo'][1]['player']
             other_status = data_dict['matchInfo'][1]['matchDetail']['matchResult']
@@ -56,6 +103,19 @@ def Getmatchdetail(event, context):
             other_offside = data_dict['matchInfo'][1]['matchDetail']['offsideCount']
             other_passtry = data[1]['pass']['passTry']
             other_passsuc = data[1]['pass']['passSuccess']
+            other_goalTime = []
+            other_foul = data[1]['matchDetail']['foul']
+            
+            for item in data[1]['shootDetail']:
+                if item["result"] == 3:
+                    transformed_item = {
+                        "goalTime": Goaltime(item["goalTime"]),
+                        "x": item["x"],
+                        "y": item["y"],
+                        "type": item["type"],
+                        "spId": item["spId"]
+                    }
+                    other_goalTime.append(transformed_item)
 
         else :
             my_player = data_dict['matchInfo'][1]['player']
@@ -72,7 +132,18 @@ def Getmatchdetail(event, context):
             my_offside = data_dict['matchInfo'][1]['matchDetail']['offsideCount']
             my_passtry = data[1]['pass']['passTry']
             my_passsuc = data[1]['pass']['passSuccess']
-
+            my_goalTime = []
+            my_foul = data[1]['matchDetail']['foul']
+            for item in data[1]['shootDetail']:
+                if item["result"] == 3:
+                    transformed_item = {
+                        "goalTime": Goaltime(item["goalTime"]),
+                        "x": item["x"],
+                        "y": item["y"],
+                        "type": item["type"],
+                        "spId": item["spId"]
+                    }
+                    my_goalTime.append(transformed_item)
 
 
             other_player = data_dict['matchInfo'][0]['player']
@@ -90,6 +161,18 @@ def Getmatchdetail(event, context):
             other_offside = data_dict['matchInfo'][0]['matchDetail']['offsideCount']
             other_passtry = data[0]['pass']['passTry']
             other_passsuc = data[0]['pass']['passSuccess']
+            other_goalTime = []
+            other_foul = data[0]['matchDetail']['foul']
+            for item in data[0]['shootDetail']:
+                if item["result"] == 3:
+                    transformed_item = {
+                        "goalTime": Goaltime(item["goalTime"]),
+                        "x": item["x"],
+                        "y": item["y"],
+                        "type": item["type"],
+                        "spId": item["spId"]
+                    }
+                    other_goalTime.append(transformed_item)
 
 
         position_mapping = {
@@ -164,8 +247,99 @@ def Getmatchdetail(event, context):
             my_offside = 0
             my_passtry = 0
             my_passsuc = 0
-            
+            my_goalTime = 0
+
+        if other_status == '오류' : 
+            other_player = 0
+            other_status = 0
+            other_score = 0
+            other_total_shoot = 0
+            other_effective_shoot = 0
+            other_rating = 0
+            other_yellow = 0
+            other_red = 0
+            other_controller = 0
+            other_possession = 0
+            other_dribble = 0
+            other_offside = 0
+            other_passtry = 0
+            other_passsuc = 0
+            other_goalTime = 0
         print("db 조회 완료")
+        for goal in my_goalTime:
+            goal["shoot_type"] = change_shot_type(goal["type"])
+            for player in my_data:
+                if goal["spId"] == player["id"]:
+                    goal["name"] = player["name"]
+                    break
+                
+                    
+            else:
+                goal["name"] = "Unknown"
+
+        for goal in other_goalTime:
+            goal["shoot_type"] = change_shot_type(goal["type"])
+            for player in other_data:
+                if goal["spId"] == player["id"]:
+                    goal["name"] = player["name"]
+                    break
+            else:
+                goal["name"] = "Unknown"
+
+        if len(my_goalTime) == 0 :
+                my_goalTime = None
+        if len(other_goalTime) == 0 :
+                other_goalTime = None
+
+        max_rating = 0
+        max_spId = None  # 변수를 초기화해줍니다.
+        mvp_player = None
+        if my_status == '승':
+            for player in my_player_data:
+                status = player.get("status")
+                if status is not None and status > max_rating:
+                    max_rating = status
+                    max_spId = player["spId"]
+            for player in my_data:
+                if max_spId == player["id"] and max_spId is not None:
+                    mvp_player = player['name'], nickname
+                    break
+
+        elif my_status == '패':
+            for player in other_player_data:
+                status = player.get("status")
+                if status is not None and status > max_rating:
+                    max_rating = status
+                    max_spId = player["spId"]
+            for player in other_data:
+                if max_spId == player["id"] and max_spId is not None:
+                    mvp_player = player['name'], other_nick
+                    break
+
+        elif my_status == '무':
+            for player in my_player_data:
+                status = player.get("status")
+                if status is not None and status > max_rating:
+                    max_rating = status
+                    max_spId = player["spId"]
+            for player in my_data:
+                if max_spId == player["id"] and max_spId is not None:
+                    mvp_player = player['name'], nickname
+                    break
+            for player in other_player_data:
+                status = player.get("status")
+                if status is not None and status > max_rating:
+                    max_rating = status
+                    max_spId = player["spId"]
+            for player in other_data:
+                if max_spId == player["id"] and max_spId is not None:
+                    mvp_player = player['name'], other_nick
+                    break
+            
+        else:
+            mvp_player = None
+        # 두 리스트의 최대 spId 값 중 더 큰 값을 추출
+
 
         return_data = {
             'match_date' : datetime.strptime((data_dict['matchDate'].replace('T', ' ')),'%Y-%m-%d %H:%M:%S').strftime('%Y-%m-%d %H:%M'),
@@ -185,6 +359,9 @@ def Getmatchdetail(event, context):
             'my_offside' : my_offside,
             'my_passtry' : my_passtry,
             'my_passsuc' : my_passsuc,
+            'my_goaltime' : my_goalTime,
+            'my_foul' : my_foul,
+            'mvp_player' : mvp_player,
 
             'other_player_data': other_player_data,
             'other_status': other_status,
@@ -201,7 +378,9 @@ def Getmatchdetail(event, context):
             'other_dribble' : other_dribble,
             'other_offside' : other_offside,
             'other_passtry' : other_passtry,
-            'other_passsuc' : other_passsuc 
+            'other_passsuc' : other_passsuc,
+            'other_goaltime' : other_goalTime,
+            'other_foul' : other_foul 
         }
 
         return return_data
