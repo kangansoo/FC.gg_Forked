@@ -6,6 +6,7 @@ import { useNavigate } from 'react-router-dom';
 import axios from "axios";
 import MatchResult from "../components/MatchResult";
 import UserInfo from '../components/UserInfo';
+import MatchStats from '../components/MatchStats';
 
 export default function Screen() {
   const navigate = useNavigate();
@@ -137,12 +138,12 @@ export default function Screen() {
           // "더 보기" 버튼인 경우: 새로운 데이터만 추가
           setMatchdetail(prevMatchDetail => [...prevMatchDetail, ...newMatchData]);
         }
-        setMoreLoading(false);
         console.log("matchdetail :", matchdetail)
       } catch (error) {
         console.error('Error:', error);
       } finally {
         setLoading(false);
+        setMoreLoading(false);
       }
     }
     getMatchdetail();
@@ -205,6 +206,7 @@ export default function Screen() {
                 <div className={selected === "directorMode" ? "MatchTypeTextselected" : "MatchTypeText"} onClick={() => { directorMode(); setSelected("directorMode"); }}>감독모드</div>
                 <div className={selected === "classicMode" ? "MatchTypeTextselected" : "MatchTypeText"} onClick={() => { classicMode(); setSelected("classicMode"); }}>클래식 1vs1</div>
               </div>
+              <MatchStats loading={loading} matchdetail={matchdetail} nickname={nickname}/>
               <MatchResult nickname={nickname} matchdetail={matchdetail} loading={loading} increaseOffset={increaseOffset} moreLoading={moreLoading} />
             </>
           )

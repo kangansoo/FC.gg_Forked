@@ -44,6 +44,7 @@ export default function MatchResult(props) {
           alt="로딩"
           width="50px"
           className="MatchResultLoading"
+          style={{marginTop:"60px"}}
         />
       ) : matchdetail !== null ? (
         Object.entries(matchdetail)
@@ -134,7 +135,6 @@ export default function MatchResult(props) {
                           // const myTopPlayer = combinedData[0];
                           // console.log("myTopPlayer", myTopPlayer.status);
                           console.log("combinedData :", combinedData);
-                          console.log("data.mvp_player", data.mvp_player);
                           return combinedData.map((value, index) => (
                             <div
                               key={index}
