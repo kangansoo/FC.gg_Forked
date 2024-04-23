@@ -33,6 +33,7 @@
   cursor: pointer;
   overflow: hidden;
   margin-top: 10px;
+  transition: height 0.3s ease-in-out;
 }
 
 .MatchDate{
@@ -62,6 +63,31 @@
 
 .Nickname{
     width: 180px;
+}
+
+.GoalPlayersContainer{
+  display: flex;
+  flex-direction: row;
+  width: 450px;
+  justify-content: space-between;
+  margin-top: 10px;
+}
+
+.MyGoalPlayers{
+  display:flex;
+  flex-direction: column;
+  font-size: 12px;
+  text-align: right;
+  width: 150px;
+  flex-wrap: nowrap;
+}
+
+.OtherGoalPlayers{
+  display:flex;
+  flex-direction: column;
+  font-size: 12px;
+  width: 150px;
+  flex-wrap: nowrap;
 }
 
 .MatchResuiltDetailContainer {
@@ -193,7 +219,7 @@
   flex-direction: row;
   justify-content: center;
   margin-top: -10px;
-  margin-bottom: 5px;
+  margin-left: -30px;
 }
 
 .PlayerStatusGoal {
@@ -204,27 +230,49 @@
 .PlayerStatus {
   color: white;
   background-color: rgba(98, 103, 109, 0.7);
-  border-radius: 5px;
-  height: 20px;
+  border-radius: 10px;
+  height: 18px;
   text-align: center;
   line-height: 18px;
-  padding: 0 3px;
+  padding: 0 5px;
+  font-size: 12px;
 }
 
 .PlayerStatusMVP {
   color: white;
   background-color: rgba(255, 215, 0, 0.8);
-  border-radius: 5px;
-  height: 20px;
+  border-radius: 10px;
+  height: 18px;
   text-align: center;
   line-height: 18px;
-  padding: 0 3px;
+  padding-left: 5px;
+  padding-right: 3px;
+  font-size: 12px;
 }
 
 .BallContainer {
-  display: flex;
   flex-direction: row;
-  margin-left: 3px;
+  height: 20px;
+  margin-left: 10px;
+  margin-top: -4px;
+}
+
+.BallWrapper{
+  width: 17px;
+  height: 17px;
+  background-color: white;
+  border-radius: 50%;
+  display: inline-block;
+  position:relative;
+  margin-right: -13px;
+}
+
+.Ball{
+  top:0;
+  left:0;
+  position:absolute;
+  margin-top: 1px;
+  margin-left: 1px;
 }
 
 .BallWrapper{
