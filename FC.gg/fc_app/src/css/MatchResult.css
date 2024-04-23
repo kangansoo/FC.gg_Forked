@@ -189,8 +189,8 @@
 }
 
 .img-wrapper {
-  width: 50px;
-  height: 50px;
+  width: 55px;
+  height: 55px;
 }
 
 .img-wrapper img {
@@ -230,11 +230,13 @@
 }
 
 .PlayerStatusBallContainer{
+  width: auto;
   display: flex;
   flex-direction: row;
   justify-content: center;
   margin-top: -10px;
-  margin-left: -30px;
+  margin-left: -10px;
+  margin-bottom: 15px;
 }
 
 .PlayerStatusGoal {
@@ -251,6 +253,8 @@
   line-height: 18px;
   padding: 0 5px;
   font-size: 12px;
+  position: absolute;
+  margin-left: -25px;
 }
 
 .PlayerStatusMVP {
@@ -263,13 +267,17 @@
   padding-left: 5px;
   padding-right: 3px;
   font-size: 12px;
+  position: absolute;
+  margin-left: -35px;
 }
 
 .BallContainer {
   flex-direction: row;
   height: 20px;
-  margin-left: 10px;
+  margin-left: 35px;
   margin-top: -4px;
+  position: absolute;
+
 }
 
 .BallWrapper{
@@ -296,14 +304,6 @@
   border-radius: 50%;
   background-color: white;
   margin-right: -10px;
-}
-
-.Ball{
-  object-fit: cover;
-  display:inline;
-  margin-top: 1px;
-  margin-left: 1px;
-  position: absolute;
 }
 
 .SeasonImg {
