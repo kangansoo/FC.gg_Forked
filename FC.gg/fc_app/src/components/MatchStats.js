@@ -1,10 +1,12 @@
 import React, { useEffect, useState } from "react";
 import "../css/MatchStats.css";
+import DoughnutChart from './DoughnutChart.js';
 
 export default function MatchStats(props) {
   const { loading, matchdetail, nickname } = props;
   const [matches, setMatches] = useState([]);
   const [cntVictory, setCntVictory] = useState(0);
+  const [cntDraw, setCntDraw] = useState(0);
   const [cntDefeat, setCntDefeat] = useState(0);
   const [mvpPlayer, setMvpPlayer] = useState("");
   const [myScore, setMyScore] = useState(0);
@@ -67,6 +69,7 @@ export default function MatchStats(props) {
       });
       setCntVictory(initialVictories);
       setCntDefeat(initialDefeats);
+      setCntDraw(10-cntVictory-cntDefeat);
       setMatches(initialMatches);
       setMyScore(myTotalScore);
       setOtherScore(otherTotalScore);
@@ -82,27 +85,28 @@ export default function MatchStats(props) {
     <>
       {matchdetail && matchdetail !== null && !loading ? (
         <div className="MatchStatsBackground">
-          <div className="UserRateContainer">
+          <div className="UserStatsContainer">
             <p>최근 10경기 승률</p>
-            <p>{cntVictory * 10}%</p>
+            <p className="VictoryRate">{cntVictory * 10}%</p>
+            <DoughnutChart win={cntVictory} loss={cntDefeat} className="DoughnutChart"/>
           </div>
-          <div className="UserRateContainer">
+          <div className="UserStatsContainer">
             <p>최근 10경기 최다 MVP</p>
-            <p>{mvpPlayer}</p>
             <img
               src={`https://fco.dn.nexoncdn.co.kr/live/externalAssets/common/playersAction/p${spId}.png`}
               alt="img"
-              height="50px"
+              height="100px"
               onError={(e) => {
                 e.target.src = `https://fco.dn.nexoncdn.co.kr/live/externalAssets/common/players/p${spId}.png`;
               }}
             />
+            <p>{mvpPlayer}</p>
           </div>
-          <div className="UserRateContainer">
+          <div className="UserStatsContainer">
             <p>최근 10경기 득점</p>
             <p>{myScore}</p>
           </div>
-          <div className="UserRateContainer">
+          <div className="UserStatsContainer">
             <p>최근 10경기 실점</p>
             <p>{otherScore}</p>
           </div>

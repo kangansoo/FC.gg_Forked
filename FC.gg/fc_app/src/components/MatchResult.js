@@ -60,7 +60,7 @@ export default function MatchResult(props) {
                     data.my_status === "승"
                       ? "rgba(94, 139, 226, 0.8)"
                       : data.my_status === "무"
-                      ? "rgba(212, 212, 212, 0.8)" // 무승부인 경우에 해당하는 색상
+                      ? "rgba(255, 255, 255, 0.8)" // 무승부인 경우에 해당하는 색상
                       : "rgba(255, 132, 132, 0.8)",
                       height: expandedTabs[id] ? "180px" : "100px"
                 }}
