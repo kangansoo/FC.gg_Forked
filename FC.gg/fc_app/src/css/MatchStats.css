@@ -6,12 +6,14 @@
     display: flex;
     flex-direction: row;
     justify-content: center;
+    align-items: center;
     gap: 50px;
     color:rgba(255, 255, 255, 0.9);
     background-image: url('https://www.notion.so/image/https%3A%2F%2Fprod-files-secure.s3.us-west-2.amazonaws.com%2F3c4f954d-6328-44f1-b777-748fe3387d97%2Fd309dd38-85d1-44d7-a284-fa201d3a64e1%2FLovepik_com-361380209-nighttime-soccer-stadium-background_1.png?table=block&id=b36c9e7a-a5b4-4fe0-8892-27c42b006fb2&spaceId=3c4f954d-6328-44f1-b777-748fe3387d97&width=1420&userId=ce4b5975-c8e1-4e51-a9a3-5bcf4e95d98f&cache=v2');
     background-size: 100%;
     background-repeat: no-repeat;
     padding: 0 20px;
+    box-shadow: 0px 4px 4px #00000040;
 }
 
 .UserStatsContainer{
@@ -24,5 +26,25 @@
 .VictoryRate{
     position: absolute;
     color: white;
-    margin-top: 93px;
+    margin-top: 90px;
+}
+
+.StatTitle{
+    margin: 15px 0;
+    font-size: 15px;
+}
+
+.StatImg{
+    margin-top: -10px;
+    margin-bottom: 5px;
+}
+
+.StatGoals{
+    margin-top: 20px;
+    font-size: 28px;
+    text-shadow: -0.5px 0px #616161, 0px 0.5px #616161, 0.5px 0px #616161, 0px -0.5px #616161;
+}
+
+.StatPlayerName{
+    font-size: 21px;
 }

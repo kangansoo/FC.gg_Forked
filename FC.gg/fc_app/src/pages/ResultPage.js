@@ -37,6 +37,8 @@ export default function Screen() {
       setNickname(searchText)
       setSearchText("");
       setMoreLoading(false);
+      setSelected("publicGame");
+      setMatch(50);
     }
   };
   const keyPress = (e) => {
