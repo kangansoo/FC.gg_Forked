@@ -6,7 +6,6 @@
     min-width: 1600px;
     height: 1000px;
     margin: 0;
-    /* background-image: url('../assets/embappe.png'); */
     background-size: 100% 100%;
     display: flex;
     justify-content: center;
@@ -15,19 +14,19 @@
 
 @keyframes BGChange {
     0%, 100% {
-        background-image: url('../assets/backgrounds/mbappe.png');
+        background-image: url('https://fcggbucket.s3.ap-northeast-2.amazonaws.com/mbappe.png');
     }
     20% {
-        background-image: url('../assets/backgrounds/bellingham.png');
+        background-image: url('https://fcggbucket.s3.ap-northeast-2.amazonaws.com/bellingham.png');
     }
     40% {
-        background-image: url('../assets/backgrounds/haaland.png');
+        background-image: url('https://fcggbucket.s3.ap-northeast-2.amazonaws.com/haaland.png');
     }
     60% {
-        background-image: url('../assets/backgrounds/leao.png');
+        background-image: url('https://fcggbucket.s3.ap-northeast-2.amazonaws.com/leao.png');
     }
     80% {
-        background-image: url('../assets/backgrounds/musiala.jpg');
+        background-image: url('https://fcggbucket.s3.ap-northeast-2.amazonaws.com/musiala.jpg');
     }
 }
 

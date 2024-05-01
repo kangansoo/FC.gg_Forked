@@ -86,13 +86,14 @@ export default function MatchStats(props) {
       {matchdetail && matchdetail !== null && !loading ? (
         <div className="MatchStatsBackground">
           <div className="UserStatsContainer">
-            <p>최근 10경기 승률</p>
-            <p className="VictoryRate">{cntVictory * 10}%</p>
+            <span className="StatTitle">최근 10경기 승률</span>
+            <span className="VictoryRate">{cntVictory * 10}%</span>
             <DoughnutChart win={cntVictory} loss={cntDefeat} className="DoughnutChart"/>
           </div>
           <div className="UserStatsContainer">
-            <p>최근 10경기 최다 MVP</p>
+            <span className="StatTitle">최근 10경기 최다 MVP</span>
             <img
+              className="StatImg"
               src={`https://fco.dn.nexoncdn.co.kr/live/externalAssets/common/playersAction/p${spId}.png`}
               alt="img"
               height="100px"
@@ -100,15 +101,15 @@ export default function MatchStats(props) {
                 e.target.src = `https://fco.dn.nexoncdn.co.kr/live/externalAssets/common/players/p${spId}.png`;
               }}
             />
-            <p>{mvpPlayer}</p>
+            <span clasName="StatPlayerName">{mvpPlayer}</span>
           </div>
           <div className="UserStatsContainer">
-            <p>최근 10경기 득점</p>
-            <p>{myScore}</p>
+            <span className="StatTitle">최근 10경기 득점</span>
+            <span className="StatGoals"><strong>{myScore}</strong></span>
           </div>
           <div className="UserStatsContainer">
-            <p>최근 10경기 실점</p>
-            <p>{otherScore}</p>
+            <span className="StatTitle">최근 10경기 실점</span>
+            <span className="StatGoals"><strong>{otherScore}</strong></span>
           </div>
         </div>
       ) : null}
