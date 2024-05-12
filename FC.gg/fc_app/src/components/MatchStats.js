@@ -4,9 +4,7 @@ import DoughnutChart from './DoughnutChart.js';
 
 export default function MatchStats(props) {
   const { loading, matchdetail, nickname } = props;
-  const [matches, setMatches] = useState([]);
   const [cntVictory, setCntVictory] = useState(0);
-  const [cntDraw, setCntDraw] = useState(0);
   const [cntDefeat, setCntDefeat] = useState(0);
   const [mvpPlayer, setMvpPlayer] = useState("");
   const [myScore, setMyScore] = useState(0);
@@ -69,8 +67,6 @@ export default function MatchStats(props) {
       });
       setCntVictory(initialVictories);
       setCntDefeat(initialDefeats);
-      setCntDraw(10-cntVictory-cntDefeat);
-      setMatches(initialMatches);
       setMyScore(myTotalScore);
       setOtherScore(otherTotalScore);
 
