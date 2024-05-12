@@ -72,8 +72,13 @@ export default function SearchPage() {
                     }
                 </ul>
             </div>
-            <div className='LogosContainer'>
-                <img src={leaguelogos} alt="leaguelogos" className='LeagueLogos' />
+            <div className='MarkContainer'>
+                <div className='NexonApiMarkContainer'>
+                    <span className='NexonMark'>Data based on NEXON Open API</span>
+                </div>
+                <div className='LogosContainer'>
+                    <img src={leaguelogos} alt="leaguelogos" className='LeagueLogos' />
+                </div>
             </div>
         </div>
     </div>
