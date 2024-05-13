@@ -5,7 +5,7 @@ import loadinggif from "../assets/loading.gif";
 import ball from "../assets/ball.png";
 import keyboard from "../assets/keyboard.png";
 import consoleImg from "../assets/console.png";
-import {position} from '../components/Position.js';
+import { position } from "../components/Position.js";
 
 export default function MatchResult(props) {
   const { nickname, matchdetail, loading, increaseOffset, moreLoading } = props;
@@ -14,13 +14,13 @@ export default function MatchResult(props) {
   const toggleExpand = (tab) => {
     setExpandedTabs((prevTabs) => ({
       ...prevTabs,
-      [tab]: !prevTabs[tab]
+      [tab]: !prevTabs[tab],
     }));
   };
 
-  useEffect(()=>{
+  useEffect(() => {
     setExpandedTabs({});
-  }, [loading])
+  }, [loading]);
 
   const gradeValue = (x) => {
     if (x == 1) {
@@ -34,7 +34,7 @@ export default function MatchResult(props) {
     }
   };
 
-  console.log("매치 디테일:", matchdetail)
+  console.log("매치 디테일:", matchdetail);
   return (
     <div className="MatchResultBackground">
       <div className="RealOuterContainer">
@@ -44,6 +44,7 @@ export default function MatchResult(props) {
           alt="로딩"
           width="50px"
           className="MatchResultLoading"
+          style={{marginTop:"60px"}}
         />
       ) : matchdetail !== null ? (
         Object.entries(matchdetail)
@@ -59,9 +60,9 @@ export default function MatchResult(props) {
                     data.my_status === "승"
                       ? "rgba(94, 139, 226, 0.8)"
                       : data.my_status === "무"
-                      ? "rgba(212, 212, 212, 0.8)" // 무승부인 경우에 해당하는 색상
+                      ? "rgba(255, 255, 255, 0.8)" // 무승부인 경우에 해당하는 색상
                       : "rgba(255, 132, 132, 0.8)",
-                      // marginBottom: '20px'
+                      height: expandedTabs[id] ? "200px" : "100px"
                 }}
                 onClick={() => toggleExpand(id)}
               >
@@ -97,7 +98,26 @@ export default function MatchResult(props) {
                     <img src={keyboard} className="Controller" />
                   )}
                 </div>
-                {/* &nbsp; &nbsp; &nbsp; <span>{data.my_status}</span> */}
+                {
+                  expandedTabs[id] ? (
+                    <div className="GoalPlayersContainer">
+                      <div className='MyGoalPlayers'>
+                        {data.my_goaltime&&data.my_goaltime
+                          .sort((a, b) => a.goalTime - b.goalTime)
+                          .map((value, index) => (
+                          <span key={index}>{value.goalTime}' {value.name}</span>
+                        ))}
+                      </div>
+                      <div className='OtherGoalPlayers'>
+                        {data.other_goaltime&&data.other_goaltime
+                          .sort((a, b) => a.goalTime - b.goalTime)
+                          .map((value, index) => (
+                          <span key={index}>{value.name} {value.goalTime}'</span>
+                        ))}
+                      </div>
+                    </div>
+                  ) : null
+                }
               </div>
               {expandedTabs[id] && (
                 <div className="MatchResuiltDetailContainer">
@@ -118,6 +138,7 @@ export default function MatchResult(props) {
                           // // 첫 번째 선수만 강조
                           // const myTopPlayer = combinedData[0];
                           // console.log("myTopPlayer", myTopPlayer.status);
+                          console.log("combinedData :", combinedData);
                           return combinedData.map((value, index) => (
                             <div
                               key={index}
@@ -128,27 +149,37 @@ export default function MatchResult(props) {
                               <div className="PlayerDetailContainer">
                                 <div className="PlayerImgContainer">
                                   <div className="PlayerStatusBallContainer">
-                                    <span className="PlayerStatus">
-                                      ★{value.status}
-                                    </span>
+                                    {
+                                      data.mvp_player[0] === value.name &&
+                                      data.mvp_player[1] === data.my_nick ? (
+                                        <span className="PlayerStatusMVP">
+                                          {value.status} <span className="StatusStar">★</span>
+                                        </span>
+                                      ) : (
+                                        <span className="PlayerStatus">
+                                          {value.status}
+                                        </span>
+                                      )
+                                    }
                                     <div className="BallContainer">
-                                      {[...Array(value.goal)].map((_, index) => (
-                                        <img
-                                          key={index}
-                                          src={ball}
-                                          alt="ball"
-                                          width="15px"
-                                          height="15px"
-                                          className="Ball"
-                                        />
-                                      ))}
+                                        {[...Array(value.goal)].map((_, index) => (
+                                          <div className="BallWrapper">
+                                            <img
+                                              key={index}
+                                              src={ball}
+                                              alt="ball"
+                                              width="15px"
+                                              height="15px"
+                                              className="Ball"
+                                            />
+                                          </div>
+                                        ))}
                                     </div>
                                   </div>
                                   <div className="img-wrapper">
                                     <img
                                       src={`https://fco.dn.nexoncdn.co.kr/live/externalAssets/common/playersAction/p${value.spId}.png`}
                                       alt="img"
-                                      height="50px"
                                       onError={(e) => {
                                         e.target.src = `https://fco.dn.nexoncdn.co.kr/live/externalAssets/common/players/p${value.spid}.png`;
                                       }}
@@ -237,6 +268,11 @@ export default function MatchResult(props) {
                       </div>
                     </div>
                     <div className="MatchDetailInfoInnerContainer">
+                      <div className="MatchDetailText">{data.my_foul}</div>
+                      <div className="MatchDetailTitle">파울</div>
+                      <div className="MatchDetailText">{data.other_foul}</div>
+                    </div>
+                    <div className="MatchDetailInfoInnerContainer">
                       <div className="MatchDetailText">{data.my_yellow}</div>
                       <div className="MatchDetailTitle">경고</div>
                       <div className="MatchDetailText">{data.other_yellow}</div>
@@ -279,19 +315,30 @@ export default function MatchResult(props) {
                               <div className="PlayerDetailContainer">
                                 <div className="PlayerImgContainer">
                                   <div className="PlayerStatusBallContainer">
-                                    <span className="PlayerStatus">
-                                      ★{value.status}
-                                    </span>
+                                    {
+                                      data.mvp_player[0] === value.name &&
+                                      data.mvp_player[1] === data.other_nick ? (
+                                        <span className="PlayerStatusMVP">
+                                          {value.status} <span className="StatusStar">★</span>
+                                        </span>
+                                      ) : (
+                                        <span className="PlayerStatus">
+                                          {value.status}
+                                        </span>
+                                      )
+                                    }
                                     <div className="BallContainer">
                                       {[...Array(value.goal)].map((_, index) => (
-                                        <img
-                                          key={index}
-                                          src={ball}
-                                          alt="ball"
-                                          width="15px"
-                                          height="15px"
-                                          className="Ball"
-                                        />
+                                        <div className="BallWrapper">
+                                          <img
+                                            key={index}
+                                            src={ball}
+                                            alt="ball"
+                                            width="15px"
+                                            height="15px"
+                                            className="Ball"
+                                          />
+                                        </div>
                                       ))}
                                     </div>
                                   </div>
@@ -345,13 +392,17 @@ export default function MatchResult(props) {
           ))
       ) : (<div>경기 데이터가 존재하지 않습니다.</div>)}
       </div>
-      {!loading && matchdetail !== null && (
-        !moreLoading ? (
-          <div className="SeeMore" onClick={increaseOffset}><strong>더 보기</strong></div>
+      {!loading &&
+        matchdetail !== null &&
+        (!moreLoading ? (
+          <div className="SeeMore" onClick={increaseOffset}>
+            <strong>더 보기</strong>
+          </div>
         ) : (
-          <div className="SeeMore"><img src={loadinggif} alt="moreloading" width="50px" /></div>
-        )
-      )}
+          <div className="SeeMore">
+            <img src={loadinggif} alt="moreloading" width="50px" />
+          </div>
+        ))}
     </div>
   );
 }

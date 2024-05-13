@@ -15,7 +15,7 @@
 
 @keyframes BGChange {
     0%, 100% {
-        background-image: url('../assets/backgrounds/mbappe.png');
+        background-image: url('https://fcggbucket.s3.ap-northeast-2.amazonaws.com/mbappe+(1).png');
     }
     20% {
         background-image: url('../assets/backgrounds/bellingham.png');
@@ -37,6 +37,7 @@
     display: flex;
     flex-direction: column;
     justify-content: center;
+    align-items: center;
 }
 .SearchContainer{
     align-self: center;
@@ -128,15 +129,26 @@
     font-size: 21px;
 }
 
+.MarkContainer{
+    display: flex;
+    flex-direction: row;
+    margin-top: 50px;
+}
+
 .LogosContainer{
     position: absolute;
-    right: 30px;
-    top: 900px;
-    
+    right: 20px;
+}
+
+.NexonApiMarkContainer{
+    position: absolute;
+    color: white;
+    font-size: 16px;
+    margin-top: 60px;
+    left: 10px;
 }
 
 .LeagueLogos{
     width: 300px;
     height: auto;
 }
-

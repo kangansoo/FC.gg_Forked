@@ -7,7 +7,7 @@
   flex-direction: column;
   justify-content: center;
   width: 1280px;
-  margin-top: 30px;
+  margin-top: 5px;
 }
 
 .RealOuterContainer{
@@ -33,6 +33,7 @@
   cursor: pointer;
   overflow: hidden;
   margin-top: 10px;
+  transition: height 0.3s ease-in-out;
 }
 
 .MatchDate{
@@ -64,6 +65,31 @@
     width: 180px;
 }
 
+.GoalPlayersContainer{
+  display: flex;
+  flex-direction: row;
+  width: 450px;
+  justify-content: space-between;
+  margin-top: 10px;
+}
+
+.MyGoalPlayers{
+  display:flex;
+  flex-direction: column;
+  font-size: 12px;
+  text-align: right;
+  width: 150px;
+  flex-wrap: nowrap;
+}
+
+.OtherGoalPlayers{
+  display:flex;
+  flex-direction: column;
+  font-size: 12px;
+  width: 150px;
+  flex-wrap: nowrap;
+}
+
 .MatchResuiltDetailContainer {
   width: 1280px;
   height: 700px;
@@ -75,6 +101,21 @@
   justify-content: center;
   background-color: rgba(87, 235, 19, 0.4);
   overflow: hidden;
+  transition: height 0.8s ease-in-out;
+}
+
+.MatchResuiltDetailContainer{
+  width: 1280px;
+  height: 700px;
+  border: 1px solid #d4d4d4;
+  border-radius: 15px;
+  margin-top: 5px;
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  background-color: rgba(87, 235, 19, 0.4);
+  overflow: hidden;
+  transition: height 0.3s ease-in-out;
 }
 
 .MatchDetailInfoContainer{
@@ -148,8 +189,8 @@
 }
 
 .img-wrapper {
-  width: 50px;
-  height: 50px;
+  width: 55px;
+  height: 55px;
 }
 
 .img-wrapper img {
@@ -181,19 +222,22 @@
 
 .PlayerPosition {
   margin-top: -8px;
+  text-shadow: -0.5px 0px #616161, 0px 0.5px #616161, 0.5px 0px #616161, 0px -0.5px #616161;
 }
 
 .PlayerName{
   margin-top: -15px;
-  text-shadow: -1px 0px #616161, 0px 1px #616161, 1px 0px #616161, 0px -1px #616161;
+  text-shadow: -0.5px 0px #616161, 0px 0.5px #616161, 0.5px 0px #616161, 0px -0.5px #616161;
 }
 
 .PlayerStatusBallContainer{
+  width: auto;
   display: flex;
   flex-direction: row;
   justify-content: center;
   margin-top: -10px;
-  margin-bottom: 5px;
+  margin-left: -10px;
+  margin-bottom: 15px;
 }
 
 .PlayerStatusGoal {
@@ -204,19 +248,55 @@
 .PlayerStatus {
   color: white;
   background-color: rgba(98, 103, 109, 0.7);
-  border-radius: 5px;
-  height: 20px;
+  border-radius: 10px;
+  height: 18px;
   text-align: center;
   line-height: 18px;
-  padding: 0 3px;
+  padding: 0 5px;
+  font-size: 12px;
+  position: absolute;
+  margin-left: -25px;
+}
+
+.PlayerStatusMVP {
+  color: white;
+  background-color: rgba(255, 215, 0, 0.8);
+  border-radius: 10px;
+  height: 18px;
+  text-align: center;
+  line-height: 18px;
+  padding-left: 5px;
+  padding-right: 3px;
+  font-size: 12px;
+  position: absolute;
+  margin-left: -35px;
 }
 
 .BallContainer {
-  display: flex;
   flex-direction: row;
-  gap: 3px;
-  margin-top: 2.5px;
-  margin-left: 3px;
+  height: 20px;
+  margin-left: 35px;
+  margin-top: -4px;
+  position: absolute;
+
+}
+
+.BallWrapper{
+  width: 17px;
+  height: 17px;
+  background-color: white;
+  border-radius: 50%;
+  display: inline-block;
+  position:relative;
+  margin-right: -13px;
+}
+
+.Ball{
+  top:0;
+  left:0;
+  position:absolute;
+  margin-top: 1px;
+  margin-left: 1px;
 }
 
 .SeasonImg {
@@ -309,7 +389,7 @@
   width: 1240px;
   height: 80px;
   padding: 0 20px;
-  background-color: #d4d4d4;
+  background-color: rgba(255, 255, 255, 0.8);
   color: white;
   border-radius: 15px;
   box-shadow: 0px 4px 4px #00000040;
