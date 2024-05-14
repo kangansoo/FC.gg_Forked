@@ -23,7 +23,7 @@ export default function MatchResult(props) {
   }, [loading]);
 
   const gradeValue = (x) => {
-    if (x == 1) {
+    if (x === 1) {
       return "normal";
     } else if (x >= 2 && x <= 4) {
       return "bronze";
@@ -71,9 +71,9 @@ export default function MatchResult(props) {
                 </div>
                 <div className="ScoreContainer">
                   {data && data.my_controller === "gamepad" ? (
-                    <img src={consoleImg} className="Controller" />
+                    <img src={consoleImg} className="Controller" alt="console" />
                   ) : (
-                    <img src={keyboard} className="Controller" />
+                    <img src={keyboard} className="Controller" alt="keyboard" />
                   )}
                   <div className="Nickname">
                     <strong>{nickname}</strong>
@@ -93,9 +93,9 @@ export default function MatchResult(props) {
                     <strong>{data.other_nick}</strong>
                   </div>
                   {data && data.other_controller === "gamepad" ? (
-                    <img src={consoleImg} className="Controller" />
+                    <img src={consoleImg} className="Controller" alt="console" />
                   ) : (
-                    <img src={keyboard} className="Controller" />
+                    <img src={keyboard} className="Controller" alt="keyboard" />
                   )}
                 </div>
                 {
