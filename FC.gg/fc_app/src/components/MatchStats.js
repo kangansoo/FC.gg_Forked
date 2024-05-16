@@ -59,11 +59,11 @@ export default function MatchStats(props) {
 
       let myTotalScore = 0;
       initialMatches.forEach((match) => {
-        myTotalScore += match.my_score;
+        myTotalScore += isNaN(match.my_score) ? 0 : match.my_score;
       });
       let otherTotalScore = 0;
       initialMatches.forEach((match) => {
-        otherTotalScore += match.other_score;
+        otherTotalScore += isNaN(match.other_score) ? 0 : match.other_score;
       });
       setCntVictory(initialVictories);
       setCntDefeat(initialDefeats);

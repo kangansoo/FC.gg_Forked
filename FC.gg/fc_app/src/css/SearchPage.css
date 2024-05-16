@@ -1,12 +1,11 @@
 .SearchPageBackground {
     animation-name: BGChange;
     animation-iteration-count: infinite;
-    animation-duration: 40s;
-    animation-delay: 5s;
-    min-width: 1600px;
-    height: 1000px;
+    animation-duration: 30s;
+    min-width: 1900px;
+    height: 923px;
     margin: 0;
-    /* background-image: url('../assets/embappe.png'); */
+    /* background-image: url('https://fcggbucket.s3.ap-northeast-2.amazonaws.com/haaland.jpg'); */
     background-size: 100% 100%;
     display: flex;
     justify-content: center;
@@ -15,25 +14,19 @@
 
 @keyframes BGChange {
     0%, 100% {
-        background-image: url('https://fcggbucket.s3.ap-northeast-2.amazonaws.com/mbappe+(1).png');
+        background-image: url('https://fcggbucket.s3.ap-northeast-2.amazonaws.com/embappe.jpg');
     }
-    20% {
-        background-image: url('../assets/backgrounds/bellingham.png');
+    33% {
+        background-image: url('https://fcggbucket.s3.ap-northeast-2.amazonaws.com/haaland.jpg');
     }
-    40% {
-        background-image: url('../assets/backgrounds/haaland.png');
-    }
-    60% {
-        background-image: url('../assets/backgrounds/leao.png');
-    }
-    80% {
-        background-image: url('../assets/backgrounds/musiala.jpg');
+    66% {
+        background-image: url('https://fcggbucket.s3.ap-northeast-2.amazonaws.com/bellingham.jpg');
     }
 }
 
 .MainContainer{
     width: 1280px;
-    height: 1000px;
+    height: 923px;
     display: flex;
     flex-direction: column;
     justify-content: center;
@@ -60,6 +53,10 @@
 .SearchNickname::placeholder{
     color: white;
     font-size: 18px;
+}
+
+input[type="search"]::-webkit-search-cancel-button {
+    -webkit-appearance: none;
 }
 
 .SearchIcon{
@@ -137,14 +134,15 @@
 
 .LogosContainer{
     position: absolute;
+    margin-top: -35px;
     right: 20px;
 }
 
 .NexonApiMarkContainer{
     position: absolute;
     color: white;
+    margin-top: 20px;
     font-size: 16px;
-    margin-top: 60px;
     left: 10px;
 }
 
