@@ -51,7 +51,7 @@ export default function SearchPage() {
     <div className="SearchPageBackground">
         <div className="MainContainer">
             <div className="SearchContainer">
-                <input type="text" placeholder='닉네임을 입력해주세요.' value={searchText} onChange={onChange} className="SearchNickname" maxLength="15"  onKeyDown={keyPress}/>
+                <input type="search" placeholder='닉네임을 입력해주세요.' value={searchText} onChange={onChange} className="SearchNickname" maxLength="15"  onKeyDown={keyPress}/>
                 <img src={searchIcon} alt="searchIcon" className='SearchIcon' onClick={buttonClick}/>
             </div>
             <div className="NoticeContainer">

@@ -1,7 +1,7 @@
 .HeaderBackground {
     background-image: url("../assets/header.png");
     background-size: cover;
-    min-width: 1600px;
+    min-width: 1900px;
     height: 100px;
     display: flex;
     align-items: center;

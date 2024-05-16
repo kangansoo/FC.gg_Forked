@@ -7,6 +7,7 @@ import axios from "axios";
 import MatchResult from "../components/MatchResult";
 import UserInfo from '../components/UserInfo';
 import MatchStats from '../components/MatchStats';
+import loadinggif from "../assets/loading.gif";
 
 export default function Screen() {
   const navigate = useNavigate();
@@ -31,7 +32,6 @@ export default function Screen() {
       alert("검색어를 입력해주세요!");
     } else {
       setOffset(0);
-      setMatchdetail([]);
       setLoading(true)
       navigate(`./?input=${searchText}`);
       setNickname(searchText)
@@ -53,7 +53,6 @@ export default function Screen() {
       setLoading(true);
       setMatch(50);
       setOffset(0);
-      setMatchdetail([]);
     }
   }
   const leagueGame = () =>{
@@ -61,7 +60,6 @@ export default function Screen() {
       setLoading(true)
       setMatch(30);
       setOffset(0);
-      setMatchdetail([]);
     }
   }
   const directorMode = () =>{
@@ -69,7 +67,6 @@ export default function Screen() {
       setLoading(true)
       setMatch(52);
       setOffset(0);
-      setMatchdetail([]);
     }
   }
   const classicMode = () => {
@@ -77,7 +74,6 @@ export default function Screen() {
       setLoading(true)
       setMatch(40);
       setOffset(0);
-      setMatchdetail([]);
     }
   }
 
@@ -93,6 +89,7 @@ export default function Screen() {
             nickname: nickname,
           }
         });
+        setLoading(true)
         console.log(response);
         // Extracting ouid from the response
         setError(false);
@@ -121,7 +118,7 @@ export default function Screen() {
         });
         setMatch(matchtype);
   
-        const matchData = {};
+        // const matchData = {};
         console.log('matchid', response1.data);
         const newMatchData = await Promise.all(response1.data.map(async (id) => {
           const response2 = await axios.get('https://p0l0evybh6.execute-api.ap-northeast-2.amazonaws.com/dev/Getmatchdetail', {
@@ -155,38 +152,13 @@ export default function Screen() {
     setOffset(offset+10)
     setMoreLoading(true)
   }
-  
-  //       await Promise.all(response1.data.map(async (id) => {
-  //         console.log('id', id);
-  //         const response2 = await axios.get('https://p0l0evybh6.execute-api.ap-northeast-2.amazonaws.com/dev/Getmatchdetail', {
-  //           params: {
-  //             matchid: String(id),
-  //             // nickname: sessionStorage.getItem('nickname') 세션 스토리지에 닉네임 넣는 코드가 없어서 그냥 setNickname 있길레 nickname으로 대체했슴다
-  //             nickname: nickname
-  //           }
-  //         });
-  //         // 응답 데이터를 처리하거나 상태에 저장
-
-  //         console.log("response2.data: ", response2.data);
-  //         matchData[id] = response2.data;
-  //       }));
-  //     console.log(matchData);
-  //     setMatchdetail(matchData);
-  //     console.log("matchdetail:",matchdetail);
-  //     setLoading(false);
-  //     } catch (error) {
-  //       console.error('Error:', error);
-  //     }
-  //   }
-  //   getMatchdetail();
-  // }, [ouid, matchtype, nickname])
 
   return (
     <div className="screen">
       <div className="div">
         <div className="SearchContainer1">
           <input
-            type="text"
+            type="search"
             placeholder="닉네임을 입력해주세요."
             value={searchText}
             onChange={onChange}
@@ -201,15 +173,30 @@ export default function Screen() {
             <div className="NoUser"><strong>존재하지 않는 유저입니다.</strong></div>
           ):(
             <>
-              <UserInfo nickname={nickname} ouid={ouid} matchdetail={matchdetail}/>
-              <div className="MatchTypeConatiner">
-              <div className={selected === "publicGame" ? "MatchTypeTextselected" : "MatchTypeText"} onClick={() => { publicGame(); setSelected("publicGame"); }}>공식경기</div>
-                <div className={selected === "leagueGame" ? "MatchTypeTextselected" : "MatchTypeText"} onClick={() => { leagueGame(); setSelected("leagueGame"); }}>리그친선</div>
-                <div className={selected === "directorMode" ? "MatchTypeTextselected" : "MatchTypeText"} onClick={() => { directorMode(); setSelected("directorMode"); }}>감독모드</div>
-                <div className={selected === "classicMode" ? "MatchTypeTextselected" : "MatchTypeText"} onClick={() => { classicMode(); setSelected("classicMode"); }}>클래식 1vs1</div>
-              </div>
-              <MatchStats loading={loading} matchdetail={matchdetail} nickname={nickname}/>
-              <MatchResult nickname={nickname} matchdetail={matchdetail} loading={loading} increaseOffset={increaseOffset} moreLoading={moreLoading} />
+            <UserInfo nickname={nickname} ouid={ouid} matchdetail={matchdetail}/>
+              {
+                loading&&loading?
+                (
+                  <img
+                    src={loadinggif}
+                    alt="로딩"
+                    width="50px"
+                    className="MatchResultLoading"
+                    style={{marginTop:"60px"}}
+                  />
+                ):(
+                  <>
+                    <div className="MatchTypeConatiner">
+                    <div className={selected === "publicGame" ? "MatchTypeTextselected" : "MatchTypeText"} onClick={() => { publicGame(); setSelected("publicGame"); }}>공식경기</div>
+                      <div className={selected === "leagueGame" ? "MatchTypeTextselected" : "MatchTypeText"} onClick={() => { leagueGame(); setSelected("leagueGame"); }}>리그친선</div>
+                      <div className={selected === "directorMode" ? "MatchTypeTextselected" : "MatchTypeText"} onClick={() => { directorMode(); setSelected("directorMode"); }}>감독모드</div>
+                      <div className={selected === "classicMode" ? "MatchTypeTextselected" : "MatchTypeText"} onClick={() => { classicMode(); setSelected("classicMode"); }}>클래식 1vs1</div>
+                    </div>
+                    <MatchStats loading={loading} matchdetail={matchdetail} nickname={nickname}/>
+                    <MatchResult nickname={nickname} matchdetail={matchdetail} loading={loading} increaseOffset={increaseOffset} moreLoading={moreLoading} />
+                  </>
+                )
+              }
             </>
           )
         }
