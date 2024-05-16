@@ -10,6 +10,7 @@ export default function MatchStats(props) {
   const [myScore, setMyScore] = useState(0);
   const [otherScore, setOtherScore] = useState(0);
   const [spId, setSpId] = useState("");
+  const [pId, setPId] = useState("");
 
   const findMVPPlayer = (matchdetail, nickname) => {
     // 최근 10개의 데이터만 사용
@@ -25,11 +26,12 @@ export default function MatchStats(props) {
         mvpCounts[playerName] = (mvpCounts[playerName] || 0) + 1;
       }
     });
-    console.log("mvpCounts", mvpCounts);
+    // console.log("mvpCounts", mvpCounts);
     // 가장 많이 MVP로 선정된 선수를 찾음
     let mostFrequentMVP = null;
     let maxCount = 0;
-    let mvpPlayerSpId = "";
+    let mvpPlayerSpId = 0;
+    let mvpPlayerPId = 0;
 
     for (const playerName in mvpCounts) {
       if (mvpCounts[playerName] > maxCount) {
@@ -38,10 +40,11 @@ export default function MatchStats(props) {
         const match = recentMatches.find(match => match.mvp_player && match.mvp_player[0] === playerName);
         if (match) {
           mvpPlayerSpId = match.mvp_player[2];
+          mvpPlayerPId = match.mvp_player[3];
         }
       }
     }
-    return {mostFrequentMVP, mvpPlayerSpId};
+    return {mostFrequentMVP, mvpPlayerSpId, mvpPlayerPId};
   };
 
   useEffect(() => {
@@ -70,10 +73,11 @@ export default function MatchStats(props) {
       setMyScore(myTotalScore);
       setOtherScore(otherTotalScore);
 
-      const {mostFrequentMVP, mvpPlayerSpId } = findMVPPlayer(matchdetail, nickname);
+      const {mostFrequentMVP, mvpPlayerSpId, mvpPlayerPId } = findMVPPlayer(matchdetail, nickname);
       setMvpPlayer(mostFrequentMVP);
       setSpId(mvpPlayerSpId);
-      console.log("topPlayer:", mvpPlayer);
+      setPId(mvpPlayerPId);
+      // console.log("topPlayer:", mvpPlayer);
     }
   }, [matchdetail]);
 
@@ -94,7 +98,7 @@ export default function MatchStats(props) {
               alt="img"
               height="100px"
               onError={(e) => {
-                e.target.src = `https://fco.dn.nexoncdn.co.kr/live/externalAssets/common/players/p${spId}.png`;
+                e.target.src = `https://fco.dn.nexoncdn.co.kr/live/externalAssets/common/players/p${pId}.png`;
               }}
             />
             <span clasName="StatPlayerName">{mvpPlayer}</span>

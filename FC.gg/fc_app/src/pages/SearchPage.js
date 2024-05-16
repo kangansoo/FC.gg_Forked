@@ -31,9 +31,9 @@ export default function SearchPage() {
                 const response = await axios.get('https://p0l0evybh6.execute-api.ap-northeast-2.amazonaws.com/dev/Getnotice');
                 setNotice(response.data["일반공지"]);
                 setUrgentNotice(response.data["특별공지"]);
-                console.log(response);
+                // console.log(response);
             } catch (error) {
-                console.error('알림을 가져오는 중 오류가 발생했습니다:', error);
+                // console.error('알림을 가져오는 중 오류가 발생했습니다:', error);
                 setNoticeError("공지사항을 불러올 수 없습니다.")
             }
         };

@@ -34,7 +34,7 @@ export default function MatchResult(props) {
     }
   };
 
-  console.log("매치 디테일:", matchdetail);
+  // console.log("매치 디테일:", matchdetail);
   return (
     <div className="MatchResultBackground">
       <div className="RealOuterContainer">
@@ -128,7 +128,7 @@ export default function MatchResult(props) {
                         data.my_player_data &&
                         (() => {
                           let combinedData = [];
-                          for (let i = 0; i < data.my_data.length; i++) {
+                          for (let i = 0; i < 11; i++) {
                             combinedData.push({
                               ...data.my_data[i],
                               ...data.my_player_data[i],
@@ -138,7 +138,7 @@ export default function MatchResult(props) {
                           // // 첫 번째 선수만 강조
                           // const myTopPlayer = combinedData[0];
                           // console.log("myTopPlayer", myTopPlayer.status);
-                          console.log("combinedData :", combinedData);
+                          // console.log("combinedData :", combinedData);
                           return combinedData.map((value, index) => (
                             <div
                               key={index}
@@ -297,7 +297,7 @@ export default function MatchResult(props) {
                         data.other_player_data &&
                         (() => {
                           let combinedData = [];
-                          for (let i = 0; i < data.other_data.length; i++) {
+                          for (let i = 0; i < 11; i++) {
                             combinedData.push({
                               ...data.other_data[i],
                               ...data.other_player_data[i],
