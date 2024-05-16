@@ -4,12 +4,12 @@ import axios from "axios";
 // import getRankImg from './getRankImg';
 
 export default function UserInfo(props) {
-  const { nickname, ouid, matchdetail } = props;
+  const { nickname, ouid } = props;
   const [userInfo, setUserInfo] = useState([]);
   const [userRank, setUserRank] = useState("");
   const [rankImg, setRankImg] = useState('');
 
-  console.log("ouid :", ouid);
+  // console.log("ouid :", ouid);
   useEffect(() => {
     const getUserInfo = async () => {
       try {
@@ -23,8 +23,6 @@ export default function UserInfo(props) {
         );
         setUserInfo(userresponse.data);
         setUserRank(userresponse.data[1]);
-        console.log("userinfo:", userresponse.data);
-        console.log("userInfo[1]:", userInfo[1]);
         const imgPath = userresponse.data[2];
         
         setRankImg(imgPath);
@@ -35,10 +33,6 @@ export default function UserInfo(props) {
     };
     getUserInfo();
   }, [ouid]);
-
-  console.log('userRank: ', userRank);
-  console.log('rankImg: ', userInfo[2]);
-
 
 
   return (

@@ -85,9 +85,10 @@ input[type="search"]::-webkit-search-cancel-button {
 }
 
 .urgentNoticeList{
-    margin-bottom: 15px;
+    margin-bottom: 10px;
     list-style: none;
     font-size:18px;
+    margin-left: -20px;
 }
 
 .UrgentNoticeCategory{
@@ -102,6 +103,7 @@ input[type="search"]::-webkit-search-cancel-button {
 .NoticeList{
     margin-bottom: 15px;
     list-style: none;
+    margin-left: -20px;
 }
 
 .NoticeContainer::-webkit-scrollbar-track{

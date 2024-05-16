@@ -30,6 +30,8 @@ export default function Screen() {
   const buttonClick = async() => {
     if (!searchText) {
       alert("검색어를 입력해주세요!");
+    } else if(nickname === searchText){
+      setLoading(false);
     } else {
       setOffset(0);
       setLoading(true)
@@ -82,6 +84,7 @@ export default function Screen() {
   },[input]);
 
   useEffect(()=>{
+    setError(false);
     const handleGetouid = async () => {
       try {
         const response = await axios.get('https://p0l0evybh6.execute-api.ap-northeast-2.amazonaws.com/dev/Getouid', {
@@ -90,20 +93,14 @@ export default function Screen() {
           }
         });
         setLoading(true)
-        console.log(response);
-        // Extracting ouid from the response
-        setError(false);
         setOuid(response.data);
-        console.log("데이터", response.data);
         // Fetching match data using ouid
       } catch (error) {
-        console.error('Error:', error);
         setError(true);
       }
     }  
     handleGetouid();
   }, [input, nickname, ouid])
-  console.log("ErrorCheck:", error)
 
   useEffect(()=>{
     const getMatchdetail = async() => {
@@ -119,7 +116,7 @@ export default function Screen() {
         setMatch(matchtype);
   
         // const matchData = {};
-        console.log('matchid', response1.data);
+        // console.log('matchid', response1.data);
         const newMatchData = await Promise.all(response1.data.map(async (id) => {
           const response2 = await axios.get('https://p0l0evybh6.execute-api.ap-northeast-2.amazonaws.com/dev/Getmatchdetail', {
             params: {
@@ -137,7 +134,7 @@ export default function Screen() {
           // "더 보기" 버튼인 경우: 새로운 데이터만 추가
           setMatchdetail(prevMatchDetail => [...prevMatchDetail, ...newMatchData]);
         }
-        console.log("matchdetail :", matchdetail)
+        // console.log("matchdetail :", matchdetail)
       } catch (error) {
         console.error('Error:', error);
       } finally {
@@ -167,39 +164,33 @@ export default function Screen() {
           />
           <img src={searchIcon} alt="searchIcon" className="SearchIcon1" onClick={buttonClick}/>
         </div>
-        {
-          error?
-          (
-            <div className="NoUser"><strong>존재하지 않는 유저입니다.</strong></div>
-          ):(
-            <>
-            <UserInfo nickname={nickname} ouid={ouid} matchdetail={matchdetail}/>
-              {
-                loading&&loading?
-                (
-                  <img
-                    src={loadinggif}
-                    alt="로딩"
-                    width="50px"
-                    className="MatchResultLoading"
-                    style={{marginTop:"60px"}}
-                  />
-                ):(
-                  <>
-                    <div className="MatchTypeConatiner">
-                    <div className={selected === "publicGame" ? "MatchTypeTextselected" : "MatchTypeText"} onClick={() => { publicGame(); setSelected("publicGame"); }}>공식경기</div>
-                      <div className={selected === "leagueGame" ? "MatchTypeTextselected" : "MatchTypeText"} onClick={() => { leagueGame(); setSelected("leagueGame"); }}>리그친선</div>
-                      <div className={selected === "directorMode" ? "MatchTypeTextselected" : "MatchTypeText"} onClick={() => { directorMode(); setSelected("directorMode"); }}>감독모드</div>
-                      <div className={selected === "classicMode" ? "MatchTypeTextselected" : "MatchTypeText"} onClick={() => { classicMode(); setSelected("classicMode"); }}>클래식 1vs1</div>
-                    </div>
-                    <MatchStats loading={loading} matchdetail={matchdetail} nickname={nickname}/>
-                    <MatchResult nickname={nickname} matchdetail={matchdetail} loading={loading} increaseOffset={increaseOffset} moreLoading={moreLoading} />
-                  </>
-                )
-              }
-            </>
-          )
-        }
+        {error ? (
+          <div className="NoUser"><strong>존재하지 않는 유저입니다.</strong></div>
+        ) : (
+          <>
+            <UserInfo nickname={nickname} ouid={ouid}/>
+            {loading ? (
+              <img
+                src={loadinggif}
+                alt="로딩"
+                width="50px"
+                className="MatchResultLoading"
+                style={{marginTop:"60px"}}
+              />
+            ) : (
+              <>
+                <div className="MatchTypeConatiner">
+                  <div className={selected === "publicGame" ? "MatchTypeTextselected" : "MatchTypeText"} onClick={() => { publicGame(); setSelected("publicGame"); }}>공식경기</div>
+                  <div className={selected === "leagueGame" ? "MatchTypeTextselected" : "MatchTypeText"} onClick={() => { leagueGame(); setSelected("leagueGame"); }}>리그친선</div>
+                  <div className={selected === "directorMode" ? "MatchTypeTextselected" : "MatchTypeText"} onClick={() => { directorMode(); setSelected("directorMode"); }}>감독모드</div>
+                  <div className={selected === "classicMode" ? "MatchTypeTextselected" : "MatchTypeText"} onClick={() => { classicMode(); setSelected("classicMode"); }}>클래식 1vs1</div>
+                </div>
+                <MatchStats loading={loading} matchdetail={matchdetail} nickname={nickname}/>
+                <MatchResult nickname={nickname} matchdetail={matchdetail} loading={loading} increaseOffset={increaseOffset} moreLoading={moreLoading} />
+              </>
+            )}
+          </>
+        )}
       </div>
     </div>
   );
