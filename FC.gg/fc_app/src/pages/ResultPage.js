@@ -97,6 +97,7 @@ export default function Screen() {
         // Fetching match data using ouid
       } catch (error) {
         setError(true);
+        setNickname("");
       }
     }  
     handleGetouid();
