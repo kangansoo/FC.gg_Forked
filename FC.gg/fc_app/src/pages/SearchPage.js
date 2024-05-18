@@ -4,24 +4,37 @@ import searchIcon from '../assets/searchicon.png'
 import leaguelogos from "../assets/leaguelogos.png"
 import axios from 'axios';
 import { useNavigate } from 'react-router-dom';
+import Swal from "sweetalert2";
 
 export default function SearchPage() {
     const navigate = useNavigate();
     const [searchText, setSearchText] = useState("");
-    const [notice, setNotice] = useState("");
-    const [urgentNotice, setUrgentNotice] = useState("");
+    const [notice, setNotice] = useState([]);
+    const [urgentNotice, setUrgentNotice] = useState([]);
     const [noticeError, setNoticeError] = useState("");
     const onChange = (e) => {
         e.preventDefault();
         setSearchText(e.target.value);
     }
 
-    const buttonClick = () => {
+    const buttonClick = (e) => {
+        e.preventDefault();
         if (!searchText) {
-          alert("검색어를 입력해주세요!");
+            Swal.fire({
+                title: "검색 오류",
+                icon: 'info',
+                text: '유저 이름을 입력해주세요!',
+                background: '#d9d9d9'
+            })
         } else {
           navigate(`./result/?input=${searchText}`);
           setSearchText("");
+        }
+    };
+    
+    const keyPress = (e) => {
+        if (e.key === "Enter"&&e.nativeEvent.isComposing === false) {
+          buttonClick(e);
         }
     };
 
@@ -40,19 +53,12 @@ export default function SearchPage() {
         getNotice();
     }, []);
 
-    
-  const keyPress = (e) => {
-    if (e.key === "Enter"&&e.nativeEvent.isComposing === false) {
-      buttonClick();
-    }
-  };
-
   return (
     <div className="SearchPageBackground">
         <div className="MainContainer">
             <div className="SearchContainer">
                 <input type="search" placeholder='닉네임을 입력해주세요.' value={searchText} onChange={onChange} className="SearchNickname" maxLength="15"  onKeyDown={keyPress}/>
-                <img src={searchIcon} alt="searchIcon" className='SearchIcon' onClick={buttonClick}/>
+                <img src={searchIcon} alt="searchIcon" className='SearchIcon' onClick={(e) => buttonClick(e)}/>
             </div>
             <div className="NoticeContainer">
                 <strong className="NoticeTitle">[공지사항]</strong>

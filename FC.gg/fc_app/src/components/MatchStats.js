@@ -83,7 +83,7 @@ export default function MatchStats(props) {
 
   return (
     <>
-      {matchdetail && matchdetail !== null && !loading ? (
+      {matchdetail && matchdetail.length !== 0 && !loading ? (
         <div className="MatchStatsBackground">
           <div className="UserStatsContainer">
             <span className="StatTitle">최근 10경기 승률</span>

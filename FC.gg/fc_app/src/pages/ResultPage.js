@@ -8,6 +8,7 @@ import MatchResult from "../components/MatchResult";
 import UserInfo from '../components/UserInfo';
 import MatchStats from '../components/MatchStats';
 import loadinggif from "../assets/loading.gif";
+import Swal from "sweetalert2";
 
 export default function Screen() {
   const navigate = useNavigate();
@@ -29,7 +30,12 @@ export default function Screen() {
   };
   const buttonClick = async() => {
     if (!searchText) {
-      alert("검색어를 입력해주세요!");
+      Swal.fire({
+        title: "검색 오류",
+        icon: 'info',
+        text: '유저 이름을 입력해주세요!',
+        background: '#d9d9d9'
+      })
     } else if(nickname === searchText){
       setLoading(false);
     } else {
@@ -41,6 +47,7 @@ export default function Screen() {
       setMoreLoading(false);
       setSelected("publicGame");
       setMatch(50);
+      setNickname("");
     }
   };
   const keyPress = (e) => {
@@ -97,7 +104,6 @@ export default function Screen() {
         // Fetching match data using ouid
       } catch (error) {
         setError(true);
-        setNickname("");
       }
     }  
     handleGetouid();
@@ -170,6 +176,12 @@ export default function Screen() {
         ) : (
           <>
             <UserInfo nickname={nickname} ouid={ouid}/>
+            <div className="MatchTypeConatiner">
+              <div className={selected === "publicGame" ? "MatchTypeTextselected" : "MatchTypeText"} onClick={() => { publicGame(); setSelected("publicGame"); }}>공식경기</div>
+              <div className={selected === "leagueGame" ? "MatchTypeTextselected" : "MatchTypeText"} onClick={() => { leagueGame(); setSelected("leagueGame"); }}>리그친선</div>
+              <div className={selected === "directorMode" ? "MatchTypeTextselected" : "MatchTypeText"} onClick={() => { directorMode(); setSelected("directorMode"); }}>감독모드</div>
+              <div className={selected === "classicMode" ? "MatchTypeTextselected" : "MatchTypeText"} onClick={() => { classicMode(); setSelected("classicMode"); }}>클래식 1vs1</div>
+            </div>
             {loading ? (
               <img
                 src={loadinggif}
@@ -180,12 +192,6 @@ export default function Screen() {
               />
             ) : (
               <>
-                <div className="MatchTypeConatiner">
-                  <div className={selected === "publicGame" ? "MatchTypeTextselected" : "MatchTypeText"} onClick={() => { publicGame(); setSelected("publicGame"); }}>공식경기</div>
-                  <div className={selected === "leagueGame" ? "MatchTypeTextselected" : "MatchTypeText"} onClick={() => { leagueGame(); setSelected("leagueGame"); }}>리그친선</div>
-                  <div className={selected === "directorMode" ? "MatchTypeTextselected" : "MatchTypeText"} onClick={() => { directorMode(); setSelected("directorMode"); }}>감독모드</div>
-                  <div className={selected === "classicMode" ? "MatchTypeTextselected" : "MatchTypeText"} onClick={() => { classicMode(); setSelected("classicMode"); }}>클래식 1vs1</div>
-                </div>
                 <MatchStats loading={loading} matchdetail={matchdetail} nickname={nickname}/>
                 <MatchResult nickname={nickname} matchdetail={matchdetail} loading={loading} increaseOffset={increaseOffset} moreLoading={moreLoading} />
               </>

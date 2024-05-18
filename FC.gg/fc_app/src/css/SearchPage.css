@@ -101,7 +101,7 @@ input[type="search"]::-webkit-search-cancel-button {
 }
 
 .NoticeList{
-    margin-bottom: 15px;
+    margin-bottom: 10px;
     list-style: none;
     margin-left: -20px;
 }
