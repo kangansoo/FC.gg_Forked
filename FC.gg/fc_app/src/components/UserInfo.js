@@ -37,8 +37,6 @@ export default function UserInfo(props) {
 
   return (
     <div className="UserInfoBackground">
-
-      {/* {rankImg ? (<img className="GradeIcon" alt="icon" src={userInfo[2]} />) : (<span>이미지 불러오는 중</span>)} */}
       <img className="GradeIcon" alt="icon" src={userInfo[2]} />
       <div className="UserInfoContainer">
         <div className="UserNickname">{nickname}</div>
