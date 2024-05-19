@@ -91,22 +91,21 @@ export default function Screen() {
   },[input]);
 
   useEffect(()=>{
-    setError(false);
-    const handleGetouid = async () => {
-      try {
-        const response = await axios.get('https://p0l0evybh6.execute-api.ap-northeast-2.amazonaws.com/dev/Getouid', {
-          params: {  
-            nickname: nickname,
-          }
-        });
-        setLoading(true)
-        setOuid(response.data);
-        // Fetching match data using ouid
-      } catch (error) {
-        setError(true);
-      }
-    }  
-    handleGetouid();
+    if (nickname) {
+      setError(false);
+      setLoading(true);
+      const handleGetouid = async () => {
+        try {
+          const response = await axios.get('https://p0l0evybh6.execute-api.ap-northeast-2.amazonaws.com/dev/Getouid', {
+            params: { nickname: nickname }
+          });
+          setOuid(response.data);
+        } catch (error) {
+          setError(true);
+        }
+      };
+      handleGetouid();
+    }
   }, [input, nickname, ouid])
 
   useEffect(()=>{
