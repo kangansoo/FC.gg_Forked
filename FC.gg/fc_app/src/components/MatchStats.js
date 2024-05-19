@@ -97,6 +97,7 @@ export default function MatchStats(props) {
               src={`https://fco.dn.nexoncdn.co.kr/live/externalAssets/common/playersAction/p${spId}.png`}
               alt="img"
               height="100px"
+              style={{ visibility: loading ? "hidden" : "visible" }}
               onError={(e) => {
                 e.target.src = `https://fco.dn.nexoncdn.co.kr/live/externalAssets/common/players/p${pId}.png`;
               }}
