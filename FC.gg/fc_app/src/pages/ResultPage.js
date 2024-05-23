@@ -51,6 +51,7 @@ export default function Screen() {
   }, [navigate, searchText]);
 
   const keyPress = (e) => {
+    e.preventDefault();
     if (e.key === "Enter" && e.nativeEvent.isComposing === false) {
       buttonClick();
     }
