@@ -62,7 +62,7 @@ export default function MatchResult(props) {
             ([, a], [, b]) => new Date(b.match_date) - new Date(a.match_date)
           )
           .map(([id, data]) => {
-            if(data.my_data && data.my_data.length===0 || data.other_data && data.other_data.length===0){
+            if((data.my_data && data.my_data.length===0) || (data.other_data && data.other_data.length===0)){
               return (
                 <div className="MatchResultOuterContainer" key={id}>
                   <div 
