@@ -94,6 +94,7 @@ export default function Screen() {
     if (nickname) {
       setError(false);
       setLoading(true);
+      setMatchdetail([]);
       const handleGetouid = async () => {
         try {
           const response = await axios.get('https://p0l0evybh6.execute-api.ap-northeast-2.amazonaws.com/dev/Getouid', {
@@ -109,7 +110,6 @@ export default function Screen() {
   }, [input, nickname, ouid])
 
   useEffect(()=>{
-    setMatchdetail([]);
     const getMatchdetail = async() => {
       try {
         const response1 = await axios.get('https://p0l0evybh6.execute-api.ap-northeast-2.amazonaws.com/dev/Getmatchid', {

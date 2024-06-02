@@ -44,7 +44,7 @@ export default function MatchResult(props) {
     }
   };
 
-  console.log("매치 디테일:", matchdetail);
+  // console.log("매치 디테일:", matchdetail);
   return (
     <div className="MatchResultBackground">
       <div className="RealOuterContainer">
